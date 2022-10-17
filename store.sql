@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 08:35 AM
+-- Generation Time: Oct 17, 2022 at 11:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -85,6 +85,16 @@ CREATE TABLE `kategori` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `namaKategori`, `foto`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'Makanan', 'makanan1.png', NULL, NULL, NULL),
+(2, 'Minuman', 'minuman1.png', NULL, NULL, NULL),
+(3, 'Souvenir', 'souvenir1.png', NULL, NULL, NULL),
+(4, 'Pakaian', 'pakaian1.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -171,10 +181,22 @@ CREATE TABLE `produk` (
   `namaProduk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hargaProduk` int(11) NOT NULL,
   `deskripsi` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `jumlahTerjual` int(11) DEFAULT NULL,
   `kategori_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id`, `namaProduk`, `hargaProduk`, `deskripsi`, `stock`, `jumlahTerjual`, `kategori_id`, `created_at`, `updated_at`) VALUES
+(1, 'abc', 10000, 'lorem ipsum', NULL, NULL, 1, NULL, NULL),
+(2, 'cde', 10000, 'lorep ipsum dolor', NULL, NULL, 2, NULL, NULL),
+(3, 'efg', 10000, 'lorem ipsum dolor efgha', NULL, NULL, 4, NULL, NULL),
+(4, 'hijk', 10000, 'lorem ipsum', NULL, NULL, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -349,7 +371,7 @@ ALTER TABLE `galeri_produk`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
@@ -373,7 +395,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
