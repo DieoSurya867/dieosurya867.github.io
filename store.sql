@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2022 at 10:25 AM
+-- Generation Time: Oct 17, 2022 at 11:09 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -181,6 +181,8 @@ CREATE TABLE `produk` (
   `namaProduk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hargaProduk` int(11) NOT NULL,
   `deskripsi` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `jumlahTerjual` int(11) DEFAULT NULL,
   `kategori_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -190,11 +192,11 @@ CREATE TABLE `produk` (
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id`, `namaProduk`, `hargaProduk`, `deskripsi`, `kategori_id`, `created_at`, `updated_at`) VALUES
-(1, 'abc', 10000, 'lorem ipsum', 1, NULL, NULL),
-(2, 'cde', 10000, 'lorep ipsum dolor', 2, NULL, NULL),
-(3, 'efg', 10000, 'lorem ipsum dolor efgha', 4, NULL, NULL),
-(4, 'hijk', 10000, 'lorem ipsum', 3, NULL, NULL);
+INSERT INTO `produk` (`id`, `namaProduk`, `hargaProduk`, `deskripsi`, `stock`, `jumlahTerjual`, `kategori_id`, `created_at`, `updated_at`) VALUES
+(1, 'abc', 10000, 'lorem ipsum', NULL, NULL, 1, NULL, NULL),
+(2, 'cde', 10000, 'lorep ipsum dolor', NULL, NULL, 2, NULL, NULL),
+(3, 'efg', 10000, 'lorem ipsum dolor efgha', NULL, NULL, 4, NULL, NULL),
+(4, 'hijk', 10000, 'lorem ipsum', NULL, NULL, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
