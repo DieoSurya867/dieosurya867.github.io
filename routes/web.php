@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\productCon;
+use App\Http\Controllers\produkCon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +20,12 @@ Route::get('/', function () {
     return view('pages.user.index');
 });
 
+Route::get('admin/dashboard', function () {
+    return view('Pages.admin.home');
+});
+
+Route::resource('admin/produk', productCon::class);
+Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
 
 Auth::routes();
 

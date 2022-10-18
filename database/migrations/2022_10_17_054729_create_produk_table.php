@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('namaProduk');
             $table->integer('hargaProduk');
             $table->longText('deskripsi');
+            $table->integer('stock')->nullable();
+            $table->integer('jumlahTerjual')->nullable();
             $table->foreignId('kategori_id')->constrained('kategori')->cascadeOnUpdate()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
