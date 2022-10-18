@@ -30,7 +30,7 @@ class productCon extends Controller
     {
         $data2 = kategori::all();
 
-        return view("pages.admin.tambah", compact('data2'));
+        return view("pages.admin.produk.tambah", compact('data2'));
     }
 
     /**
