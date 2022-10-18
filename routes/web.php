@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.user.index');
+    return view('Pages.user.index');
+});
+
+Route::get('admin/dashboard', function () {
+    return view('Pages.admin.home');
 });
 
 Auth::routes();
