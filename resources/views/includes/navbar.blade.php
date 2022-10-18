@@ -23,14 +23,6 @@
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="shop.html">Shop</a>
-                </li>
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link" href="detail.html"
-                    >Product detail</a
-                  >
-                </li>
                 <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
@@ -39,7 +31,7 @@
                     data-bs-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    >Pages</a
+                    >Category</a
                   >
                   <div
                     class="dropdown-menu mt-3 shadow-sm"
@@ -76,12 +68,15 @@
                     >Cart<small class="text-gray fw-normal">(2)</small></a
                   >
                 </li>
+                
+                <!-- WISHLIST
                 <li class="nav-item">
                   <a class="nav-link" href="#!">
                     <i class="far fa-heart me-1"></i
                     ><small class="text-gray fw-normal"> (0)</small></a
                   >
-                </li>
+                </li> -->
+
                 <li class="nav-item">
                   <a class="nav-link" href="#!">
                     <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a
