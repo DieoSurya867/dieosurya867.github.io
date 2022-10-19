@@ -103,8 +103,8 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item {{ Request::is('dashboard')? 'active' : '' }}">
-              <a href="../home" class="menu-link">
+            <li class="menu-item {{ request()->is('admin/dasboard') ? ' active' : '' }}"">
+              <a href="/" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -172,15 +172,6 @@
      </div>
        <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
     </div>
 
     </body>

@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.user.index');
 });
+Route::get('admin/dasboard', function () {
+    return view('pages.admin.home');
+});
 
 Auth::routes();
 
