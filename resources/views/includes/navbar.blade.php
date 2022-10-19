@@ -33,70 +33,26 @@
               aria-expanded="false"
               >Category</a
             >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link active" href="index.html"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    id="pagesDropdown"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    >Category</a
-                  >
-                  <div
-                    class="dropdown-menu mt-3 shadow-sm"
-                    aria-labelledby="pagesDropdown"
-                  >
-                    <a
-                      class="dropdown-item border-0 transition-link"
-                      href="index.html"
-                      >Makanan</a
-                    ><a
-                      class="dropdown-item border-0 transition-link"
-                      href="shop.html"
-                      >Minuman</a
-                    ><a
-                      class="dropdown-item border-0 transition-link"
-                      href="detail.html"
-                      >Pakaian</a
-                    ><a
-                      class="dropdown-item border-0 transition-link"
-                      href="cart.html"
-                      >Souvenir</a>
-                  </div>
-                </li>
-              </ul>
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="cart.html">
-                    <i class="fas fa-dolly-flatbed me-1 text-gray"></i
-                    >Cart<small class="text-gray fw-normal">(2)</small></a
-                  >
-                </li>
-                
-                <!-- WISHLIST
-                <li class="nav-item">
-                  <a class="nav-link" href="#!">
-                    <i class="far fa-heart me-1"></i
-                    ><small class="text-gray fw-normal"> (0)</small></a
-                  >
-                </li> -->
-
-                <li class="nav-item">
-                  <a class="nav-link" href="#!">
-                    <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a
-                  >
-                </li>
-              </ul>
+            <div
+              class="dropdown-menu mt-3 shadow-sm"
+              aria-labelledby="pagesDropdown"
+            >
+              <a
+                class="dropdown-item border-0 transition-link"
+                href="index.html"
+                >Makanan</a
+              ><a
+                class="dropdown-item border-0 transition-link"
+                href="shop.html"
+                >Minuman</a
+              ><a
+                class="dropdown-item border-0 transition-link"
+                href="detail.html"
+                >Pakaian</a
+              ><a
+                class="dropdown-item border-0 transition-link"
+                href="cart.html"
+                >Souvenir</a>
             </div>
           </li>
         </ul>
