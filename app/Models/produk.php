@@ -13,6 +13,6 @@ class produk extends Model
 
     public function produk()
     {
-        return $this->belongsTo(sekolah::class);
+        return $this->belongsTo(kategori::class);
     }
 }
