@@ -83,6 +83,7 @@
                       src={{ asset ("store/img/product-1.jpg")}}
                       alt="..."
                   /></a>
+                  
                   <div class="product-overlay">
                     <ul class="mb-0 list-inline">
                       <li class="list-inline-item m-0 p-0">
@@ -459,7 +460,7 @@
           </div>
         </section>
         <!-- NEWSLETTER-->
-        <section class="py-5">
+        {{-- <section class="py-5">
           <div class="container p-0">
             <div class="row gy-3">
               <div class="col-lg-6">
@@ -489,7 +490,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> --}}
       </div>
 
         @endsection
