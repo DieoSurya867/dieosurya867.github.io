@@ -95,32 +95,24 @@
                       {{-- sidebar active  |
                                    V --}}
                       {{-- <li class="menu-item {{ (request()->is('layouts/without-menu')) ? 'active' : '' }}">   --}}
-
-                      <!-- Tables -->
-                      <li class="menu-item @if (Request::is('table')) active @endif">
-                          <a href="table" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-table"></i>
-                              <div data-i18n="Tables">Tables</div>     
+                        <li class="menu-header small text-uppercase"><span class="menu-header-text">Detail Usaha</span></li>
+                      <!-- Produk -->
+                      <li class="menu-item {{ Request::is('admin/produk') ? 'active' : '' }}">
+                            <a href="../admin/produk" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Tables">Produk</div>     
                           </a>
                       </li>
-                      <li class="menu-header small text-uppercase"><span class="menu-header-text">Detail Usaha</span></li>
                       <!-- Customer -->
-                      <li class="menu-item">
-                          <a href="../admin" class="menu-link">
+                      <li class="menu-item {{ Request::is('admin/user') ? 'active' : '' }}">
+                          <a href="../admin/user" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-table"></i>
                               <div data-i18n="Tables">Customer</div>
                           </a>
                       </li>
-                      <!-- Pendapatan -->
-                      <li class="menu-item">
-                          <a href="../tables" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-table"></i>
-                              <div data-i18n="Tables">Pendapatan</div>
-                          </a>
-                      </li>
                     <!-- Transaksi -->
-                    <li class="menu-item">
-                        <a href="../tables" class="menu-link">
+                    <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
+                        <a href="../admin/transaksi" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Transaksi</div>
                         </a>
@@ -144,6 +136,7 @@
                   </ul>
               </aside>
               {{-- end sidebar --}}
+              {{-- Produk --}}
               <div class="layout-page">
                   {{-- page navbar --}}
                   @include('includes.admin.navbar')
@@ -151,9 +144,24 @@
                   @yield('content')
                   @include('includes.admin.footer')
               </div>
-
               {{-- end container --}}
           </div>
+          {{-- Customer --}}
+          <div class="layout-page">
+            {{-- page navbar --}}
+            @include('includes.admin.navbar')
+
+            @yield('user')
+            @include('includes.admin.footer')
+        </div>
+        {{-- Transaksi --}}
+        <div class="layout-page">
+        {{-- page navbar --}}
+        @include('includes.admin.navbar')
+
+        @yield('transaksi')
+        @include('includes.admin.footer')
+        {{-- end container --}}
           <!-- Overlay -->
           <div class="layout-overlay layout-menu-toggle"></div>
       </div>

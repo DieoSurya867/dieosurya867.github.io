@@ -24,12 +24,17 @@ Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
 });
 
-Route::get('admin/table', function () {
-    return view('table');
+Route::get('admin/user', function () {
+    return view('users');
 });
+
 
 Route::resource('admin/produk', productCon::class);
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
+Route::get('/users','UsersController@index');
+Route::get('/transaksi','TransaksiController@index');
+
+
 
 Auth::routes();
 

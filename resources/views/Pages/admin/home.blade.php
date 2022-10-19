@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Omal (Oleh-Oleh Khas Malang)
        <link rel="stylesheet" href={{ asset ("sneat/assets/vendor/libs/apex-charts/apex-charts.css")}} />
 @endsection
 
