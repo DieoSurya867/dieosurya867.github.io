@@ -40,24 +40,19 @@
                     <a
                       class="dropdown-item border-0 transition-link"
                       href="index.html"
-                      >Homepage</a
+                      >Makanan</a
                     ><a
                       class="dropdown-item border-0 transition-link"
                       href="shop.html"
-                      >Category</a
+                      >Minuman</a
                     ><a
                       class="dropdown-item border-0 transition-link"
                       href="detail.html"
-                      >Product detail</a
+                      >Pakaian</a
                     ><a
                       class="dropdown-item border-0 transition-link"
                       href="cart.html"
-                      >Shopping cart</a
-                    ><a
-                      class="dropdown-item border-0 transition-link"
-                      href="checkout.html"
-                      >Checkout</a
-                    >
+                      >Souvenir</a>
                   </div>
                 </li>
               </ul>
