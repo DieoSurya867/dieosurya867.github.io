@@ -24,6 +24,10 @@ Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
 });
 
+Route::get('admin/table', function () {
+    return view('table');
+});
+
 Route::resource('admin/produk', productCon::class);
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
 
