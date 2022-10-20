@@ -82,7 +82,7 @@
                     </div>
                     @foreach($data as $item)
                     <div class="modal-body">
-                      <p>{{ $item->deskripsi->id }}</p>
+                      <p>{{ $item->deskripsi }}</p>
                     </div>
                     @endforeach
                     <div class="modal-footer">
