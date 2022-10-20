@@ -9,13 +9,17 @@ use Illuminate\Support\Facades\DB;
  
 class UsersController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-    	// mengambil data dari table pegawai
-    	$user = DB::table('users')->get();
- 
-    	// mengirim data pegawai ke view index
-    	return view('users',['users' => $user]);
- 
+        $user = users::all();
+
+
+        return view('index', compact('user'));
     }
+
 }

@@ -87,7 +87,7 @@
                   <ul class="menu-inner py-1">
                       <!-- Dashboard -->
                       <li class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
-                          <a href="../home" class="menu-link">
+                          <a href="../produk" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-home-circle"></i>
                               <div data-i18n="Analytics">Dashboard</div>
                           </a>
@@ -99,7 +99,7 @@
                       <!-- Produk -->
                       <li class="menu-item {{ Request::is('admin/produk') ? 'active' : '' }}">
                             <a href="../admin/produk" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Produk</div>     
                           </a>
                       </li>
@@ -142,29 +142,12 @@
                   @include('includes.admin.navbar')
 
                   @yield('content')
+                  @yield('users')
+                  @yield('transaksi')
                   @include('includes.admin.footer')
               </div>
               {{-- end container --}}
           </div>
-          {{-- Customer --}}
-          <div class="layout-page">
-            {{-- page navbar --}}
-            @include('includes.admin.navbar')
-
-            @yield('user')
-            @include('includes.admin.footer')
-        </div>
-        {{-- Transaksi --}}
-        <div class="layout-page">
-        {{-- page navbar --}}
-        @include('includes.admin.navbar')
-
-        @yield('transaksi')
-        @include('includes.admin.footer')
-        {{-- end container --}}
-          <!-- Overlay -->
-          <div class="layout-overlay layout-menu-toggle"></div>
-      </div>
   </body>
 
   @stack('prepend-script')

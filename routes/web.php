@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\productCon;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\produkCon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

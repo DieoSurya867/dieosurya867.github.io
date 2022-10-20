@@ -11,4 +11,9 @@ class transaksi extends Model
     protected $table = 'transaksi';
     protected $guarded = ['id'];
 
+    public function transaksi()
+    {
+        return $this->belongsTo(transaksi::class);
+    }
+
 }

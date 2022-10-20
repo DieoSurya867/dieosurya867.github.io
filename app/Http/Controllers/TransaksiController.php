@@ -9,13 +9,17 @@ use Illuminate\Support\Facades\DB;
 
 class TransaksiController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-    	// mengambil data dari table pegawai
-    	$transaksi = DB::table('transaksi')->get();
- 
-    	// mengirim data pegawai ke view index
-    	return view('transaksi',['transaksi' => $transaksi]);
- 
+        $transaksi = transaksi::all();
+
+
+        return view('transaksi', compact('transaksi'));
     }
+
 }

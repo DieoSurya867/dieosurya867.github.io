@@ -4,7 +4,7 @@
 @section('title')
     Omal (Oleh-Oleh Khas Malang)
 @endsection
-@section('user')
+@section('users')
     <div class="content-wrapper">
         <!-- Content -->
 
@@ -23,13 +23,13 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($user as $user)
+                            @foreach ($user as $u)
                                 <tr>
                                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>{{ $user['name'] }}</strong>
+                                        <strong>{{ $u['name'] }}</strong>
                                     </td>
-                                    <td>{{ $user['email'] }}</td>
-                                    <td>{{ $user['password'] }}</td>
+                                    <td>{{ $u['email'] }}</td>
+                                    <td>{{ $u['password'] }}</td>
                                 </tr>
                             @endforeach
 
