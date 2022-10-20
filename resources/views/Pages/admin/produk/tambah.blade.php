@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ url('admin') }}" method="POST">
+    <form action="{{ url('admin/produk') }}" method="POST">
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Tambah Data</h4>
             <!-- Form controls -->
@@ -27,8 +27,21 @@
                             <label for="exampleFormControlReadOnlyInput1" class="form-label">Harga Produk</label>
                             <input class="form-control @error('hargaProduk') is-invalid
                           @enderror"
-                                type="text" id="exampleFormControlReadOnlyInput1" placeholder="Readonly input here..."
+                                type="text" id="exampleFormControlReadOnlyInput1" placeholder="Harga Produk"
                                 name="hargaProduk" value="{{ old('hargaProduk') }}" />
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Deskripsi</span>
+                            <textarea class="form-control @error('deskripsi') is-invalid @enderror" aria-label="With textarea"
+                                placeholder="Tulis Penjelasan Barang Disini" name="deskripsi" value="{{ old('deskripsi') }}">
+                            </textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlReadOnlyInput1" class="form-label">Stock</label>
+                            <input class="form-control @error('stock') is-invalid
+                          @enderror"
+                                type="text" id="exampleFormControlReadOnlyInput1" placeholder="Stock Barang"
+                                name="stock" value="{{ old('stock') }}" />
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlSelect1" class="form-label">Pilih Sekolah</label>
@@ -36,26 +49,12 @@
                           @enderror"
                                 id="exampleFormControlSelect1" aria-label="Default select example" name="kategori_id">
                                 <option selected>Pilih Nama Kategori</option>
-                                @foreach ($data2 as $item)
+                                @foreach ($kategori as $item)
                                     <option value="{{ $item->id }}" @selected(old('kategori_id') == $item->id)>
                                         {{ $item->namaKategori }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        {{-- <div class="mb-3">
-                            <label for="exampleDataList" class="form-label">Status Project</label>
-                            <input class="form-control @error('status') is-invalid
-                          @enderror"
-                                list="datalistOptions" id="exampleDataList" placeholder="Type to search..." name="status"
-                                value="{{ old('status') }}" />
-                            <datalist id="datalistOptions">
-                                <option value="ACTIVE">ACTIVE</option>
-                                <option value="PENDING">PENDING</option>
-                                <option value="COMPLETED">COMPLETED</option>
-                                <option value="DELAYED">DELAYED</option>
-                                <option value="MAINTANCE">MAINTENANCE</option>
-                            </datalist>
-                        </div> --}}
 
                         <div>
                             <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Tambah Data</button>

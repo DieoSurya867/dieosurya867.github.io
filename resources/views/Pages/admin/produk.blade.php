@@ -41,7 +41,7 @@
                                     <td>{{ $item['deskripsi'] }}</td>
                                     <td>{{ $item['stock'] }}</td>
                                     <td>{{ $item['jumlahTerjual'] }}</td>
-                                    <td>{{ $item['kategori_id'] }}</td>
+                                    <td>{{ $item->kategori->namaKategori }}</td>
 
                                     {{-- <td>{{ $item->client }}</td> --}}
                                     <td>
