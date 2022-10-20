@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\productCon;
-use App\Http\Controllers\produkCon;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +25,7 @@ Route::get('admin/dashboard', function () {
 });
 
 Route::resource('admin/produk', productCon::class);
-Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
+Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
 
 Auth::routes();
 
