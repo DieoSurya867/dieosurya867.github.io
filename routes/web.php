@@ -29,6 +29,8 @@ Route::get('admin/dashboard', function () {
 
 Route::resource('admin/produk', productCon::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+Route::get('edit', [productCon::class, 'edit']);
+
 
 Auth::routes();
 

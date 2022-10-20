@@ -78,10 +78,10 @@ class productCon extends Controller
      */
     public function edit($id)
     {
-        $data = produk::findOrFail($id);
+        $data = produk::find($id);
         $kategori = Kategori::all();
 
-        return view("pages.admin.edit", [
+        return view("pages/admin/produk/edit", [
             'data' => $data,
             'kategori' => $kategori,
 
@@ -104,13 +104,11 @@ class productCon extends Controller
             'namaProduk' => 'required|string',
             'hargaProduk' => 'required|integer',
             'deskripsi' => 'required|string',
-            'stock' => 'required|integer',
-            'jumlahTerjual' => 'required|integer',
             'kategori_id' => 'required',
         ]);
 
         $item->update($validator);
-        return redirect()->route('produk.index');
+        return redirect()->route('produk.index')->with('success', 'Sukses mengubah siswa.');;
     }
 
     /**
