@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\produk;
-use App\Models\kategori;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +18,7 @@ class productCon extends Controller
     {
         $data = produk::all();
 
+
         return view('Pages.admin.produk', compact('data'));
     }
 
@@ -28,9 +29,9 @@ class productCon extends Controller
      */
     public function create()
     {
-        $data2 = kategori::all();
+        $kategori = Kategori::all();
 
-        return view("pages.admin.produk.tambah", compact('data2'));
+        return view("pages.admin.produk.tambah", compact('kategori'));
     }
 
     /**
@@ -42,7 +43,7 @@ class productCon extends Controller
     public function store(Request $request)
     {
         // dd($request);
-
+        $jumlahTerjualoto = 0;
         // DB::insert('insert into admins (project, client, status, sekolah_id) values (?,?,?,?)', [$request->project, $request->client, $request->status, $request->sekolah_id]);
 
         $validator = $request->validate([
@@ -50,11 +51,12 @@ class productCon extends Controller
             'hargaProduk' => 'required|integer',
             'deskripsi' => 'required|string',
             'stock' => 'required|integer',
-            'jumlahTerjual' => 'required|integer',
+            'jumlahTerjual' => 'jumlahTerjualoto',
+            'kategori_id' => 'required'
         ]);
         produk::create($validator);
 
-        return redirect('tables')->with('success', 'Data Berhasil Masuk');
+        return redirect('admin/produk')->with('success', 'Data Berhasil Masuk');
     }
 
     /**
@@ -77,7 +79,7 @@ class productCon extends Controller
     public function edit($id)
     {
         $data = produk::findOrFail($id);
-        $kategori = kategori::all();
+        $kategori = Kategori::all();
 
         return view("pages.admin.edit", [
             'data' => $data,
@@ -104,6 +106,7 @@ class productCon extends Controller
             'deskripsi' => 'required|string',
             'stock' => 'required|integer',
             'jumlahTerjual' => 'required|integer',
+            'kategori_id' => 'required',
         ]);
 
         $item->update($validator);

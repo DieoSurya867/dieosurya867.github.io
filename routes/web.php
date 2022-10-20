@@ -24,18 +24,17 @@ Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
 });
 
-Route::get('admin/user', function () {
-    return view('users');
-});
-
-
 Route::resource('admin/produk', productCon::class);
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
-Route::get('/users','UsersController@index');
-Route::get('/transaksi','TransaksiController@index');
 
 
+// =======
+Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+// >>>>>>> ab769fceeaafe23b05ad843b6bf30b3b4638f23e
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
+Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi');
+
