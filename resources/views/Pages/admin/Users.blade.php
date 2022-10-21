@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Omal (Oleh-Oleh Khas Malang)
+    Dashboard - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
 @section('users')
     <div class="content-wrapper">
@@ -11,8 +11,10 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
 
-            <!-- Basic Bootstrap Table -->
+            <!-- Customer -->
             <div class="card">
+                <h5 class="card-header">Customer</h5>
+                <div class="table-responsive text-nowrap">
                     <table class="table table-bordered table-hover">
 
                         <thead>
@@ -26,8 +28,9 @@
                             @foreach ($users as $u)
                                 <tr>
                                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>{{ $u['name'] }}</strong>
+                                        <strong>{{ $u['id'] }}</strong>
                                     </td>
+                                    <td>{{ $u['nama'] }}</td>
                                     <td>{{ $u['email'] }}</td>
                                     <td>{{ $u['password'] }}</td>
                                 </tr>
