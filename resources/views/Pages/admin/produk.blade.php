@@ -80,11 +80,13 @@
                       <h5 class="modal-title" id="exampleModalLabel">Deskripsi Produk</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    @foreach($data as $item)
                     <div class="modal-body">
-                      <p>{{ $item->deskripsi }}</p>
+                        @if($data as $item ){
+
+                            <p>{{ $item->hargaProduk }}</p>
+                        }
+                      @endforeach
                     </div>
-                    @endforeach
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>

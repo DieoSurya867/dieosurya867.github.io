@@ -16,15 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.user.index');
-});
+// Route::get('/', function () {
+//     return view('pages.user.index');
+// });
+// Route::get('/', [App\Http\Controllers\productCon::class, 'tampil']);
+
 Route::get('admin/dasboard', function () {
     return view('pages.admin.home');
 });
 
+Route::get('/', [productCon::class, 'tampil']);
+
 Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
+});
+Route::get('user/cart', function () {
+    return view('Pages.user.cart');
+});
+Route::get('user/check', function () {
+    return view('Pages.user.checkout');
+});
+Route::get('user/detail', function () {
+    return view('Pages.user.detail');
 });
 
 Route::get('admin/user', function () {

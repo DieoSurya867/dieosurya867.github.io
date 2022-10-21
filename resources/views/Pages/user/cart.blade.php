@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Dashboard - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Keranjang - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
 @section('content')
       <div class="container">
@@ -10,14 +10,12 @@
         <section class="py-5 bg-light">
           <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
-              <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0">Cart</h1>
-              </div>
-              <div class="col-lg-6 text-lg-end">
+              <div class="col d-flex justify-content-between">
+                <h1 class="h2 text-uppercase mb-0">Keranjang</h1>
                 <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                    <li class="breadcrumb-item"><a class="text-dark" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                  <ol class="breadcrumb justify-content-end mb-0 px-0 bg-light">
+                    <li class="breadcrumb-item"><a class="text-dark" href="{{ url('/') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Keranjang</li>
                   </ol>
                 </nav>
               </div>
