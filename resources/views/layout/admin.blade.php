@@ -112,7 +112,7 @@
                       </li>
                     <!-- Transaksi -->
                     <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
-                        <a href="../admin/transaksi" class="menu-link">
+                        <a href="/admin/transaksi" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Tables">Transaksi</div>
                         </a>

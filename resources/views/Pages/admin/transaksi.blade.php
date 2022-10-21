@@ -13,7 +13,7 @@
 
             <!-- Transaksi -->
             <div class="card">
-                <h5 class="card-header">Tranksaksi</h5>
+                <h5 class="card-header">Transaksi</h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table table-bordered table-hover">
 

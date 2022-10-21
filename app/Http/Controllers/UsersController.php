@@ -19,7 +19,7 @@ class UsersController extends Controller
         $users = User::latest()->paginate(5);
 
 
-        return view('pages.admin.Users', compact('User'));
+        return view('pages.admin.Users', compact ('users'));
     }
 
 }

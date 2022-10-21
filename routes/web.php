@@ -26,8 +26,9 @@ Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
 });
 
+
 Route::resource('admin/produk', productCon::class);
-Route::resource('pages/admin/Users', UsersController::class);
+Route::resource('admin/Users', UsersController::class);
 Route::resource('admin/transaksi', TransaksiController::class);
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
 

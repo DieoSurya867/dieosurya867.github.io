@@ -17,9 +17,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksi = transaksi::all();
-
-
-        return view('transaksi', compact('transaksi'));
+        return view('Pages.admin.transaksi', compact('transaksi'));
     }
 
 }
