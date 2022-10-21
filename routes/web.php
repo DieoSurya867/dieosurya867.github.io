@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('pages.user.index');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('login', HomeController::class);
+});
+
 Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
 });
