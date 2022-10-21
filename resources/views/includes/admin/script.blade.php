@@ -5,7 +5,7 @@
     <script src={{ asset('sneat/assets/vendor/js/bootstrap.js') }}></script>
     <script src={{ asset('sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}></script>
 
-    <script src={{ asset('sneat/assets/vendor/js/menu.js') }}></script>
+    <script src={{ asset ("sneat/assets/vendor/js/menu.js")}}></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
@@ -17,3 +17,4 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+   

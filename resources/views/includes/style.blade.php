@@ -1,5 +1,5 @@
 <!-- gLightbox gallery-->
-    <link rel="stylesheet" href={{ asset ("store/vendor/glightbox/css/glightbox.min.css")}}>
+    <link rel="stylesheet" href={{ asset ("store/venglightbox/css/glightbox.min.css")}}>
     <!-- Range slider-->
     <link rel="stylesheet" href={{ asset ("store/vendor/nouislider/nouislider.min.css")}}>
     <!-- Choices CSS-->

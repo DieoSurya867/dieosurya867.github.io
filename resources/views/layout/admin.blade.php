@@ -84,48 +84,46 @@
 
                   <div class="menu-inner-shadow"></div>
 
-                  <ul class="menu-inner py-1">
-                      <!-- Dashboard -->
-                      <li class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
-                          <a href="../home" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                              <div data-i18n="Analytics">Dashboard</div>
-                          </a>
-                      </li>
-                      {{-- sidebar active  |
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item {{ Request::is('dashboard')? 'active' : '' }}">
+              <a href="../home" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+              {{-- sidebar active  |
                                    V --}}
                       {{-- <li class="menu-item {{ (request()->is('layouts/without-menu')) ? 'active' : '' }}">   --}}
-
-                      <!-- Tables -->
-                      <li class="menu-item @if (Request::is('tables*')) active @endif">
-                          <a href="../tables" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-table"></i>
-                              <div data-i18n="Tables">Tables</div>
+                        <li class="menu-header small text-uppercase"><span class="menu-header-text">Detail Usaha</span></li>
+                      <!-- Produk -->
+                      <li class="menu-item {{ Request::is('admin/produk') ? 'active' : '' }}">
+                            <a href="../admin/produk" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Tables">Produk</div>     
                           </a>
                       </li>
-                      <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Latihan
-                              PKK</span></li>
-                      <!-- Client -->
-                      <li class="menu-item">
-                          <a href="../admin" class="menu-link">
+                      <!-- Customer -->
+                      <li class="menu-item {{ Request::is('admin/user') ? 'active' : '' }}">
+                          <a href="../admin/user" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-table"></i>
-                              <div data-i18n="Tables">Client</div>
+                              <div data-i18n="Tables">Customer</div>
                           </a>
                       </li>
-                      <!-- Sekolah -->
-                      <li class="menu-item">
-                          <a href="../tables" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-table"></i>
-                              <div data-i18n="Tables">Sekolah</div>
-                          </a>
-                      </li>
-                      <!-- Misc -->
-                      <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+                    <!-- Transaksi -->
+                    <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
+                        <a href="../admin/transaksi" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <div data-i18n="Tables">Transaksi</div>
+                        </a>
+                    </li>
+                      <!-- Lainya -->
+                      <li class="menu-header small text-uppercase"><span class="menu-header-text">Lainnya</span></li>
                       <li class="menu-item">
                           <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
                               target="_blank" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-support"></i>
-                              <div data-i18n="Support">Support</div>
+                              <div data-i18n="Support">Bantuan</div>
                           </a>
                       </li>
                       <li class="menu-item">
@@ -138,13 +136,13 @@
                   </ul>
               </aside>
               {{-- end sidebar --}}
+              {{-- Produk --}}
               <div class="layout-page">
                   {{-- page navbar --}}
                   @include('includes.admin.navbar')
 
                   @yield('content')
                   @include('includes.admin.footer')
-
               </div>
               {{-- end container --}}
           </div>

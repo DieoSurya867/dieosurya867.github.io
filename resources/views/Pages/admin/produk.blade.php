@@ -9,7 +9,7 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tabel /</span> Produk</h4>
 
             <!-- Basic Bootstrap Table -->
             <div class="card">
@@ -19,7 +19,7 @@
                         Data</a>
                     <a href="{{ route('produk.create') }}" class="ms-4 mb-4 btn btn-sm  btn-outline-primary">Tambah Data
                         Pakai Route</a>
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" >
 
                         <thead>
                             <tr>
@@ -38,7 +38,11 @@
                                         <strong>{{ $item['namaProduk'] }}</strong>
                                     </td>
                                     <td>{{ $item['hargaProduk'] }}</td>
-                                    <td>{{ $item['deskripsi'] }}</td>
+                                    <td><!-- Button trigger modal -->
+                                        <a href="{{ $data }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                          Tampilkan Deskripsi
+                                        </a>
+                                    </td>
                                     <td>{{ $item['stock'] }}</td>
                                     <td>{{ $item['jumlahTerjual'] }}</td>
                                     <td>{{ $item->kategori->namaKategori }}</td>
@@ -52,10 +56,10 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
-                                                    href="{{ URL::to('admin/' . $item->id . '/edit') }}"><i
+                                                    href="{{ route('produk.edit', $item->id) }}"><i
                                                         class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                <a class="dropdown-item" href="{{ url('deleteproduk/' . $item->id) }}"><i
-                                                        class="bx bx-trash me-1"></i> Delete</a>
+                                                {{-- <a class="dropdown-item" href="{{ url('deleteproduk/' . $item->id) }}"><i
+                                                        class="bx bx-trash me-1"></i> Delete</a> --}}
                                                 <a class="dropdown-item" href="{{ route('deleteproduk', $item->id) }}"><i
                                                         class="bx bx-trash me-1"></i> Delete</a>
                                             </div>
@@ -68,6 +72,28 @@
                     </table>
                 </div>
             </div>
+             <!-- Modal -->
+             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Deskripsi Produk</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if($data as $item ){
+
+                            <p>{{ $item->hargaProduk }}</p>
+                        }
+                      @endforeach
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
             <!--/ Basic Bootstrap Table -->
 
             <hr class="my-5" />

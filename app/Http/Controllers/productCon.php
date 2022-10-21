@@ -17,8 +17,6 @@ class productCon extends Controller
     public function index()
     {
         $data = produk::all();
-
-
         return view('Pages.admin.produk', compact('data'));
     }
 
@@ -27,6 +25,20 @@ class productCon extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function tampil()
+     {
+        $kategori = kategori::get();
+        // $data = produk::all();
+        // if ($kategori) {
+        //     $data = $kategori->produk()->get();
+        //     return view('Pages.user.index', compact('produk','kategori'));
+        // }else {
+        //     return redirect()->back();
+        // }
+        return view('Pages.user.index', compact('kategori'));
+     }
+
     public function create()
     {
         $kategori = Kategori::all();
@@ -67,7 +79,14 @@ class productCon extends Controller
      */
     public function show($id)
     {
-        //
+        // $data = produk::find($id);
+        // $kategori = Kategori::all();
+
+        // return view("pages/user/index", [
+        //     'data' => $data,
+        //     'kategori' => $kategori,
+
+        // ]);
     }
 
     /**
@@ -78,10 +97,10 @@ class productCon extends Controller
      */
     public function edit($id)
     {
-        $data = produk::findOrFail($id);
+        $data = produk::find($id);
         $kategori = Kategori::all();
 
-        return view("pages.admin.edit", [
+        return view("pages/admin/produk/edit", [
             'data' => $data,
             'kategori' => $kategori,
 
@@ -104,13 +123,11 @@ class productCon extends Controller
             'namaProduk' => 'required|string',
             'hargaProduk' => 'required|integer',
             'deskripsi' => 'required|string',
-            'stock' => 'required|integer',
-            'jumlahTerjual' => 'required|integer',
             'kategori_id' => 'required',
         ]);
 
         $item->update($validator);
-        return redirect()->route('produk.index');
+        return redirect()->route('produk.index')->with('success', 'Sukses mengubah siswa.');;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Omal (Oleh-Oleh Khas Malang)
        <link rel="stylesheet" href={{ asset ("sneat/assets/vendor/libs/apex-charts/apex-charts.css")}} />
 @endsection
 
@@ -302,8 +302,8 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Electronic</h6>
-                              <small class="text-muted">Mobile, Earbuds, TV</small>
+                              <h6 class="mb-0">Makanan</h6>
+                              <small class="text-muted">Sale Pisang, Kripik Apel</small>
                             </div>
                             <div class="user-progress">
                               <small class="fw-semibold">82.5k</small>
@@ -316,8 +316,8 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Fashion</h6>
-                              <small class="text-muted">T-shirt, Jeans, Shoes</small>
+                              <h6 class="mb-0">Minuman</h6>
+                              <small class="text-muted">Cendol, Dawet</small>
                             </div>
                             <div class="user-progress">
                               <small class="fw-semibold">23.8k</small>
@@ -330,8 +330,8 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Decor</h6>
-                              <small class="text-muted">Fine Art, Dining</small>
+                              <h6 class="mb-0">Souvenir</h6>
+                              <small class="text-muted">Kriya, Patung Malangan</small>
                             </div>
                             <div class="user-progress">
                               <small class="fw-semibold">849k</small>
@@ -346,8 +346,8 @@
                           </div>
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
-                              <h6 class="mb-0">Sports</h6>
-                              <small class="text-muted">Football, Cricket Kit</small>
+                              <h6 class="mb-0">Pakaian</h6>
+                              <small class="text-muted">Kaos, Dress</small>
                             </div>
                             <div class="user-progress">
                               <small class="fw-semibold">99</small>
