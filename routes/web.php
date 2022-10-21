@@ -27,7 +27,7 @@ Route::get('admin/dashboard', function () {
 });
 
 Route::resource('admin/produk', productCon::class);
-Route::resource('admin/users', UsersController::class);
+Route::resource('pages/admin/Users', UsersController::class);
 Route::resource('admin/transaksi', TransaksiController::class);
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
 
@@ -39,6 +39,4 @@ Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deletepro
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
-Route::get('/transaksi', [App\Http\Controllers\TransaksiController::class, 'index'])->name('transaksi');
 

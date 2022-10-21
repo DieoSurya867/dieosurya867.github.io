@@ -104,8 +104,8 @@
                           </a>
                       </li>
                       <!-- Customer -->
-                      <li class="menu-item {{ Request::is('admin/user') ? 'active' : '' }}">
-                          <a href="../admin/user" class="menu-link">
+                      <li class="menu-item {{ Request::is('admin/Users') ? 'active' : '' }}">
+                          <a href="../admin/Users" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-table"></i>
                               <div data-i18n="Tables">Customer</div>
                           </a>

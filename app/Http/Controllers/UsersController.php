@@ -2,7 +2,7 @@
  
 namespace App\Http\Controllers;
  
-use App\Models\user;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
  
@@ -16,10 +16,10 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = users::all();
+        $users = User::latest()->paginate(5);
 
 
-        return view('index', compact('user'));
+        return view('pages.admin.Users', compact('User'));
     }
 
 }

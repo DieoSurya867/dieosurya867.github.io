@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($user as $u)
+                            @foreach ($users as $u)
                                 <tr>
                                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
                                         <strong>{{ $u['name'] }}</strong>
