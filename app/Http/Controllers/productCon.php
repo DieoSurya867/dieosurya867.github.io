@@ -17,6 +17,7 @@ class productCon extends Controller
     public function index()
     {
         $data = produk::all();
+
         return view('Pages.admin.produk', compact('data'));
     }
 
@@ -26,8 +27,8 @@ class productCon extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function tampil()
-     {
+    public function tampil()
+    {
         $kategori = kategori::get();
         // $data = produk::all();
         // if ($kategori) {
@@ -37,7 +38,7 @@ class productCon extends Controller
         //     return redirect()->back();
         // }
         return view('Pages.user.index', compact('kategori'));
-     }
+    }
 
     public function create()
     {
@@ -79,13 +80,11 @@ class productCon extends Controller
      */
     public function show($id)
     {
-        // $data = produk::find($id);
+        $deskripsi = produk::find($id);
         // $kategori = Kategori::all();
 
-        // return view("pages/user/index", [
-        //     'data' => $data,
-        //     'kategori' => $kategori,
-
+        // return view("Pages.admin.produk", [
+        //     'deskripsi' => $deskripsi,
         // ]);
     }
 
@@ -97,11 +96,11 @@ class productCon extends Controller
      */
     public function edit($id)
     {
-        $data = produk::find($id);
+        $produk = produk::find($id);
         $kategori = Kategori::all();
 
         return view("pages/admin/produk/edit", [
-            'data' => $data,
+            'produk' => $produk,
             'kategori' => $kategori,
 
         ]);
@@ -116,7 +115,7 @@ class productCon extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data2 = $request->all();
+        $data = $request->all();
         $item = produk::findOrFail($id);
 
         $validator = $request->validate([

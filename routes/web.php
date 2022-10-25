@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FotoController;
 use App\Http\Controllers\productCon;
 
 use Illuminate\Support\Facades\Auth;
@@ -46,10 +47,10 @@ Route::get('admin/user', function () {
 
 
 Route::resource('admin/produk', productCon::class);
-Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
-Route::get('edit', [productCon::class, 'edit']);
-Route::get('/users','UsersController@index');
-Route::get('/transaksi','TransaksiController@index');
+Route::resource('admin/galeri', FotoController::class);
+Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+
+
 
 Auth::routes();
 
