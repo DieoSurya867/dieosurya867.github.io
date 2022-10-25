@@ -26,11 +26,11 @@ Route::get('admin/dasboard', function () {
     return view('pages.admin.home');
 });
 
-<<<<<<< HEAD
+
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('login', HomeController::class);
 });
-=======
+
 Route::get('/', [productCon::class, 'tampil']);
 Route::get('/user/kategori/{id}', [productCon::class, 'show']);
 

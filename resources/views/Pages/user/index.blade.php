@@ -44,96 +44,56 @@
         </section>
         <!-- TRENDING PRODUCTS-->
         <section class="py-5">
-            <<<<<<< HEAD <header>
+            <header>
                 <p class="small text-muted small text-uppercase mb-1">
                     Made the hard way
                 </p>
                 <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
-                </header>
-                <div class="row">
-                    <!-- PRODUCT-->
+            </header>
+            <div class="row">
+                <!-- PRODUCT-->
+                @forelse($data as $d)
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="product text-center">
                             <div class="position-relative mb-3">
-                                <div class="badge text-white bg-"></div>
-                                <a class="d-block" href="detail.html"><img class="img-fluid w-100"
-                                        src={{ asset('store/img/product-1.jpg') }} alt="..." /></a>
-
+                                <div class="d-flex text-white">
+                                    <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
+                                        <i class="fas fa-expand"></i>
+                                    </a>
+                                    <p class="badge">adad</p>
+                                </div>
+                                <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
+                                        src=https://res.cloudinary.com/devarista/image/upload/v1642495971/small_mangkok_batok_kelapa_bb301b9f00.jpg?58316
+                                        alt="..." /></a>
                                 <div class="product-overlay">
-                                    <ul class="mb-0 list-inline">
-                                        <li class="list-inline-item m-0 p-0">
-                                            <a class="btn btn-sm btn-outline-dark" href="#!"><i
-                                                    class="far fa-heart"></i></a>
-                                        </li>
-                                        <li class="list-inline-item m-0 p-0">
-                                            <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to cart</a>
+                                    <ul class="mb-0 list-inline d-flex flex-column">
                                         </li>
                                         <li class="list-inline-item me-0">
-                                            <a class="btn btn-sm btn-outline-dark" href="#productView"
-                                                data-bs-toggle="modal"><i class="fas fa-expand"></i></a>
+
+                                        </li>
+                                        <li class="list-inline-item m-0 p-0">
+                                            <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to
+                                                cart</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <h6>
-                                <a class="reset-anchor" href="detail.html">Kui Ye Chen’s AirPods</a>
+                                <a class="reset-anchor" href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
                             </h6>
-                            <p class="small text-muted">$250</p>
+                            <p class="small text-muted">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
                         </div>
-                        =======
-                        <header>
-                            <p class="small text-muted small text-uppercase mb-1">
-                                Made the hard way
-                            </p>
-                            <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
-                        </header>
-                        <div class="row">
-                            <!-- PRODUCT-->
-                            @forelse($data as $d)
-                                <div class="col-xl-3 col-lg-4 col-sm-6">
-                                    <div class="product text-center">
-                                        <div class="position-relative mb-3">
-                                            <div class="d-flex text-white">
-                                                <a class="btn btn-sm btn-outline-dark" href="#productView"
-                                                    data-bs-toggle="modal">
-                                                    <i class="fas fa-expand"></i>
-                                                </a>
-                                                <p class="badge">adad</p>
-                                            </div>
-                                            <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img
-                                                    class="img-fluid w-100"
-                                                    src=https://res.cloudinary.com/devarista/image/upload/v1642495971/small_mangkok_batok_kelapa_bb301b9f00.jpg?58316
-                                                    alt="..." /></a>
-                                            <div class="product-overlay">
-                                                <ul class="mb-0 list-inline d-flex flex-column">
-                                                    </li>
-                                                    <li class="list-inline-item me-0">
+                    </div>
+                @empty
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <h3>Data GAGAL</h3>
+                    </div>
+                @endforelse
 
-                                                    </li>
-                                                    <li class="list-inline-item m-0 p-0">
-                                                        <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to
-                                                            cart</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h6>
-                                            <a class="reset-anchor"
-                                                href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
-                                        </h6>
-                                        <p class="small text-muted">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
-                                    </div>
-                                </div>
-                            @empty
-                                <div class="col-xl-3 col-lg-4 col-sm-6">
-                                    <h3>Data GAGAL</h3>
-                                </div>
-                            @endforelse
-                            >>>>>>> 0feb777ab8a2841821e12579c980f9f4cc982c4e
-                        </div>
+            </div>
         </section>
         <!-- SERVICES-->
-        <section class="py-5 bg-light">
+        <section class="py-5 bg-light mb-5">
             <div class="container">
                 <div class="row text-center gy-3">
                     <div class="col-lg-4">
