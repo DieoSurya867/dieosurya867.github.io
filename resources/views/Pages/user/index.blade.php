@@ -72,14 +72,14 @@
 
                                         </li>
                                         <li class="list-inline-item m-0 p-0">
-                                            <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to cart</a>
+                                            <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to
+                                                cart</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <h6>
-                                <a class="reset-anchor"
-                                    href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
+                                <a class="reset-anchor" href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
                             </h6>
                             <p class="small text-muted">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
                         </div>
@@ -89,10 +89,11 @@
                         <h3>Data GAGAL</h3>
                     </div>
                 @endforelse
+
             </div>
         </section>
         <!-- SERVICES-->
-        <section class="py-5 bg-light">
+        <section class="py-5 bg-light mb-5">
             <div class="container">
                 <div class="row text-center gy-3">
                     <div class="col-lg-4">
