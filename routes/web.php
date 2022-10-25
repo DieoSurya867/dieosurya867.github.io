@@ -25,13 +25,11 @@ Route::get('admin/dasboard', function () {
     return view('pages.admin.home');
 });
 
-<<<<<<< HEAD
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('login', HomeController::class);
 });
-=======
+
 Route::get('/', [productCon::class, 'tampil']);
->>>>>>> fd25fab40dd8798b0937d1cd2114cd6d2ff01046
 
 Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
@@ -46,6 +44,10 @@ Route::get('user/detail', function () {
     return view('Pages.user.detail');
 });
 
+Route::get('user/kategori', function () {
+    return view('Pages.user.kategori');
+});
+
 Route::get('admin/user', function () {
     return view('users');
 });
@@ -56,6 +58,7 @@ Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteprod
 Route::get('edit', [productCon::class, 'edit']);
 Route::get('/users','UsersController@index');
 Route::get('/transaksi','TransaksiController@index');
+
 
 Auth::routes();
 
