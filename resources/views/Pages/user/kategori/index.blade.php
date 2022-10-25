@@ -32,6 +32,8 @@
           <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
         </header>
         
+
+        
         <div class="row">
           <!-- PRODUCT-->
           @foreach($kategori as $d)

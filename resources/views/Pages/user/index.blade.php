@@ -20,6 +20,7 @@
                 </div>
             </div>
         </section>
+
         <!-- CATEGORIES SECTION-->
         <section class="pt-5">
             <header class="text-center">
@@ -42,6 +43,7 @@
                 @endforelse
             </div>
         </section>
+
         <!-- TRENDING PRODUCTS-->
         <section class="py-5">
             <header>
@@ -50,8 +52,9 @@
                 </p>
                 <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
             </header>
+
+            <!-- PRODUCT-->
             <div class="row">
-                <!-- PRODUCT-->
                 @forelse($data as $d)
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="product text-center">
@@ -89,9 +92,9 @@
                         <h3>Data GAGAL</h3>
                     </div>
                 @endforelse
-
             </div>
         </section>
+
         <!-- SERVICES-->
         <section class="py-5 bg-light mb-5">
             <div class="container">

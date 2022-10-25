@@ -156,26 +156,50 @@
         @endforeach
           <!-- RELATED PRODUCTS-->
           <h2 class="h5 text-uppercase mb-4">Related products</h2>
-          <div class="row">
+
+            
             <!-- PRODUCT-->
-            @foreach($data as $d )        
-            <div class="col-lg-3 col-sm-6">
-              <div class="product text-center skel-loader">
-                <div class="d-block mb-3 position-relative"><a class="d-block" href="{{ url('user/detail/'.$d->id) }}"><img class="img-fluid w-100" src="{{ asset('store/img/product-1.jpg') }}" alt="..."></a>
-                  <div class="product-overlay">
-                    <ul class="mb-0 list-inline">
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="#!">Add to cart</a></li>
-                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
-                    </ul>
+            <div class="row">
+              @forelse($data as $d)
+                  <div class="col-xl-3 col-lg-4 col-sm-6">
+                      <div class="product text-center">
+                          <div class="position-relative mb-3">
+                              <div class="d-flex text-white">
+                                  <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
+                                      <i class="fas fa-expand"></i>
+                                  </a>
+                                  <p class="badge">adad</p>
+                              </div>
+                              <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
+                                      src=https://res.cloudinary.com/devarista/image/upload/v1642495971/small_mangkok_batok_kelapa_bb301b9f00.jpg?58316
+                                      alt="..." /></a>
+                              <div class="product-overlay">
+                                  <ul class="mb-0 list-inline d-flex flex-column">
+                                      </li>
+                                      <li class="list-inline-item me-0">
+
+                                      </li>
+                                      <li class="list-inline-item m-0 p-0">
+                                          <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to
+                                              cart</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <h6>
+                              <a class="reset-anchor" href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
+                          </h6>
+                          <p class="small text-muted">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
+                      </div>
                   </div>
-                </div>
-                <h6> <a class="reset-anchor" href="detail.html">{{ $d->namaProduk }}</a></h6>
-                <p class="small text-muted">{{ 'Rp.'.' ' . $d->hargaProduk }}</p>
-              </div>
-            </div>
-            @endforeach
+              @empty
+                  <div class="col-xl-3 col-lg-4 col-sm-6">
+                      <h3>Data GAGAL</h3>
+                  </div>
+              @endforelse
           </div>
+
+
         </div>
       </section>
 @endsection
