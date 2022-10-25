@@ -50,6 +50,7 @@
             <div class="col-lg-6">
               <!-- PRODUCT SLIDER-->
               <div class="row m-sm-0">
+                @foreach($d as $d)
                 <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
                   <div class="swiper product-slider-thumbs">
                     <div class="swiper-wrapper">
@@ -63,8 +64,8 @@
                 <div class="col-sm-10 order-1 order-sm-2">
                   <div class="swiper product-slider">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide h-auto"><a class="glightbox product-view" href="{{ asset('store/mg/product-detail-1.jpg') }}" data-gallery="gallery2" data-glightbox="Product item 1"><img class="img-fluid" src="{{ asset('store/img/product-detail-1.jpg') }}" alt="..."></a></div>
-                      <div class="swiper-slide h-auto"><a class="glightbox product-view" href="{{ asset('store/mg/product-detail-1.jpg')}}" data-gallery="gallery2" data-glightbox="Product item 2"><img class="img-fluid" src="{{ asset('store/img/product-detail-2.jpg') }}" alt="..."></a></div>
+                      <div class="swiper-slide h-auto"><a class="glightbox product-view" href="{{ asset('store/img/product-detail-1.jpg') }}" data-gallery="gallery2" data-glightbox="Product item 1"><img class="img-fluid" src="{{ asset('store/img/product-detail-1.jpg') }}" alt="..."></a></div>
+                      <div class="swiper-slide h-auto"><a class="glightbox product-view" href="{{ asset('store/img/product-detail-1.jpg')}}" data-gallery="gallery2" data-glightbox="Product item 2"><img class="img-fluid" src="{{ asset('store/img/product-detail-2.jpg') }}" alt="..."></a></div>
                       <div class="swiper-slide h-auto"><a class="glightbox product-view" href="{{ asset('store/img/product-detail-4.jpg') }}" data-gallery="gallery2" data-glightbox="Product item 3"><img class="img-fluid" src="{{ asset('store/img/product-detail-3.jpg') }}" alt="..."></a></div>
                       <div class="swiper-slide h-auto"><a class="glightbox product-view" href="{{ asset('store/img/product-detail-4.jpg') }}" data-gallery="gallery2" data-glightbox="Product item 4"><img class="img-fluid" src="{{ asset('store/img/product-detail-4.jpg') }}" alt="..."></a></div>
                     </div>
@@ -81,8 +82,8 @@
                 <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
                 <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
               </ul>
-              <h1>Red digital smartwatch</h1>
-              <p class="text-muted lead">$250</p>
+              <h1>{{ $d->namaProduk }}</h1>
+              <p class="text-muted lead">{{ 'Rp.'.' ' . $d->hargaProduk }}</p>
               <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.</p>
               <div class="row align-items-stretch mb-4">
                 <div class="col-sm-5 pr-sm-0">
@@ -95,11 +96,9 @@
                   </div>
                 </div>
                 <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="{{ url('user/cart') }}">Add to cart</a></div>
-              </div><a class="text-dark p-0 mb-4 d-inline-block" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a><br>
-              <ul class="list-unstyled small d-inline-block">
-                <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">SKU:</strong><span class="ms-2 text-muted">039</span></li>
-                <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Category:</strong><a class="reset-anchor ms-2" href="#!">Demo Products</a></li>
-                <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Tags:</strong><a class="reset-anchor ms-2" href="#!">Innovation</a></li>
+              <ul class="list-unstyled small d-inline-block mt-5">
+                <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Stok:</strong><span class="ms-2 text-muted">{{ $d->stock }}</span></li>
+                <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Kategori:</strong><a class="reset-anchor ms-2" href="{{ url('/user/kategori/'.$d->kategori_id) }}">{{ $d->kategori->namaKategori }}</a></li>
               </ul>
             </div>
           </div>
@@ -110,9 +109,9 @@
           </ul>
           <div class="tab-content mb-5" id="myTabContent">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-              <div class="p-4 p-lg-5 bg-white">
-                <h6 class="text-uppercase">Product description </h6>
-                <p class="text-muted text-sm mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <div class="p-4 p-lg-5 mx-auto bg-white card border-0">
+                <h5>Deskripsi Produk</h5>
+                <p class="text-muted text-sm mb-0">{{ $d->deskripsi }}</p>
               </div>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
@@ -154,13 +153,15 @@
               </div>
             </div>
           </div>
+        @endforeach
           <!-- RELATED PRODUCTS-->
           <h2 class="h5 text-uppercase mb-4">Related products</h2>
           <div class="row">
             <!-- PRODUCT-->
+            @foreach($data as $d )        
             <div class="col-lg-3 col-sm-6">
               <div class="product text-center skel-loader">
-                <div class="d-block mb-3 position-relative"><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="{{ asset('store/img/product-1.jpg') }}" alt="..."></a>
+                <div class="d-block mb-3 position-relative"><a class="d-block" href="{{ url('user/detail/'.$d->id) }}"><img class="img-fluid w-100" src="{{ asset('store/img/product-1.jpg') }}" alt="..."></a>
                   <div class="product-overlay">
                     <ul class="mb-0 list-inline">
                       <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
@@ -169,58 +170,11 @@
                     </ul>
                   </div>
                 </div>
-                <h6> <a class="reset-anchor" href="detail.html">Kui Ye Chen’s AirPods</a></h6>
-                <p class="small text-muted">$250</p>
+                <h6> <a class="reset-anchor" href="detail.html">{{ $d->namaProduk }}</a></h6>
+                <p class="small text-muted">{{ 'Rp.'.' ' . $d->hargaProduk }}</p>
               </div>
             </div>
-            <!-- PRODUCT-->
-            <div class="col-lg-3 col-sm-6">
-              <div class="product text-center skel-loader">
-                <div class="d-block mb-3 position-relative"><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="{{ asset('store/img/product-1.jpg') }}" alt="..."></a>
-                  <div class="product-overlay">
-                    <ul class="mb-0 list-inline">
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="#!">Add to cart</a></li>
-                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <h6> <a class="reset-anchor" href="detail.html">Air Jordan 12 gym red</a></h6>
-                <p class="small text-muted">$300</p>
-              </div>
-            </div>
-            <!-- PRODUCT-->
-            <div class="col-lg-3 col-sm-6">
-              <div class="product text-center skel-loader">
-                <div class="d-block mb-3 position-relative"><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="{{ asset('store/img/product-1.jpg') }}" alt="..."></a>
-                  <div class="product-overlay">
-                    <ul class="mb-0 list-inline">
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="#!">Add to cart</a></li>
-                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <h6> <a class="reset-anchor" href="detail.html">Cyan cotton t-shirt</a></h6>
-                <p class="small text-muted">$25</p>
-              </div>
-            </div>
-            <!-- PRODUCT-->
-            <div class="col-lg-3 col-sm-6">
-              <div class="product text-center skel-loader">
-                <div class="d-block mb-3 position-relative"><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="{{ asset('store/img/product-1.jpg') }}" alt="..."></a>
-                  <div class="product-overlay">
-                    <ul class="mb-0 list-inline">
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
-                      <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="#!">Add to cart</a></li>
-                      <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <h6> <a class="reset-anchor" href="detail.html">Timex Unisex Originals</a></h6>
-                <p class="small text-muted">$351</p>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </section>

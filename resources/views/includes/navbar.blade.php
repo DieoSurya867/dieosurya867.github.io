@@ -31,7 +31,7 @@
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              >Category</a
+              >Kategori</a
             >
             <div
               class="dropdown-menu mt-3 shadow-sm"
@@ -39,19 +39,19 @@
             >
               <a
                 class="dropdown-item border-0 transition-link"
-                href="index.html"
+                href="{{ url('/user/kategori/1') }}"
                 >Makanan</a
               ><a
                 class="dropdown-item border-0 transition-link"
-                href="shop.html"
+                href="{{ url('/user/kategori/2') }}"
                 >Minuman</a
               ><a
                 class="dropdown-item border-0 transition-link"
-                href="detail.html"
+                href="{{ url('/user/kategori/3') }}"
                 >Pakaian</a
               ><a
                 class="dropdown-item border-0 transition-link"
-                href="cart.html"
+                href="{{ url('/user/kategori/4') }}"
                 >Souvenir</a>
             </div>
           </li>

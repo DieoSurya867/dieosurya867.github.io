@@ -26,6 +26,7 @@ Route::get('admin/dasboard', function () {
 });
 
 Route::get('/', [productCon::class, 'tampil']);
+Route::get('/user/kategori/{id}', [productCon::class, 'show']);
 
 Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
@@ -36,9 +37,7 @@ Route::get('user/cart', function () {
 Route::get('user/check', function () {
     return view('Pages.user.checkout');
 });
-Route::get('user/detail', function () {
-    return view('Pages.user.detail');
-});
+Route::get('user/detail/{id}', [productCon::class, 'detail']);
 
 Route::get('admin/user', function () {
     return view('users');
@@ -46,10 +45,10 @@ Route::get('admin/user', function () {
 
 
 Route::resource('admin/produk', productCon::class);
-Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
+Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
 Route::get('edit', [productCon::class, 'edit']);
-Route::get('/users','UsersController@index');
-Route::get('/transaksi','TransaksiController@index');
+// Route::get('/users','UsersController@index');
+// Route::get('/transaksi','TransaksiController@index');
 
 Auth::routes();
 
