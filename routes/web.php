@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productCon;
 
 use Illuminate\Support\Facades\Auth;
@@ -52,10 +54,11 @@ Route::get('admin/user', function () {
 
 Route::resource('admin/produk', productCon::class);
 Route::resource('admin/galeri', FotoController::class);
+Route::resource('admin/kategori', KategoriController::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
 
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [app\Http\Controllers\HomeController::class, 'index'])->name('home');
