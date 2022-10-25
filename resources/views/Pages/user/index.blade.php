@@ -144,7 +144,7 @@
             </div>
         </section>
     </div>
-    @foreach ($data as $d)
+    {{-- @foreach ($data as $d)
     <div class="modal fade" id="productView" tabindex="-1" >
       <div class="modal-dialog modal-lg modal-dialog-centered">
           <div class="modal-content overflow-hidden border-0">
@@ -203,5 +203,6 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> --}}
+
 @endsection
