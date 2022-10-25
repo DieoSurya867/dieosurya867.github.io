@@ -16,4 +16,8 @@ class produk extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+    public function galeri()
+    {
+        return $this->hasMany(Galeri::class);
+    }
 }

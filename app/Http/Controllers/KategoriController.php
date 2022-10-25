@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\produk;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -22,11 +24,40 @@ class KategoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function tampil()
+    public function tampil(Request $kategori)
     {
-        $kategori = kategori::get();
+        $kategori = Produk::where('kategori_id', $kategori->id)->get();
+        $data = Produk::all();
 
-        return view('Pages.user.index', compact('kategori'));
+
+        // $kategori = $request->input('kategori');
+
+        // $product = Products::query()
+        //     ->where('kategori', $kategori)
+        //     ->firstOrFail();
+
+        // $previous = Product::where('kategori', '=', $product->kategori_id)
+        // ->where('kategori_id', '<', $product->kategori)
+        // -groupBy('kategori_id')
+
+        // -union(
+        //     Products::where('kategori', '<', $product->kategori)
+        //     ->groupBy('kategori')
+        // )->limit(2)->get();
+
+        // return $previous;
+
+            // $kategori_id = POST::groupBy('kategori_id')
+            //     ->select(DB::raw('kategori_id'))
+            //     ->goupBy('kategori_id')
+            //     ->get();
+            // return view('Pages.user.index', compact('kategori_id'));
+
+        // $kategori = kategori::get();
+
+        return view('Pages.user.kategori.index', compact('kategori'));
+        
+
     }
 
     /**

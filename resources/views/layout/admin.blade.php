@@ -84,23 +84,24 @@
 
                   <div class="menu-inner-shadow"></div>
 
-          <ul class="menu-inner py-1">
-            <!-- Dashboard -->
-            <li class="menu-item {{ Request::is('dashboard')? 'active' : '' }}">
-              <a href="../home" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
-              </a>
-            </li>
-              {{-- sidebar active  |
+                  <ul class="menu-inner py-1">
+                      <!-- Dashboard -->
+                      <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
+                          <a href="../home" class="menu-link">
+                              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                              <div data-i18n="Analytics">Dashboard</div>
+                          </a>
+                      </li>
+                      {{-- sidebar active  |
                                    V --}}
                       {{-- <li class="menu-item {{ (request()->is('layouts/without-menu')) ? 'active' : '' }}">   --}}
-                        <li class="menu-header small text-uppercase"><span class="menu-header-text">Detail Usaha</span></li>
+                      <li class="menu-header small text-uppercase"><span class="menu-header-text">Detail Usaha</span>
+                      </li>
                       <!-- Produk -->
                       <li class="menu-item {{ Request::is('admin/produk') ? 'active' : '' }}">
-                            <a href="../admin/produk" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                            <div data-i18n="Tables">Produk</div>     
+                          <a href="../admin/produk" class="menu-link">
+                              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                              <div data-i18n="Tables">Produk</div>
                           </a>
                       </li>
                       <!-- Customer -->
@@ -110,13 +111,13 @@
                               <div data-i18n="Tables">Customer</div>
                           </a>
                       </li>
-                    <!-- Transaksi -->
-                    <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
-                        <a href="../admin/transaksi" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Transaksi</div>
-                        </a>
-                    </li>
+                      <!-- Transaksi -->
+                      <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
+                          <a href="../admin/transaksi" class="menu-link">
+                              <i class="menu-icon tf-icons bx bx-table"></i>
+                              <div data-i18n="Tables">Transaksi</div>
+                          </a>
+                      </li>
                       <!-- Lainya -->
                       <li class="menu-header small text-uppercase"><span class="menu-header-text">Lainnya</span></li>
                       <li class="menu-item">
