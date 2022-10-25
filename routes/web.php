@@ -26,7 +26,13 @@ Route::get('admin/dasboard', function () {
     return view('pages.admin.home');
 });
 
+<<<<<<< HEAD
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('login', HomeController::class);
+});
+=======
 Route::get('/', [productCon::class, 'tampil']);
+>>>>>>> fd25fab40dd8798b0937d1cd2114cd6d2ff01046
 
 Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
