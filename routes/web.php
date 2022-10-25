@@ -32,7 +32,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 =======
 Route::get('/', [productCon::class, 'tampil']);
->>>>>>> fd25fab40dd8798b0937d1cd2114cd6d2ff01046
+Route::get('/user/kategori/{id}', [productCon::class, 'show']);
 
 Route::get('admin/dashboard', function () {
     return view('Pages.admin.home');
@@ -43,9 +43,7 @@ Route::get('user/cart', function () {
 Route::get('user/check', function () {
     return view('Pages.user.checkout');
 });
-Route::get('user/detail', function () {
-    return view('Pages.user.detail');
-});
+Route::get('user/detail/{id}', [productCon::class, 'detail']);
 
 Route::get('admin/user', function () {
     return view('users');

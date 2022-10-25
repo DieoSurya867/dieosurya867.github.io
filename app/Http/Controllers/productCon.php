@@ -30,6 +30,7 @@ class productCon extends Controller
     public function tampil()
     {
         $kategori = kategori::get();
+        $data = produk::get();
         // $data = produk::all();
         // if ($kategori) {
         //     $data = $kategori->produk()->get();
@@ -37,8 +38,18 @@ class productCon extends Controller
         // }else {
         //     return redirect()->back();
         // }
-        return view('Pages.user.index', compact('kategori'));
+        return view('Pages.user.index', compact('kategori', 'data'));
     }
+
+    public function detail(Request $rq)
+    {
+        $d = Produk::where('id', $rq->id)->get();
+        $data = Produk::all();
+
+        return view('Pages.user.detail', compact('d', 'data'));
+    }
+
+
 
     public function create()
     {
@@ -86,6 +97,12 @@ class productCon extends Controller
         // return view("Pages.admin.produk", [
         //     'deskripsi' => $deskripsi,
         // ]);
+        $item = Kategori::findOrFail($id);
+        $data = produk::all();
+
+        // dd($item);
+
+        return view("pages.user.koleksi.kategori.index", compact('item', 'data'));
     }
 
     /**

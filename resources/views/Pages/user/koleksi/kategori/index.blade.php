@@ -32,28 +32,45 @@
           <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
         </header>
         
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-2">
-                <a class="category-item" href="shop.html"
-                  ><img class="img-fluid" src={{ asset ("store/img/cat-img-1.jpg")}} alt="" /><strong
-                    class="category-item-title"
-                    >all</strong></a>
-              </div>
-            @forelse($kategori as $item)
-                
-            <div class="col-lg-2 mb-5">
-                <a class="category-item" href="{{ url('/user/kategori/'.$item->namaKategori) }}"
-                ><img class="img-fluid" src={{ $item->foto }} alt="" /><strong
-                class="category-item-title"
-                >{{ $item->namaKategori }}</strong></a>
-            </div>
-            @empty
-                <div class="col-3 mb-5">
-                    <h5>Kategori Tidak tersedia</h5>
+        <div class="row">
+          <!-- PRODUCT-->
+          @foreach($data as $d)
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="product text-center">
+                <div class="position-relative mb-3">
+                    <div class="d-flex text-white">
+                        <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                        <p class="badge">adad</p>
+                    </div>
+                    <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
+                            src=https://res.cloudinary.com/devarista/image/upload/v1642495971/small_mangkok_batok_kelapa_bb301b9f00.jpg?58316
+                            alt="..." /></a>
+                    <div class="product-overlay">
+                        <ul class="mb-0 list-inline d-flex flex-column">
+                            </li>
+                            <li class="list-inline-item me-0">
+
+                            </li>
+                            <li class="list-inline-item m-0 p-0">
+                                <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to cart</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            @endforelse
+                <h6>
+                    <a class="reset-anchor"
+                        href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
+                </h6>
+                <p class="small text-muted">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
+            </div>
+        </div>
+          @endforeach
         </div>
       </section>
+
+      
 
 </div>
 
