@@ -106,28 +106,28 @@
                       </li>
                       <!-- Produk -->
                       <li class="menu-item {{ Request::is('admin/produk') ? 'active' : '' }}">
-                          <a href="../admin/produk" class="menu-link">
+                          <a href="{{ url('admin/produk') }}" class="menu-link">
                               <i class="menu-icon tf-icons bx bxl-product-hunt"></i>
                               <div data-i18n="Tables">Produk</div>
                           </a>
                       </li>
                       <!-- Galeri -->
                       <li class="menu-item {{ Request::is('admin/galeri') ? 'active' : '' }}">
-                          <a href="../admin/galeri" class="menu-link">
+                          <a href="{{ url('admin/galeri') }}" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-photo-album"></i>
                               <div data-i18n="Tables">Galeri</div>
                           </a>
                       </li>
                       <!-- Customer -->
                       <li class="menu-item {{ Request::is('admin/user') ? 'active' : '' }}">
-                          <a href="../admin/user" class="menu-link">
+                          <a href="{{ url('admin/user') }}" class="menu-link">
                               <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                               <div data-i18n="Tables">Customer</div>
                           </a>
                       </li>
                       <!-- Transaksi -->
                       <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
-                          <a href="../admin/transaksi" class="menu-link">
+                          <a href="{{ url('admin/transaksi') }}" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-credit-card-front"></i>
                               <div data-i18n="Tables">Transaksi</div>
                           </a>
