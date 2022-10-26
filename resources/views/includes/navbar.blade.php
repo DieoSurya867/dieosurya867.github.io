@@ -1,7 +1,7 @@
  <!-- navbar-->
  <header class="header bg-white">
-  <div class="container px-lg-3">
-    <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
+  <div class="container px-lg-3" >
+    <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0 fixed-top">
       <a class="navbar-brand" href="index.html"
         ><h3 class="fw-bold text-uppercase text-dark">O-Mal</h3></a
       >

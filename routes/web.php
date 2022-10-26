@@ -59,6 +59,8 @@ Route::get('admin/user', function () {
 });
 
 
+
+
 Route::resource('admin/produk', productCon::class);
 Route::resource('admin/galeri', FotoController::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');

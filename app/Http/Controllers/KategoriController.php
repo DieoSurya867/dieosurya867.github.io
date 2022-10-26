@@ -28,6 +28,8 @@ class KategoriController extends Controller
     {
         $kategori = Produk::where('kategori_id', $kategori->id)->get();
         $data = Produk::all();
+        // dd($data);
+    
 
 
         // $kategori = $request->input('kategori');
@@ -55,7 +57,7 @@ class KategoriController extends Controller
 
         // $kategori = kategori::get();
 
-        return view('Pages.user.kategori.index', compact('kategori'));
+        return view('Pages.user.kategori.index', compact('kategori', 'data'));
         
 
     }

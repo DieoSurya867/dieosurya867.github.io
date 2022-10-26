@@ -103,7 +103,7 @@
             </div>
           </div>
           <!-- DETAILS TABS-->
-          <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+          <ul class="py-3 nav nav-tabs border-0" id="myTab" role="tablist">
             <li class="nav-item"><a class="nav-link text-uppercase active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a></li>
             <li class="nav-item"><a class="nav-link text-uppercase" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a></li>
           </ul>
@@ -154,6 +154,7 @@
             </div>
           </div>
         @endforeach
+
           <!-- RELATED PRODUCTS-->
           <h2 class="h5 text-uppercase mb-4">Related products</h2>
 
@@ -197,7 +198,7 @@
                       <h3>Data GAGAL</h3>
                   </div>
               @endforelse
-          </div>
+            </div>
 
 
         </div>
