@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Http\Controllers\POST;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class KategoriController extends Controller
 {
@@ -72,7 +75,13 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $kategori = Kategori::findOrFail($id);
+
+        return view("pages/admin/kategori/edit", [
+            'kategori' => $kategori,
+
+        ]);
     }
 
     /**
@@ -84,7 +93,18 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+
+        if ($request->file('foto')) {
+            $file = $request->file('foto')->store('img');
+            $kategori->update([
+                'namaKategori' => 'required|string',
+                'foto' => $file
+            ]);
+        } else {
+            return redirect('admin/kategori')->with('error', 'Tidak Ada Yng Berubah');
+        }
+        return redirect('admin/kategori')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -93,8 +113,21 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Kategori $kategori, $id)
     {
-        //
+        // delete image
+        Storage::delete('public/storage/img/' . $kategori->foto);
+
+        //delete post
+        $kategori->delete();
+
+        // hapus file
+        $gambar = Kategori::where('id', $id)->first();
+        // Storage::delete('public/storage/img/' . $gambar->file);
+
+        // hapus data
+        // Kategori::where('id', $id)->delete();
+
+        return redirect('admin/kategori')->with('success', 'Data Berhasil Terhapus');
     }
 }

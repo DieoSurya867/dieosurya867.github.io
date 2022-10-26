@@ -10,7 +10,7 @@
         @method('put');
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Tambah Data</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Edit Data</h4>
             <!-- Form controls -->
             <div class="col-md-6">
                 <div class="card">
@@ -22,13 +22,12 @@
                                 <div class="card-body">
                                     <img class="img-fluid d-flex mx-auto my-4"
                                         src="{{ asset('storage/' . $galeri->photos) }}" alt="Card image cap" />
-                                    <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
                                 </div>
                             </div>
 
                             {{-- <img src="{{ asset('storage/' . $galeri->photos) }}" alt=""> --}}
                             <div class="mb-3">
-                                <label for="exampleFormControlSelect1" class="form-label">Pilih Sekolah</label>
+                                <label for="exampleFormControlSelect1" class="form-label">Pilih Ganti Produk</label>
                                 <select
                                     class="form-select @error('produk_id') is-invalid
                           @enderror"

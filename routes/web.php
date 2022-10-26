@@ -56,6 +56,7 @@ Route::resource('admin/produk', productCon::class);
 Route::resource('admin/galeri', FotoController::class);
 Route::resource('admin/kategori', KategoriController::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
 
 
 
