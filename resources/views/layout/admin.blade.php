@@ -99,7 +99,7 @@
                       </li>
                       <!-- Kategori -->
                       <li class="menu-item {{ Request::is('admin/kategori') ? 'active' : '' }}">
-                          <a href="../admin/kategori" class="menu-link">
+                          <a href="{{ url('admin/kategori') }}" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-category-alt"></i>
                               <div data-i18n="Tables">Kategori</div>
                           </a>

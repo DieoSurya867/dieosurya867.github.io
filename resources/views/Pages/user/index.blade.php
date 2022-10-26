@@ -32,7 +32,7 @@
                 @forelse($kategori as $item)
                     <div class="col-lg-2 mb-5">
                         <a class="category-item" href="{{ url('/user/kategori/' . $item->id) }}"><img class="img-fluid"
-                                src={{ $item->foto }} alt="" /><strong
+                                src="{{ asset('storage/' . $item->foto) }}" alt="" /><strong
                                 class="category-item-title">{{ $item->namaKategori }}</strong></a>
                     </div>
                 @empty
