@@ -30,9 +30,10 @@
             </header>
             <div class="row d-flex justify-content-center">
                 @forelse($kategori as $item)
-                    <div class="col-lg-2 mb-5">
+                    <div class="col-lg-3 mb-5">
                         <a class="category-item" href="{{ url('/user/kategori/' . $item->id) }}"><img class="img-fluid"
-                                src="{{ asset('storage/' . $item->foto) }}" alt="" /><strong
+                                src="{{ asset('storage/' . $item->foto) }}" alt=""
+                                style="width: 800px; height: 150px;" /><strong
                                 class="category-item-title">{{ $item->namaKategori }}</strong></a>
                     </div>
                 @empty

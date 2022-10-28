@@ -116,17 +116,16 @@ class KategoriController extends Controller
     public function destroy(Kategori $kategori, $id)
     {
         // delete image
-        Storage::delete('public/storage/img/' . $kategori->foto);
+        Storage::delete('storage/' . $kategori->foto);
 
         //delete post
         $kategori->delete();
 
         // hapus file
-        $gambar = Kategori::where('id', $id)->first();
         // Storage::delete('public/storage/img/' . $gambar->file);
 
         // hapus data
-        // Kategori::where('id', $id)->delete();
+        Kategori::where('id', $id)->delete();
 
         return redirect('admin/kategori')->with('success', 'Data Berhasil Terhapus');
     }

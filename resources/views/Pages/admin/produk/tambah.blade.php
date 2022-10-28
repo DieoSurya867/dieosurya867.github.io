@@ -32,8 +32,8 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-text">Deskripsi</span>
-                            <textarea class="form-control @error('deskripsi') is-invalid @enderror" aria-label="With textarea"
-                                placeholder="Tulis Penjelasan Barang Disini" name="deskripsi" value="{{ old('deskripsi') }}">
+                            <textarea class="form-control @error('deskripsi') is-invalid @enderror" aria-label="With textarea" placeholder=""
+                                name="deskripsi" value="{{ old('deskripsi') }}">
                             </textarea>
                         </div>
                         <div class="mb-3">
