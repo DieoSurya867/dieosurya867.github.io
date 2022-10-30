@@ -93,17 +93,36 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $kategori = Kategori::findOrFail($id);
+
+
+
+        $validator = $request->validate([
+            'namaKategori' => 'required|string'
+        ]);
+
+        $kategori->update($validator);
 
         if ($request->file('foto')) {
             $file = $request->file('foto')->store('img');
+
             $kategori->update([
-                'namaKategori' => 'required|string',
-                'foto' => $file
+
+                'foto' => $file,
             ]);
         } else {
             return redirect('admin/kategori')->with('error', 'Tidak Ada Yng Berubah');
         }
+        return redirect('admin/kategori')->with('success', 'Data Berhasil Diubah');
+
+        // if ($request->file('foto')) {
+        //     $file = $request->file('foto')->store('img');
+        //     $kategori->update($data);
+        //     $kategori->update([
+        //         'foto' => $file
+        //     ]);
+
         return redirect('admin/kategori')->with('success', 'Data Berhasil Diubah');
     }
 

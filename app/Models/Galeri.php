@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Galeri extends Model
 {
     use HasFactory;
-    protected $table = 'galeri_produk';
+    protected $table = 'galeris';
     protected $guarded = ['id'];
 
     public function produk()

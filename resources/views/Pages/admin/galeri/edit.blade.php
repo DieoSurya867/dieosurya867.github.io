@@ -7,7 +7,7 @@
 @section('content')
     <form action="{{ route('galeri.update', $galeri->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('put');
+        @method('PUT');
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Edit Data</h4>
@@ -21,7 +21,7 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <img class="img-fluid d-flex mx-auto my-4"
-                                        src="{{ asset('storage/' . $galeri->photos) }}" alt="Card image cap" />
+                                        src="{{ asset('storage/' . $galeri->fotoProduk) }}" alt="Card image cap" />
                                 </div>
                             </div>
 
@@ -41,7 +41,7 @@
                                 </select>
                             </div>
                             <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" id="formFile" name="photos" />
+                            <input class="form-control" type="file" id="formFile" name="fotoProduk" />
                         </div>
                         <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Upload Data</button>
                     </div>

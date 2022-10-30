@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FotoController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productCon;
@@ -53,10 +54,11 @@ Route::get('admin/user', function () {
 
 
 Route::resource('admin/produk', productCon::class);
-Route::resource('admin/galeri', FotoController::class);
+Route::resource('admin/galeri', GaleriController::class);
 Route::resource('admin/kategori', KategoriController::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
 Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
+Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
 
 
 

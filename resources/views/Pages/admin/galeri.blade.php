@@ -28,11 +28,11 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($upload as $item)
+                            @foreach ($galeri as $item)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->produk->namaProduk }}</td>
-                                    <td><img src="{{ asset('storage/' . $item->photos) }}" alt="" width="100px"
+                                    <td><img src="{{ asset('storage/' . $item->fotoProduk) }}" alt="" width="100px"
                                             height="100px">
                                     </td>
                                     <td>
@@ -45,7 +45,9 @@
                                                 <a class="dropdown-item"
                                                     href="{{ URL::to('admin/galeri/' . $item->id . '/edit') }}"><i
                                                         class="bx bx-edit-alt me-1"></i> Edit</a>
-
+                                                <a class="dropdown-item" href="{{ route('deletegaleri', $item->id) }}"><i
+                                                        class="bx bx-trash me-1"></i>
+                                                    Delete</a>
                                             </div>
                                         </div>
                                     </td>
