@@ -95,9 +95,6 @@ class KategoriController extends Controller
     {
 
         $kategori = Kategori::findOrFail($id);
-
-
-
         $validator = $request->validate([
             'namaKategori' => 'required|string'
         ]);
@@ -122,8 +119,6 @@ class KategoriController extends Controller
         //     $kategori->update([
         //         'foto' => $file
         //     ]);
-
-        return redirect('admin/kategori')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
