@@ -39,14 +39,15 @@
                     </tr>
                   </thead>
                   <tbody class="border-0">
+                    @foreach($keranjang as $item)
                     <tr>
                       <th class="ps-0 py-3 border-light" scope="row">
                         <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="detail.html"><img src="{{ asset('store/img/product-detail-3.jpg') }}" alt="..." width="70"/></a>
-                          <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="detail.html">Red digital smartwatch</a></strong></div>
+                          <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="detail.html">{{ $item->produk_id }}</a></strong></div>
                         </div>
                       </th>
                       <td class="p-3 align-middle border-light">
-                        <p class="mb-0 small">$250</p>
+                        <p class="mb-0 small">{{ $item->user_id }}</p>
                       </td>
                       <td class="p-3 align-middle border-light">
                         <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
@@ -85,6 +86,7 @@
                       </td>
                       <td class="p-3 align-middle border-0"><a class="reset-anchor" href="#!"><i class="fas fa-trash-alt small text-muted"></i></a></td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

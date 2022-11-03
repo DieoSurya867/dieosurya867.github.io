@@ -30,7 +30,7 @@
             </header>
             <div class="row d-flex justify-content-center">
                 @forelse($kategori as $item)
-                    <div class="col-lg-2 mb-5">
+                    <div class="col-lg-2 mb-5" >
                         <a class="category-item" href="{{ url('/user/kategori/' . $item->id) }}"><img class="img-fluid"
                                 src={{ $item->foto }} alt="" /><strong
                                 class="category-item-title">{{ $item->namaKategori }}</strong></a>
@@ -53,9 +53,16 @@
             <div class="row">
                 <!-- PRODUCT-->
                 @forelse($data as $d)
-                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                        <div class="product text-center">
-                            <div class="position-relative mb-3">
+                <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up"
+                data-aos-offset="3"
+                data-aos-delay="30"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="false"
+                data-aos-anchor-placement="top-center">
+                <div class="product text-center">
+                            <div class="position-relative mb-3" >
                                 <div class="d-flex text-white">
                                     <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
                                         <i class="fas fa-expand"></i>
@@ -63,7 +70,7 @@
                                     <p class="badge">adad</p>
                                 </div>
                                 <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
-                                        src=https://res.cloudinary.com/devarista/image/upload/v1642495971/small_mangkok_batok_kelapa_bb301b9f00.jpg?58316
+                                        src="{{ asset('').$d->galeris->fotoProduk }}"
                                         alt="..." /></a>
                                 <div class="product-overlay">
                                     <ul class="mb-0 list-inline d-flex flex-column">

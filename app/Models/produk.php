@@ -20,4 +20,8 @@ class produk extends Model
     {
         return $this->hasMany(Galeri::class);
     }
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class);
+    }
 }
