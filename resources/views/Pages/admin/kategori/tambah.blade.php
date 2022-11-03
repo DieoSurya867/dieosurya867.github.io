@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ url('admin/galeri') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('kategori.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin / Kategori / </span> Tambah Data</h4>
@@ -17,20 +17,16 @@
                     <div class="card-body">
 
                         <div class="mb-3">
-                            <label for="exampleFormControlSelect1" class="form-label">Pilih Sekolah</label>
-                            <select class="form-select @error('produk_id') is-invalid
+                            <label for="exampleFormControlInput1" class="form-label">Nama Kategori</label>
+                            <input type="text"
+                                class="form-control @error('namaKategori') is-invalid
                           @enderror"
-                                id="exampleFormControlSelect1" aria-label="Default select example" name="produk_id">
-                                <option selected>Pilih Nama Produk</option>
-                                @foreach ($produk as $item)
-                                    <option value="{{ $item->id }}" @selected(old('produk_id') == $item->id)>
-                                        {{ $item->namaProduk }}</option>
-                                @endforeach
-                            </select>
+                                id="exampleFormControlInput1" placeholder="Name Kategori" name="namaKategori"
+                                value="{{ old('namaKategori') }}" />
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">File Foto Kategori</label>
-                            <input class="form-control" type="file" id="formFile" name="fotoProduk" />
+                            <input class="form-control" type="file" id="formFile" name="foto" />
                         </div>
                         <div>
                             <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Tambah Data</button>

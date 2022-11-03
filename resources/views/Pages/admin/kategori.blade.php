@@ -2,37 +2,37 @@
 
 
 @section('title')
-    Dashboard - Galleri | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Dashboard - Kategori | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
 @section('content')
     <div class="content-wrapper">
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Kategori</h4>
 
             <!-- Basic Bootstrap Table -->
             <div class="card">
-                <h5 class="card-header">Table Basic</h5>
+                <h5 class="card-header">Table Kategori</h5>
                 <div class="table-responsive text-nowrap">
-                    <a href="{{ url('admin/galeri/create') }}" class="ms-4 mb-4 btn btn-sm  btn-outline-primary">Upload Data
-                        Foto</a>
+                    <a href="{{ url('admin/kategori/create') }}" class="ms-4 mb-4 btn btn-sm  btn-outline-primary">Tambah Data
+                        Kategori</a>
                     <table class="table table-bordered table-hover">
 
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Produk</th>
-                                <th>Image</th>
+                                <th>Foto</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($galeri as $item)
+                            @foreach ($kategori as $item)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{ $item->produk->namaProduk }}</td>
-                                    <td><img src="{{ asset('storage/' . $item->fotoProduk) }}" alt="" width="100px"
+                                    <td>{{ $item->namaKategori }}</td>
+                                    <td><img src="{{ asset('storage/' . $item->foto) }}" alt="" width="100px"
                                             height="100px">
                                     </td>
                                     <td>
@@ -43,11 +43,11 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
-                                                    href="{{ URL::to('admin/galeri/' . $item->id . '/edit') }}"><i
+                                                    href="{{ URL::to('admin/kategori/' . $item->id . '/edit') }}"><i
                                                         class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                <a class="dropdown-item" href="{{ route('deletegaleri', $item->id) }}"><i
-                                                        class="bx bx-trash me-1"></i>
-                                                    Delete</a>
+                                                <a class="dropdown-item" href="{{ route('deletekategori', $item->id) }}"><i
+                                                        class="bx bx-trash me-1">Hapus</i>
+
                                             </div>
                                         </div>
                                     </td>

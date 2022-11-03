@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\FotoController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productCon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\FotoController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KeranjangController;
 
@@ -53,9 +56,12 @@ Route::get('admin/user', function () {
 
 
 Route::resource('admin/produk', productCon::class);
-Route::resource('admin/galeri', FotoController::class);
+Route::resource('admin/galeri', GaleriController::class);
+Route::resource('admin/kategori', KategoriController::class);
 Route::resource('keranjang', KeranjangController::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
+Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
 
 
  

@@ -7,10 +7,10 @@
 @section('content')
     <form action="{{ route('galeri.update', $galeri->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('put');
+        @method('PUT');
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Tambah Data</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Edit Data</h4>
             <!-- Form controls -->
             <div class="col-md-6">
                 <div class="card">
@@ -21,14 +21,13 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <img class="img-fluid d-flex mx-auto my-4"
-                                        src="{{ asset('storage/' . $galeri->photos) }}" alt="Card image cap" />
-                                    <p class="card-text">Bear claw sesame snaps gummies chocolate.</p>
+                                        src="{{ asset('storage/' . $galeri->fotoProduk) }}" alt="Card image cap" />
                                 </div>
                             </div>
 
                             {{-- <img src="{{ asset('storage/' . $galeri->photos) }}" alt=""> --}}
                             <div class="mb-3">
-                                <label for="exampleFormControlSelect1" class="form-label">Pilih Sekolah</label>
+                                <label for="exampleFormControlSelect1" class="form-label">Pilih Ganti Produk</label>
                                 <select
                                     class="form-select @error('produk_id') is-invalid
                           @enderror"
@@ -42,7 +41,7 @@
                                 </select>
                             </div>
                             <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" id="formFile" name="photos" />
+                            <input class="form-control" type="file" id="formFile" name="fotoProduk" />
                         </div>
                         <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Upload Data</button>
                     </div>

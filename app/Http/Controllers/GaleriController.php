@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
 use App\Models\Galeri;
 use App\Models\produk;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class FotoController extends Controller
+class GaleriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class FotoController extends Controller
      */
     public function index()
     {
-        $upload = Galeri::all();
-        return view('pages.admin.galeri', compact('upload'));
+        $galeri = Galeri::all();
+        return view('Pages.admin.galeri', compact('galeri'));
     }
 
     /**
@@ -40,16 +40,17 @@ class FotoController extends Controller
     public function store(Request $request)
     {
         $validator = $request->validate([
-            'photos' => 'required|image|max:10000|mimes:png,jpg',
-            'produk_id' => 'required'
+            'produk_id' => 'required',
+            'fotoProduk' => 'required|image|max:10000|mimes:png,jpg',
+
         ]);
 
-        $file = $request->file('photos')->store('img');
+        $file = $request->file('fotoProduk')->store('img');
 
         // Upload::create([
         //     'image' => $file
         // ]);
-        $validator['photos'] = $file;
+        $validator['fotoProduk'] = $file;
         Galeri::create($validator);
         return redirect('admin/galeri')->with('success', 'Data Berhasil Terupload');
     }
@@ -57,10 +58,10 @@ class FotoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Galeri $galeri)
     {
         //
     }
@@ -68,17 +69,18 @@ class FotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-
     public function edit($id)
     {
         $galeri = Galeri::findOrFail($id);
         $produk = produk::all();
-        return view("Pages.admin.galeri.edit", [
+
+        return view("pages/admin/galeri/edit", [
             'galeri' => $galeri,
-            'produk' => $produk
+            'produk' => $produk,
+
         ]);
     }
 
@@ -86,45 +88,53 @@ class FotoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $galeri = Galeri::findOrFail($id);
 
-        if ($request->file('photos')) {
-            $file = $request->file('photos')->store('img');
+        $validator = $request->validate([
+            'produk_id' => 'required'
+        ]);
+
+        $galeri->update($validator);
+
+        if ($request->file('fotoProduk')) {
+            $file = $request->file('fotoProduk')->store('img');
+
             $galeri->update([
-                'produk_id' => 'required',
-                'photos' => $file
+
+                'fotoProduk' => $file,
             ]);
         } else {
             return redirect('admin/galeri')->with('error', 'Tidak Ada Yng Berubah');
         }
         return redirect('admin/galeri')->with('success', 'Data Berhasil Diubah');
-
-        // try {
-        //     $file = $request->file('image')->store('img');
-        //     $upload->update([
-        //         'image' => $file
-        //     ]);
-        // } catch (\Throwable $th) {
-        //     $upload->update([
-        //         'image' => $upload->image
-        //     ]);
-        //     return redirect('upload')->with('success', 'Data Berhasil Diubah');
-        // }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Galeri  $galeri
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        // delete image
+        $galeri = galeri::find($id);
+        Storage::delete('storage/img/' . $galeri->fotoProduk);
+
+        //delete post
+        $galeri->delete();
+
+        // hapus file
+        // Storage::delete('public/storage/img/' . $gambar->file);
+
+        // hapus data
+        Galeri::where('id', $id)->delete();
+
+        return redirect('admin/galeri')->with('success', 'Data Berhasil Terhapus');
     }
 }

@@ -102,7 +102,7 @@ class productCon extends Controller
 
         // dd($item);
 
-        return view("pages.user.koleksi.kategori.index", compact('item', 'data'));
+        return view("pages.user.kategori.index", compact('item', 'data'));
     }
 
     /**
