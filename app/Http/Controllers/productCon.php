@@ -29,8 +29,10 @@ class productCon extends Controller
 
     public function tampil()
     {
-        $kategori = kategori::get();
-        $data = produk::get();
+        $kategori = kategori::all();
+
+
+        $data = produk::all()->sortByDesc('jumlahTerjual')->skip(0)->take(8);
         // $data = produk::all();
         // if ($kategori) {
         //     $data = $kategori->produk()->get();

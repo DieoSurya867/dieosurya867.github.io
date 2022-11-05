@@ -64,7 +64,7 @@
                                     <p class="badge">adad</p>
                                 </div>
                                 <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
-                                        src=https://res.cloudinary.com/devarista/image/upload/v1642495971/small_mangkok_batok_kelapa_bb301b9f00.jpg?58316
+                                        src="{{ asset('storage/' . $d->galeri->first()->fotoProduk) }}"
                                         alt="..." /></a>
                                 <div class="product-overlay">
                                     <ul class="mb-0 list-inline d-flex flex-column">

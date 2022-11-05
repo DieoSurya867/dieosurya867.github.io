@@ -5,7 +5,7 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productCon;
-
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,11 +46,14 @@ Route::get('user/cart', function () {
 Route::get('user/check', function () {
     return view('Pages.user.checkout');
 });
+
 Route::get('user/detail/{id}', [productCon::class, 'detail']);
 
 Route::get('admin/user', function () {
     return view('users');
 });
+
+Route::get('midtrans', [TransaksiController::class, 'midtrans']);
 
 
 Route::resource('admin/produk', productCon::class);
