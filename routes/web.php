@@ -4,6 +4,7 @@ use App\Http\Controllers\productCon;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\produkCon;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,14 +23,15 @@ Route::get('/', function () {
     return view('pages.user.index');
 });
 
-Route::get('admin/dashboard', function () {
-    return view('Pages.admin.home');
-});
+// Route::get('admin/home', function () {
+//     return view('Pages.admin.home');
+// });
 
 
 Route::resource('admin/produk', productCon::class);
 Route::resource('admin/Users', UsersController::class);
 Route::resource('admin/transaksi', TransaksiController::class);
+Route::resource('admin/dashboard', AdminController::class);
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
 
 

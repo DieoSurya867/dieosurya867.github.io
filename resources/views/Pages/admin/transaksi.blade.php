@@ -23,8 +23,9 @@
                                 <th>alamat</th>
                                 <th>Harga ongkir</th>
                                 <th>Total Harga</th>
-                                <th>Status Transaksi</th>
                                 <th>Kode Transaksi</th>
+                                <th>Status Transaksi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -36,8 +37,13 @@
                                     <td>{{ $t['alamat'] }}</td>
                                     <td>{{ $t['harga_ongkir'] }}</td>
                                     <td>{{ $t['total_harga'] }}</td>
-                                    <td>{{ $t['transkasi_status'] }}</td>
                                     <td>{{ $t['kode_transaksi'] }}</td>
+                                    <td>{{ $t['transaksi_status'] }}</td>
+                                    <td><button class="btn">
+                                    <a href="{{ URL::to('admin/' . $t->id . '/edit') }}"><i
+                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    </button>
+                                    </td>
                                 </tr>
                             @endforeach
 

@@ -29,6 +29,7 @@
                                 <th>Stock</th>
                                 <th>Jumlah Terjual</th>
                                 <th>Kategori</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">

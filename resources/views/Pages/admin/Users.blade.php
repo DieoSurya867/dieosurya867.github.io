@@ -19,6 +19,7 @@
 
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Password</th>
@@ -30,7 +31,7 @@
                                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
                                         <strong>{{ $u['id'] }}</strong>
                                     </td>
-                                    <td>{{ $u['nama'] }}</td>
+                                    <td>{{ $u['name'] }}</td>
                                     <td>{{ $u['email'] }}</td>
                                     <td>{{ $u['password'] }}</td>
                                 </tr>
