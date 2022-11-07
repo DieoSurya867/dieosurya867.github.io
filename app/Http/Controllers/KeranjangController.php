@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keranjang;
+use App\Models\produk;
 use Illuminate\Http\Request;
+
 
 class KeranjangController extends Controller
 {
@@ -36,7 +38,20 @@ class KeranjangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produk = produk::all();
+        $produk_id = $request->input('produk_id');
+        // $produk_qty = $request->input('kuantitas');
+        $produk_check = produk::where('id', $produk_id)->first();
+
+        if ($produk_check) {
+            $cartItem = new Keranjang();
+            $cartItem->produk_id = $produk_id;
+            $cartItem->users_id = 1;
+            // $cartItem->produk_qty = $produk_qty;
+            $cartItem->save();
+            return response()->json(['status' => $produk_check->namaProduk." berhasil tambah ke keranjang"]);
+        }
+
     }
 
     /**

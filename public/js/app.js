@@ -1,4 +1,41 @@
-$.ajax({
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+
+    // ADD TO CART FUNCTION
+    $('.addToCart').click(function (e) { 
+        e.preventDefault();
+        
+        let produk_id = $(this).closest('.produk-data').find('.prod-id').val();
+        // let produk_qty = 1;
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/keranjang",
+            data: {
+                'produk_id':produk_id,
+            },
+            success: function (response) {
+                alert(response.status);
+            }
+        });
+    });
+
+
+
+    // API WILAYAH FUNCTION
+    $.ajax({
     type: "get",
     url: "/wilayah",
     dataType: "json",
@@ -40,3 +77,10 @@ function daerah(jenis, id) {
         }
     });
 }
+
+
+
+
+
+
+});

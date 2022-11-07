@@ -54,25 +54,20 @@
             <div class="row">
                 <!-- PRODUCT-->
                 @forelse($data as $d)
-                <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up"
-                data-aos-offset="3"
-                data-aos-delay="30"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                data-aos-mirror="true"
-                data-aos-once="false"
+                <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-offset="3" data-aos-delay="30"
+                data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false"
                 data-aos-anchor-placement="top-center">
-                <div class="product text-center">
-                            <div class="position-relative mb-3" >
-                                <div class="d-flex text-white">
+                <div class="product produk-data text-center">
+                    <div class="position-relative mb-3">
+                        <input type="hidden" class="prod-id" value="{{ $d->id }}">
+                        <div class="d-flex text-white">
                                     <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
                                         <i class="fas fa-expand"></i>
                                     </a>
                                     <p class="badge">adad</p>
                                 </div>
                                 <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
-                                        src="{{ asset('').$d->galeris->fotoProduk }}"
-                                        alt="..." /></a>
+                                        src="{{ asset('store/img/cat-img-1.jpg') }}" alt="..." /></a>
                                 <div class="product-overlay">
                                     <ul class="mb-0 list-inline d-flex flex-column">
                                         </li>
@@ -80,8 +75,9 @@
 
                                         </li>
                                         <li class="list-inline-item m-0 p-0">
-                                            <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to
-                                                cart</a>
+                                            <button type="button" class="btn btn-sm btn-dark addToCart"
+                                                >Add to
+                                                cart</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -89,7 +85,7 @@
                             <h6>
                                 <a class="reset-anchor" href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
                             </h6>
-                            <p class="small text-muted">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
+                            <p class="small text-muted">{{ 'Rp.' . ' ' . number_format($d->hargaProduk, 2, ',', '.') }}</p>
                         </div>
                     </div>
                 @empty
@@ -97,7 +93,7 @@
                         <h3>Data GAGAL</h3>
                     </div>
                 @endforelse
-
+                </div>
             </div>
         </section>
         <!-- SERVICES-->
@@ -112,7 +108,7 @@
                                 </svg>
                                 <div class="text-start ms-3">
                                     <h6 class="text-uppercase mb-1">Free shipping</h6>
-                                    <p class="text-sm mb-0 text-muted">
+                                    <p class="text-sm mb-0 text-muted ">
                                         Free shipping worldwide
                                     </p>
                                 </div>
@@ -213,5 +209,4 @@
           </div>
       </div>
   </div> --}}
-
 @endsection
