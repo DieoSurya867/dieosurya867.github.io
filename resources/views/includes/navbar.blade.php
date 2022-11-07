@@ -2,7 +2,7 @@
  <header class="header bg-white">
   <div class="container px-lg-3">
     <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
-      <a class="navbar-brand" href="index.html"
+      <a class="navbar-brand" href="{{ url('/') }}"
         ><h3 class="fw-bold text-uppercase text-dark">O-Mal</h3></a
       >
       <button
@@ -58,7 +58,7 @@
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('user/cart') }}">
+            <a class="nav-link" href="{{ url('/keranjang') }}">
               <i class="fas fa-dolly-flatbed me-1 text-gray"></i
               >Cart<small class="text-gray fw-normal">(2)</small></a
             >

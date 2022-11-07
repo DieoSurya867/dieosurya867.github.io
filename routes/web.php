@@ -9,6 +9,9 @@ use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\KeranjangController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +62,7 @@ Route::get('midtrans', [TransaksiController::class, 'midtrans']);
 Route::resource('admin/produk', productCon::class);
 Route::resource('admin/galeri', GaleriController::class);
 Route::resource('admin/kategori', KategoriController::class);
+Route::resource('keranjang', KeranjangController::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
 Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
 Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
@@ -67,4 +71,5 @@ Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('del
 
 Auth::routes();
 
-Route::get('/home', [app\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');

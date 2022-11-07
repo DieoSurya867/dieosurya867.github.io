@@ -15,3 +15,4 @@
     <link rel="stylesheet" href={{ asset ("store/css/custom.css")}}>
     <!-- Favicon-->
     <link rel="shortcut icon" href={{ asset ("store/img/favicon.png")}}>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
