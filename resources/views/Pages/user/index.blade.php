@@ -31,6 +31,7 @@
             <div class="row d-flex justify-content-center">
                 @forelse($kategori as $item)
                     <div class="col-lg-3 mb-5">
+                        <a scope="row">{{ $loop->iteration }}</a>
                         <a class="category-item" href="{{ url('/user/kategori/' . $item->id) }}"><img class="img-fluid"
                                 src="{{ asset('storage/' . $item->foto) }}" alt=""
                                 style="width: 800px; height: 150px;" /><strong
@@ -63,9 +64,12 @@
                                     </a>
                                     <p class="badge">adad</p>
                                 </div>
-                                <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
-                                        src="{{ asset('storage/' . $d->galeri->first()->fotoProduk) }}"
-                                        alt="..." /></a>
+                                <a class="d-block" href="{{ url('user/detail/' . $d->id) }}">
+                                    <img class="img-fluid w-100"
+                                        src="{{ asset('storage/' . $d->galeri->first()->fotoProdukPertama) }}"
+                                        alt="..." />
+                                    {{-- {{ $d->galeri_id }} --}}
+                                </a>
                                 <div class="product-overlay">
                                     <ul class="mb-0 list-inline d-flex flex-column">
                                         </li>

@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('title')
-    Edit Data - Admin | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Edit Data - Galeri | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
         @method('PUT');
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Edit Data</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Edit Foto</h4>
             <!-- Form controls -->
             <div class="col-md-6">
                 <div class="card">
@@ -21,7 +21,7 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <img class="img-fluid d-flex mx-auto my-4"
-                                        src="{{ asset('storage/' . $galeri->fotoProduk) }}" alt="Card image cap" />
+                                        src="{{ asset('storage/' . $galeri->fotoProdukPertama) }}" alt="Card image cap" />
                                 </div>
                             </div>
 
@@ -41,7 +41,7 @@
                                 </select>
                             </div>
                             <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" id="formFile" name="fotoProduk" />
+                            <input class="form-control" type="file" id="formFile" name="fotoProdukPertama" />
                         </div>
                         <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Upload Data</button>
                     </div>
