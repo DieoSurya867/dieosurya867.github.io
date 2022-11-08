@@ -1,13 +1,13 @@
 @extends('layout.admin')
 
 @section('title')
-    Tambah Data - Admin | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Edit produk - Admin | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
 
 @section('content')
-    <form action="{{ url('admin/produk') }}" method="POST">
+    <form action="{{ route('produk.update', $produk->id) }}" method="POST">
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Tambah Data</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Edit produk</h4>
             <!-- Form controls -->
             <div class="col-md-6">
                 <div class="card mb-4">
@@ -15,33 +15,35 @@
                     <h5 class="card-header">Form Controls</h5>
                     <div class="card-body">
                         @csrf
+                        @method('put')
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nama Produk</label>
                             <input type="text"
                                 class="form-control @error('namaProduk') is-invalid
                           @enderror"
                                 id="exampleFormControlInput1" placeholder="Name Project" name="namaProduk"
-                                value="{{ old('namaProduk') }}" />
+                                value="{{ $produk->namaProduk }}" />
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlReadOnlyInput1" class="form-label">Harga Produk</label>
                             <input class="form-control @error('hargaProduk') is-invalid
                           @enderror"
                                 type="text" id="exampleFormControlReadOnlyInput1" placeholder="Harga Produk"
-                                name="hargaProduk" value="{{ old('hargaProduk') }}" />
+                                name="hargaProduk" value="{{ $produk->hargaProduk }}" />
                         </div>
-                        <div class="input-group">
-                            <span class="input-group-text">Deskripsi</span>
-                            <textarea class="form-control @error('deskripsi') is-invalid @enderror" aria-label="With textarea" placeholder=""
-                                name="deskripsi" value="{{ old('deskripsi') }}">
-                            </textarea>
+                        <div class="mb-3">
+                            <label for="exampleFormControlReadOnlyInput1" class="form-label">Deskripsi</label>
+                            <input class="form-control @error('hargaProduk') is-invalid
+                          @enderror"
+                                type="text" id="exampleFormControlReadOnlyInput1" placeholder="Deskripsi"
+                                name="deskripsi" value="{{ $produk->deskripsi }}" />
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlReadOnlyInput1" class="form-label">Stock</label>
                             <input class="form-control @error('stock') is-invalid
                           @enderror"
                                 type="text" id="exampleFormControlReadOnlyInput1" placeholder="Stock Barang"
-                                name="stock" value="{{ old('stock') }}" />
+                                name="stock" value="{{ $produk->stock }}" />
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlSelect1" class="form-label">Pilih Sekolah</label>
@@ -50,14 +52,16 @@
                                 id="exampleFormControlSelect1" aria-label="Default select example" name="kategori_id">
                                 <option selected>Pilih Nama Kategori</option>
                                 @foreach ($kategori as $item)
-                                    <option value="{{ $item->id }}" @selected(old('kategori_id') == $item->id)>
-                                        {{ $item->namaKategori }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ $item->id == $produk->kategori_id ? 'selected' : '' }}>{{ $item->namaKategori }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div>
-                            <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Tambah Data</button>
+                            <a href="/admin/produk" class="btn btn-danger">Batal</a>
+                            <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Edit produk</button>
 
                         </div>
                     </div>

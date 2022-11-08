@@ -18,7 +18,6 @@ class productCon extends Controller
     {
         $data = produk::all();
 
-
         return view('Pages.admin.produk', compact('data'));
     }
 
@@ -27,6 +26,33 @@ class productCon extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function tampil()
+    {
+        $kategori = kategori::all();
+
+
+        $data = produk::all()->sortByDesc('jumlahTerjual')->skip(0)->take(8);
+        // $data = produk::all();
+        // if ($kategori) {
+        //     $data = $kategori->produk()->get();
+        //     return view('Pages.user.index', compact('produk','kategori'));
+        // }else {
+        //     return redirect()->back();
+        // }
+        return view('Pages.user.index', compact('kategori', 'data'));
+    }
+
+    public function detail(Request $rq)
+    {
+        $d = Produk::where('id', $rq->id)->get();
+        $data = Produk::all();
+
+        return view('Pages.user.detail', compact('d', 'data'));
+    }
+
+
+
     public function create()
     {
         $kategori = Kategori::all();
@@ -67,7 +93,18 @@ class productCon extends Controller
      */
     public function show($id)
     {
-        //
+        $deskripsi = produk::find($id);
+        // $kategori = Kategori::all();
+
+        // return view("Pages.admin.produk", [
+        //     'deskripsi' => $deskripsi,
+        // ]);
+        $item = Kategori::findOrFail($id);
+        $data = produk::all();
+
+        // dd($item);
+
+        return view("pages.user.kategori.index", compact('item', 'data'));
     }
 
     /**
@@ -78,11 +115,11 @@ class productCon extends Controller
      */
     public function edit($id)
     {
-        $data = produk::findOrFail($id);
+        $produk = produk::find($id);
         $kategori = Kategori::all();
 
-        return view("pages.admin.edit", [
-            'data' => $data,
+        return view("pages/admin/produk/edit", [
+            'produk' => $produk,
             'kategori' => $kategori,
 
         ]);
@@ -97,20 +134,18 @@ class productCon extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data2 = $request->all();
+        $data = $request->all();
         $item = produk::findOrFail($id);
 
         $validator = $request->validate([
             'namaProduk' => 'required|string',
             'hargaProduk' => 'required|integer',
             'deskripsi' => 'required|string',
-            'stock' => 'required|integer',
-            'jumlahTerjual' => 'required|integer',
             'kategori_id' => 'required',
         ]);
 
         $item->update($validator);
-        return redirect()->route('produk.index');
+        return redirect()->route('produk.index')->with('success', 'Sukses mengubah siswa.');;
     }
 
     /**

@@ -87,8 +87,8 @@
 
                   <ul class="menu-inner py-1">
                       <!-- Dashboard -->
-                      <li class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
-                          <a href="../admin/dashboard" class="menu-link">
+                      <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
+                          <a href="../home" class="menu-link">
                               <i class="menu-icon tf-icons bx bx-home-circle"></i>
                               <div data-i18n="Analytics">Dashboard</div>
                           </a>
@@ -96,28 +96,43 @@
                       {{-- sidebar active  |
                                    V --}}
                       {{-- <li class="menu-item {{ (request()->is('layouts/without-menu')) ? 'active' : '' }}">   --}}
-                        <li class="menu-header small text-uppercase"><span class="menu-header-text">Detail Usaha</span></li>
+                      <li class="menu-header small text-uppercase"><span class="menu-header-text">Detail Usaha</span>
+                      </li>
+                      <!-- Kategori -->
+                      <li class="menu-item {{ Request::is('admin/kategori') ? 'active' : '' }}">
+                          <a href="{{ url('admin/kategori') }}" class="menu-link">
+                              <i class="menu-icon tf-icons bx bx-category-alt"></i>
+                              <div data-i18n="Tables">Kategori</div>
+                          </a>
+                      </li>
                       <!-- Produk -->
                       <li class="menu-item {{ Request::is('admin/produk') ? 'active' : '' }}">
-                            <a href="../admin/produk" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Produk</div>     
+                          <a href="{{ url('admin/produk') }}" class="menu-link">
+                              <i class="menu-icon tf-icons bx bxl-product-hunt"></i>
+                              <div data-i18n="Tables">Produk</div>
+                          </a>
+                      </li>
+                      <!-- Galeri -->
+                      <li class="menu-item {{ Request::is('admin/galeri') ? 'active' : '' }}">
+                          <a href="{{ url('admin/galeri') }}" class="menu-link">
+                              <i class="menu-icon tf-icons bx bx-photo-album"></i>
+                              <div data-i18n="Tables">Galeri</div>
                           </a>
                       </li>
                       <!-- Customer -->
                       <li class="menu-item {{ Request::is('admin/Users') ? 'active' : '' }}">
-                          <a href="../admin/Users" class="menu-link">
-                              <i class="menu-icon tf-icons bx bx-table"></i>
+                          <a href="{{ url('admin/Users') }}" class="menu-link">
+                              <i class="menu-icon tf-icons bx bxs-user-detail"></i>
                               <div data-i18n="Tables">Customer</div>
                           </a>
                       </li>
-                    <!-- Transaksi -->
-                    <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
-                        <a href="/admin/transaksi" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Tables">Transaksi</div>
-                        </a>
-                    </li>
+                      <!-- Transaksi -->
+                      <li class="menu-item {{ Request::is('admin/transaksi') ? 'active' : '' }}">
+                          <a href="{{ url('admin/transaksi') }}" class="menu-link">
+                              <i class="menu-icon tf-icons bx bx-credit-card-front"></i>
+                              <div data-i18n="Tables">Transaksi</div>
+                          </a>
+                      </li>
                       <!-- Lainya -->
                       <li class="menu-header small text-uppercase"><span class="menu-header-text">Lainnya</span></li>
                       <li class="menu-item">
@@ -144,12 +159,13 @@
 
                   @yield('dashboardadmin')
                   @yield('content')
-                  @yield('users')
-                  @yield('transaksi')
                   @include('includes.admin.footer')
               </div>
               {{-- end container --}}
           </div>
+          <!-- Overlay -->
+          <div class="layout-overlay layout-menu-toggle"></div>
+      </div>
   </body>
 
   @stack('prepend-script')

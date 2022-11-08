@@ -6,6 +6,8 @@ use App\Models\transaksi;
 use App\Models\transaksi_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class TransaksiController extends Controller
 {

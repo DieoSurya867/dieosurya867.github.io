@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\FotoController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productCon;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TransaksiController;
@@ -23,16 +27,23 @@ Route::get('/', function () {
     return view('pages.user.index');
 });
 
-// Route::get('admin/home', function () {
-//     return view('Pages.admin.home');
-// });
+Route::get('admin/dashboard', function () {
+    return view('Pages.admin.home');
+});
+
+Route::get('admin/user', function () {
+    return view('users');
+});
 
 
 Route::resource('admin/produk', productCon::class);
-Route::resource('admin/Users', UsersController::class);
-Route::resource('admin/transaksi', TransaksiController::class);
-Route::resource('admin/dashboard', AdminController::class);
+<<<<<<<<< Temporary merge branch 1
+Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+=========
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
+Route::get('admin/users',UsersController::class);
+Route::get('admin/transaksi',TransaksiController::class);
+Route::get('admin/dashboard',AdminController::class);
 
 
 // =======
@@ -42,4 +53,3 @@ Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deletepro
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
