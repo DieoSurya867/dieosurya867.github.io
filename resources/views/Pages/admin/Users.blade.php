@@ -4,7 +4,7 @@
 @section('title')
     Dashboard - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
-@section('users')
+@section('Users')
     <div class="content-wrapper">
         <!-- Content -->
 

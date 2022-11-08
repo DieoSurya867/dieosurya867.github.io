@@ -19,6 +19,7 @@ class AdminController extends Controller
         $usercount = User::count();
         $transaksicount = transaksi::count();
         $kategori = kategori::count();
-        return view ('Pages.admin.home', ['produk_count' => $produkcount, 'user_count' => $usercount, 'transaksi_count' => $transaksicount, 'kategori' => $kategori] );
+        $transaksi = transaksi::all()->sortByDesc('created_at')->skip(0)->take(5);
+        return view ('Pages.admin.home', ['produk_count' => $produkcount, 'user_count' => $usercount, 'transaksi_count' => $transaksicount, 'kategori' => $kategori, 'transaksi'=> $transaksi] );
     }
 }

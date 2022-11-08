@@ -23,27 +23,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.user.index');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('login', HomeController::class);
 });
 
-Route::get('admin/dashboard', function () {
-    return view('Pages.admin.home');
+Route::get('/', [productCon::class, 'tampil']);
+Route::get('/user/kategori/{id}', [productCon::class, 'show']);
+
+Route::get('user/cart', function () {
+    return view('Pages.user.cart');
+});
+Route::get('user/check', function () {
+    return view('Pages.user.checkout');
+});
+
+Route::get('user/detail/{id}', [productCon::class, 'detail']);
+
+Route::get('admin/user', function () {
+    return view('users');
 });
 
 Route::get('admin/user', function () {
     return view('users');
 });
 
-
 Route::resource('admin/produk', productCon::class);
-<<<<<<<<< Temporary merge branch 1
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
-=========
+
 Route::get('deleteproduk/{id}', [produkCon::class, 'destroy'])->name('deleteproduk');
-Route::get('admin/users',UsersController::class);
-Route::get('admin/transaksi',TransaksiController::class);
-Route::get('admin/dashboard',AdminController::class);
+Route::resource('admin/users',UsersController::class);
+Route::resource('admin/transaksi',TransaksiController::class);
+Route::resource('admin/dashboard',AdminController::class);
 
 
 // =======

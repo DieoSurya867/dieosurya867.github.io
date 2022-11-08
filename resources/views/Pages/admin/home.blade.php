@@ -5,8 +5,8 @@
           <div class="content-wrapper">
             <!-- Content -->
 
-            <div class="row row-cols-1 row-cols-md-2 g-4 m-3 mb-2">
-                <div class="col">
+            <div class="row g-4 m-2">
+                <div class="col-3">
                   <div class="card">
                     <div class="card-body">
                       <div class="col-6"><i class="bi bi-box"> Produk</i></div>
@@ -38,19 +38,42 @@
                     </div>
                   </div>
                 </div>
-              </div>
+                <!-- Transaksi -->
+  <div class="card mx-2 mb-5 p-1">
+    <h5 class="card-header">Transaksi Terbaru</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>alamat</th>
+                    <th>Harga ongkir</th>
+                    <th>Total Harga</th>
+                    <th>Kode Transaksi</th>
+                    <th>Status Transaksi</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach ($transaksi as $t)
+                    <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+                            <strong>{{ $t['id'] }}</strong>
+                        </td>
+                        <td>{{ $t['alamat'] }}</td>
+                        <td>{{ $t['harga_ongkir'] }}</td>
+                        <td>{{ $t['total_harga'] }}</td>
+                        <td>{{ $t['kode_transaksi'] }}</td>
+                        <td>{{ $t['transaksi_status'] }}</td>
+                    </tr>
+                @endforeach
 
-                <!-- Expense Overview -->
-                <div class="container">
-                  <div class="card">
-                  <div class="col-6"><i class="bi bi-clipboard-data"></i></div>
-                  <div class="col-6">Grafik</div>
-                <div>
-                  <p class="mb-1 mt-3"><center>Pengunjung Satu Bulan Terakhir<center></p>
-                </div>
+            </tbody>
+        </table>
+    </div>
               </div>
+          </div>
+          <!--/ Basic Bootstrap Table -->
 
-                </div>
-                <!--/ Expense Overview -->
+
 
 @endsection

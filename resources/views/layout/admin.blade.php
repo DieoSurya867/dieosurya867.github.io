@@ -159,6 +159,8 @@
 
                   @yield('dashboardadmin')
                   @yield('content')
+                  @yield('transaksi')
+                  @yield('Users')
                   @include('includes.admin.footer')
               </div>
               {{-- end container --}}
