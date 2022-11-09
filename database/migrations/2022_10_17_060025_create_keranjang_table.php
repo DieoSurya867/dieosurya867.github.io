@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('produk_id')->constrained('produk')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('users_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->integer('kuantitas');
+            $table->integer('kuantitas')->nullable();
             $table->timestamps();
         });
     }

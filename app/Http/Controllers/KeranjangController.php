@@ -47,11 +47,11 @@ class KeranjangController extends Controller
             $cartItem = new Keranjang();
             $cartItem->produk_id = $produk_id;
             $cartItem->users_id = 1;
+            // $cartItem->kuantitas = 1;
             // $cartItem->produk_qty = $produk_qty;
             $cartItem->save();
-            return response()->json(['status' => $produk_check->namaProduk." berhasil tambah ke keranjang"]);
+            return response()->json(['status' => $produk_check->namaProduk . " berhasil tambah ke keranjang"]);
         }
-
     }
 
     /**

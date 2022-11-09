@@ -69,11 +69,11 @@
                             <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
                                 <div class="swiper product-slider-thumbs">
                                     <div class="swiper-wrapper">
-                                        @foreach ($data as $data2)
-                                            <div class="swiper-slide h-auto swiper-thumb-item mb-3"><img class="w-100"
-                                                    src="{{ asset('storage/' . $data2->galeri->first()->fotoProduk) }}"
-                                                    alt="..."></div>
-                                        @endforeach
+
+                                        <div class="swiper-slide h-auto swiper-thumb-item mb-3"><img class="w-100"
+                                                src="{{ asset('storage/' . $d->galeri->first()->fotoProdukPertama) }}"
+                                                alt="..."></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -83,12 +83,14 @@
                                         <div class="swiper-slide h-auto"><a class="glightbox product-view"
                                                 href="{{ asset('store/img/product-detail-1.jpg') }}" data-gallery="gallery2"
                                                 data-glightbox="Product item 1"><img class="img-fluid"
-                                                    src="{{ asset('store/img/product-detail-1.jpg') }}" alt="..."></a>
+                                                    src="{{ asset('storage/' . $d->galeri->first()->fotoProdukPertama) }}"
+                                                    alt="..."></a>
                                         </div>
-                                        <div class="swiper-slide h-auto"><a class="glightbox product-view"
+                                        {{-- <div class="swiper-slide h-auto"><a class="glightbox product-view"
                                                 href="{{ asset('store/img/product-detail-1.jpg') }}" data-gallery="gallery2"
                                                 data-glightbox="Product item 2"><img class="img-fluid"
-                                                    src="{{ asset('store/img/product-detail-2.jpg') }}" alt="..."></a>
+                                                    src="{{ asset('storage/' . $d->galeri->first()->fotoProdukKedua) }}"
+                                                    alt="..."></a>
                                         </div>
                                         <div class="swiper-slide h-auto"><a class="glightbox product-view"
                                                 href="{{ asset('store/img/product-detail-4.jpg') }}"
@@ -99,7 +101,7 @@
                                                 href="{{ asset('store/img/product-detail-4.jpg') }}"
                                                 data-gallery="gallery2" data-glightbox="Product item 4"><img
                                                     class="img-fluid" src="{{ asset('store/img/product-detail-4.jpg') }}"
-                                                    alt="..."></a></div>
+                                                    alt="..."></a></div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -218,10 +220,10 @@
                 </div>
                 @endforeach
                 <!-- RELATED PRODUCTS-->
-                <h2 class="h5 text-uppercase mb-4">Related products</h2>
+                {{-- <h2 class="h5 text-uppercase mb-4">Related products</h2>
                 <div class="row">
                     <!-- PRODUCT-->
-                    {{-- @foreach ($data as $d)
+                    @foreach ($data as $d)
                         <div class="col-lg-3 col-sm-6">
                             <div class="product text-center skel-loader">
                                 <div class="d-block mb-3 position-relative"><a class="d-block"
@@ -244,7 +246,7 @@
                             </div>
                         </div>
                     @endforeach --}}
-                </div>
+                {{-- </div> --}}
             </div>
     </section>
 @endsection

@@ -52,12 +52,8 @@ Route::get('user/check', function () {
 
 Route::get('user/detail/{id}', [productCon::class, 'detail']);
 
-Route::get('admin/user', function () {
-    return view('users');
-});
 
 Route::get('midtrans', [TransaksiController::class, 'midtrans']);
-
 
 Route::resource('admin/produk', productCon::class);
 Route::resource('admin/galeri', GaleriController::class);
@@ -66,8 +62,6 @@ Route::resource('keranjang', KeranjangController::class);
 Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
 Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
 Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
-
-
 
 Auth::routes();
 
