@@ -46,7 +46,7 @@
                                                     href="{{ URL::to('admin/kategori/' . $item->id . '/edit') }}"><i
                                                         class="bx bx-edit-alt me-1"></i> Edit</a>
                                                 <a class="dropdown-item" href="{{ route('deletekategori', $item->id) }}"><i
-                                                        class="bx bx-trash me-1">Hapus</i>
+                                                        class="bx bx-trash me-1">Hapus</i></a>
 
                                             </div>
                                         </div>

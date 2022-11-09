@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
     });
     // API WILAYAH FUNCTION
     $.ajax({
@@ -51,28 +51,29 @@ $(document).ready(function() {
 });
 
     // ADD TO CART FUNCTION
-    $('.addToCart').click(function (e) { 
+    $(".addToCart").click(function (e) {
         e.preventDefault();
-        
-        let produk_id = $(this).closest('.produk-data').find('.prod-id').val();
-        // let produk_qty = 1;
+
+        let produk_id = $(this).closest(".produk-data").find(".prod-id").val();
+        let produk_qty = $(this).closest(".produk-data").find(".prod-qty").val();;
+
 
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
         });
 
         $.ajax({
             type: "POST",
             url: "/keranjang",
             data: {
-                'produk_id':produk_id,
+                'produk_id': produk_id,
+                'kuantitas': produk_qty,
             },
             success: function (response) {
                 alert(response.status);
-            }
+            },
         });
     });
-
 

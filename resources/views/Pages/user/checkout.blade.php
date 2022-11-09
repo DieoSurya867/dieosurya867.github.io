@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Checkout - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Checkout
 @endsection
 @section('content')
     <div class="container">

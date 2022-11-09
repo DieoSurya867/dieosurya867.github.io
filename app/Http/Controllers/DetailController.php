@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Keranjang;
 use App\Models\produk;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class KeranjangController extends Controller
+class DetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,6 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        
-        $keranjang = Keranjang::all();
-        return view('Pages.user.cart', compact('keranjang'));
     }
 
     /**
@@ -39,20 +34,7 @@ class KeranjangController extends Controller
      */
     public function store(Request $request)
     {
-        $produk = produk::all();
-        $produk_id = $request->input('produk_id');
-        $produk_qty = $request->input('kuantitas');
-        $user_id = Auth::id();
-        $produk_check = produk::where('id', $produk_id)->first();
-
-        if ($produk_check) {
-            $cartItem = new Keranjang();
-            $cartItem->produk_id = $produk_id;
-            $cartItem->users_id = $user_id;
-            $cartItem->kuantitas = $produk_qty;
-            $cartItem->save();
-            return response()->json(['status' => $produk_check->namaProduk . " berhasil tambah ke keranjang"]);
-        }
+        //
     }
 
     /**
@@ -63,7 +45,12 @@ class KeranjangController extends Controller
      */
     public function show($id)
     {
-        //
+        $d = produk::where('id', $id)->get();
+        $data = Produk::all();
+
+        return view('Pages.user.detail', compact('d', 'data'));
+
+
     }
 
     /**
@@ -97,9 +84,6 @@ class KeranjangController extends Controller
      */
     public function destroy($id)
     {
-        $keranjang = keranjang::find($id);
-        $keranjang->delete();
-        return redirect('keranjang')->with('success', 'Sukses menghapus buku');
-
+        //
     }
 }

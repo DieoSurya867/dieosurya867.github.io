@@ -29,8 +29,10 @@ class productCon extends Controller
 
     public function tampil()
     {
-        $kategori = kategori::get();
-        $data = produk::get();
+        $kategori = kategori::all();
+
+
+        $data = produk::all()->sortByDesc('jumlahTerjual')->skip(0)->take(8);
         // $data = produk::all();
         // if ($kategori) {
         //     $data = $kategori->produk()->get();
@@ -39,14 +41,6 @@ class productCon extends Controller
         //     return redirect()->back();
         // }
         return view('Pages.user.index', compact('kategori', 'data'));
-    }
-
-    public function detail(Request $rq)
-    {
-        $d = Produk::where('id', $rq->id)->get();
-        $data = Produk::all();
-
-        return view('Pages.user.detail', compact('d', 'data'));
     }
 
 
@@ -89,20 +83,12 @@ class productCon extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $kategori)
     {
-        $deskripsi = produk::find($id);
-        // $kategori = Kategori::all();
-
-        // return view("Pages.admin.produk", [
-        //     'deskripsi' => $deskripsi,
-        // ]);
-        $item = Kategori::findOrFail($id);
-        $data = produk::all();
-
-        // dd($item);
-
-        return view("pages.user.kategori.index", compact('item', 'data'));
+        $kategori = Produk::where('kategori_id', $kategori->id)->get();
+        $data = Produk::all();
+        // dd($data);
+        return view('Pages.user.kategori.index', compact('kategori', 'data'));
     }
 
     /**

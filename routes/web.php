@@ -5,10 +5,12 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productCon;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\KeranjangController;
 
 /*
@@ -22,51 +24,28 @@ use App\Http\Controllers\KeranjangController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('pages.user.index');
-// });
-// Route::get('/', [App\Http\Controllers\productCon::class, 'tampil']);
-
-Route::get('admin/dasboard', function () {
-    return view('pages.admin.home');
-});
-
+Route::get('/', [productCon::class, 'tampil']);
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('login', HomeController::class);
-});
-
-Route::get('/', [productCon::class, 'tampil']);
-Route::get('/user/kategori/{id}', [productCon::class, 'show']);
-
-Route::get('admin/dashboard', function () {
-    return view('Pages.admin.home');
-});
-Route::get('user/cart', function () {
-    return view('Pages.user.cart');
-});
-Route::get('user/check', function () {
-    return view('Pages.user.checkout');
-});
-Route::get('user/detail/{id}', [productCon::class, 'detail']);
-
-Route::get('admin/user', function () {
-    return view('users');
+    Route::get('admin/dashboard', function () {
+        return view('Pages.admin.home');
+    });
+    Route::resource('admin/produk', productCon::class);
+    Route::resource('admin/galeri', GaleriController::class);
+    Route::resource('admin/kategori', KategoriController::class);
+    Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+    Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
+    Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
 });
 
 
-Route::resource('admin/produk', productCon::class);
-Route::resource('admin/galeri', GaleriController::class);
-Route::resource('admin/kategori', KategoriController::class);
-Route::resource('keranjang', KeranjangController::class);
-Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
-Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
-Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
+Route::middleware('auth')->group(function () {
+    Route::resource('detail', DetailController::class);
+    Route::resource('keranjang', KeranjangController::class);
+    Route::resource('kategori', KategoriController::class);
+    Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
+});
 
-
- 
 Auth::routes();
-
+Route::get('midtrans', [TransaksiController::class, 'midtrans']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
-

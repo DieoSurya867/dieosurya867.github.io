@@ -41,16 +41,16 @@ class GaleriController extends Controller
     {
         $validator = $request->validate([
             'produk_id' => 'required',
-            'fotoProduk' => 'required|image|max:10000|mimes:png,jpg',
+            'fotoProdukPertama' => 'required|image|max:10000|mimes:png,jpg',
 
         ]);
 
-        $file = $request->file('fotoProduk')->store('img');
+        $file = $request->file('fotoProdukPertama')->store('img');
 
         // Upload::create([
         //     'image' => $file
         // ]);
-        $validator['fotoProduk'] = $file;
+        $validator['fotoProdukPertama'] = $file;
         Galeri::create($validator);
         return redirect('admin/galeri')->with('success', 'Data Berhasil Terupload');
     }
@@ -101,12 +101,12 @@ class GaleriController extends Controller
 
         $galeri->update($validator);
 
-        if ($request->file('fotoProduk')) {
-            $file = $request->file('fotoProduk')->store('img');
+        if ($request->file('fotoProdukPertama')) {
+            $file = $request->file('fotoProdukPertama')->store('img');
 
             $galeri->update([
 
-                'fotoProduk' => $file,
+                'fotoProdukPertama' => $file,
             ]);
         } else {
             return redirect('admin/galeri')->with('error', 'Tidak Ada Yng Berubah');
@@ -124,7 +124,7 @@ class GaleriController extends Controller
     {
         // delete image
         $galeri = galeri::find($id);
-        Storage::delete('storage/img/' . $galeri->fotoProduk);
+        Storage::delete('storage/img/' . $galeri->fotoProdukPertama);
 
         //delete post
         $galeri->delete();

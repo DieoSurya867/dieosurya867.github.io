@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">File Foto Kategori</label>
-                            <input class="form-control" type="file" id="formFile" name="fotoProduk" />
+                            <input class="form-control" type="file" id="formFile" name="fotoProdukPertama" />
                         </div>
                         <div>
                             <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Tambah Data</button>
