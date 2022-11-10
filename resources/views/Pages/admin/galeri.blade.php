@@ -34,6 +34,12 @@
                                     <td>{{ $item->produk->namaProduk }}</td>
                                     <td><img src="{{ asset('storage/' . $item->fotoProdukPertama) }}" alt=""
                                             width="100px" height="100px">
+                                        <img src="{{ asset('storage/' . $item->fotoProdukKedua) }}" alt=""
+                                            width="100px" height="100px">
+                                        <img src="{{ asset('storage/' . $item->fotoProdukKetiga) }}" alt=""
+                                            width="100px" height="100px">
+                                        <img src="{{ asset('storage/' . $item->fotoProdukKeempat) }}" alt=""
+                                            width="100px" height="100px">
                                     </td>
                                     <td>
                                         <div class="dropdown">
