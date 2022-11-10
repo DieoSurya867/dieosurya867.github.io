@@ -31,7 +31,6 @@ class productCon extends Controller
     {
         $kategori = kategori::all();
 
-
         $data = produk::all()->sortByDesc('jumlahTerjual')->skip(0)->take(8);
         // $data = produk::all();
         // if ($kategori) {

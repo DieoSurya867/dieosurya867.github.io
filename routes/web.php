@@ -27,23 +27,25 @@ use App\Http\Controllers\KeranjangController;
 
 Route::get('/', [productCon::class, 'tampil']);
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/dashboard', function () {
-        return view('Pages.admin.home');
+Route::prefix('admin')
+    ->namespace('Admin')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+
+        Route::resource('admin/produk', productCon::class);
+        Route::resource('admin/galeri', GaleriController::class);
+        Route::resource('admin/kategori', KategoriController::class);
+        Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
+        Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
+        Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
     });
-    Route::resource('admin/produk', productCon::class);
-    Route::resource('admin/galeri', GaleriController::class);
-    Route::resource('admin/kategori', KategoriController::class);
-    Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
-    Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
-    Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
-});
 
 
 Route::middleware('auth')->group(function () {
     Route::resource('keranjang', KeranjangController::class);
     Route::resource('kategori', KategoriController::class);
-    Route::resource('check', CheckoutController::class);
+    Route::resource('checkout', CheckoutController::class);
+    // Route::post('checkout', CheckoutController::class, 'process')->name('checkout');
     Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
 });
 
@@ -51,7 +53,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('detail', DetailController::class);
 Auth::routes();
 Route::get('midtrans', [TransaksiController::class, 'midtrans']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('json', function () {
     return view('json');
 });

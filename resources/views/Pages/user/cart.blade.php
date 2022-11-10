@@ -49,7 +49,8 @@
                                     <tr>
                                         <th class="ps-0 py-3 border-light" scope="row">
                                             <div class="d-flex align-items-center"><a
-                                                    class="reset-anchor d-block animsition-link" href="{{ url('detail/' . $item->produk->id) }}"><img
+                                                    class="reset-anchor d-block animsition-link"
+                                                    href="{{ url('detail/' . $item->produk->id) }}"><img
                                                         src="{{ asset('storage/' . $item->produk->galeri->first()->fotoProdukPertama) }}"
                                                         alt="..." width="70" /></a>
                                                 <div class="ms-3"><strong class="h6"><a
@@ -83,9 +84,11 @@
                                             <form action="{{ route('keranjang.destroy', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="border border-none" onclick="return confirm('Anda yakin?')"><i class="fas fa-trash-alt small text-muted"></i></button>
+                                                <button type="submit" class="border border-none"
+                                                    onclick="return confirm('Anda yakin?')"><i
+                                                        class="fas fa-trash-alt small text-muted"></i></button>
                                             </form>
-                
+
                                     </tr>
                                     {{-- @endif --}}
                                 @endforeach
@@ -100,6 +103,7 @@
                                     Belanja</a></div>
                         </div>
                     </div>
+
                 </div>
                 <!-- ORDER TOTAL-->
                 <div class="col-lg-4">
@@ -111,7 +115,7 @@
                                         class="text-uppercase small font-weight-bold">Total</strong><span
                                         id="total">total harga</span></li>
                                 <li>
-                                    <form action="{{ url('user/check') }}">
+                                    <form action="{{ url('checkout') }}">
                                         <div class="input-group mb-0">
                                             <button class="btn btn-dark btn-sm w-100" type="submit">CHECKOUT<i
                                                     class="fas fa-long-arrow-alt-right ms-2"></i></button>

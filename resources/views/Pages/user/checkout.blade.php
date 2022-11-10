@@ -59,12 +59,13 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1" class="fw-bold">Kabupaten</label>
-                                <select class="form-control" id="regencies" onchange="daerah(id,value)">
-                                </select>
+
+                            <div class="form-group col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1" class="fw-bold">Kabupaten</label>
+                                    <select class="form-control" id="regencies" onchange="daerah(id,value)">
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group col-lg-6">
@@ -73,45 +74,50 @@
                                     <select class="form-control" id="districts" onchange="daerah(id,value)">
                                     </select>
                                 </div>
+                            </div>
 
-                                <div class="form-group col-lg-6">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlSelect1" class="fw-bold">Kelurahan</label>
-                                        <select class="form-control" id="villages" onchange="daerah(id,value)">
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-12 mb-4">
-                                        <label for="exampleFormControlTextarea1" class="form-label fw-bold">Alamat
-                                            Lengkap</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
+                            <div class="form-group col-lg-6">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1" class="fw-bold">Kelurahan</label>
+                                    <select class="form-control" id="villages" onchange="daerah(id,value)">
+                                    </select>
                                 </div>
                             </div>
-                            <!-- ORDER SUMMARY-->
-                            <div class="col-lg-4">
-                                <div class="card border-0 rounded-0 p-lg-4 bg-light">
-                                    <div class="card-body">
-                                        <h5 class="text-uppercase mb-4">Pesanan Anda</h5>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="d-flex align-items-center justify-content-between"><strong
-                                                    class="small fw-bold">Red digital smartwatch</strong><span
-                                                    class="text-muted small">$250</span></li>
-                                            <li class="border-bottom my-2"></li>
-                                            <li class="d-flex align-items-center justify-content-between"><strong
-                                                    class="small fw-bold">Gray Nike running shoes</strong><span
-                                                    class="text-muted small">$351</span></li>
-                                            <li class="border-bottom my-2"></li>
-                                            <li class="d-flex align-items-center justify-content-between"><strong
-                                                    class="text-uppercase small fw-bold">Total</strong><span>$601</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex justify-content-center mt-3">
-                                    <button class="btn btn-dark fw-bold" type="submit">Bayar</button>
-                                </div>
+
+                            <div class="col-lg-12 mb-4">
+                                <label for="exampleFormControlTextarea1" class="form-label fw-bold">Alamat
+                                    Lengkap</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- ORDER SUMMARY-->
+                    <div class="col-lg-4">
+                        <div class="card border-0 rounded-0 p-lg-4 bg-light">
+                            <div class="card-body">
+                                <h5 class="text-uppercase mb-4">Pesanan Anda</h5>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="d-flex align-items-center justify-content-between"><strong
+                                            class="small fw-bold">Red digital smartwatch</strong><span
+                                            class="text-muted small">$250</span></li>
+                                    <li class="border-bottom my-2"></li>
+                                    <li class="d-flex align-items-center justify-content-between"><strong
+                                            class="small fw-bold">Gray Nike running shoes</strong><span
+                                            class="text-muted small">$351</span></li>
+                                    <li class="border-bottom my-2"></li>
+                                    <li class="d-flex align-items-center justify-content-between"><strong
+                                            class="text-uppercase small fw-bold">Total</strong><span>$601</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-center mt-3">
+                            <button class="btn btn-dark fw-bold" type="submit">Bayar</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </section>
     </div>
