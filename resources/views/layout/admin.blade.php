@@ -73,8 +73,8 @@
                                       </g>
                                   </g>
                               </svg>
-                          </span> --}}
-                          <span class="app-brand-text demo menu-text fw-bolder ms-2">Admin</span>
+                          </span>
+                          <span class="app-brand-text demo menu-text fw-bolder ms-2">O-MAl</span>
                       </a>
 
                       <a href="javascript:void(0);"

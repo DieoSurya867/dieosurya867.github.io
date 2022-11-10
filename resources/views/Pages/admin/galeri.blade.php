@@ -9,11 +9,11 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Galeri</h4>
 
             <!-- Basic Bootstrap Table -->
             <div class="card">
-                <h5 class="card-header">Table Basic</h5>
+                <h5 class="card-header">Table Galeri</h5>
                 <div class="table-responsive text-nowrap">
                     <a href="{{ url('admin/galeri/create') }}" class="ms-4 mb-4 btn btn-sm  btn-outline-primary">Upload Data
                         Foto</a>
@@ -32,8 +32,14 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->produk->namaProduk }}</td>
-                                    <td><img src="{{ asset('storage/' . $item->fotoProduk) }}" alt="" width="100px"
-                                            height="100px">
+                                    <td><img src="{{ asset('storage/' . $item->fotoProdukPertama) }}" alt=""
+                                            width="100px" height="100px">
+                                        <img src="{{ asset('storage/' . $item->fotoProdukKedua) }}" alt=""
+                                            width="100px" height="100px">
+                                        <img src="{{ asset('storage/' . $item->fotoProdukKetiga) }}" alt=""
+                                            width="100px" height="100px">
+                                        <img src="{{ asset('storage/' . $item->fotoProdukKeempat) }}" alt=""
+                                            width="100px" height="100px">
                                     </td>
                                     <td>
                                         <div class="dropdown">

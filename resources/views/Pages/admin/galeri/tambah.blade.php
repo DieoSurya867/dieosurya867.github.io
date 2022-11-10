@@ -29,8 +29,20 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">File Foto Kategori</label>
-                            <input class="form-control" type="file" id="formFile" name="fotoProduk" />
+                            <label for="formFile" class="form-label">File Foto Produk Awal</label>
+                            <input class="form-control" type="file" id="formFile" name="fotoProdukPertama" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">File Foto Produk Kedua</label>
+                            <input class="form-control" type="file" id="formFile" name="fotoProdukKedua" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">File Foto Produk Ketiga</label>
+                            <input class="form-control" type="file" id="formFile" name="fotoProdukKetiga" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">File Foto Produk Keempat</label>
+                            <input class="form-control" type="file" id="formFile" name="fotoProdukKeempat" />
                         </div>
                         <div>
                             <button type="submit" class="ms-1 btn btn-sm  btn-outline-primary">Tambah Data</button>

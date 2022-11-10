@@ -42,8 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function users()
+    public function keranjang()
     {
-        return $this->belongsTo(users::class);
+        return $this->belongsTo(Keranjang::class);
+    }
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
     }
 }

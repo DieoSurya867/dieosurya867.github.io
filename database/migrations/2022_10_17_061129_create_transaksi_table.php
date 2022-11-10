@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText('alamat');
             $table->integer('harga_ongkir');
             $table->integer('total_harga');
-            $table->string('transaksi_status');
+            $table->string('transaksi_status')->default('pending');
             $table->string('kode_transaksi');
 
             $table->foreignId('users_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();

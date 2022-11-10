@@ -15,4 +15,12 @@ class transaksi_detail extends Model
         return $this->belongsTo(transaksi_detail::class);
     }
 
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class);
+    }
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

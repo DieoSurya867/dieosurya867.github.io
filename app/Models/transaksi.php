@@ -11,9 +11,16 @@ class transaksi extends Model
     protected $table = 'transaksi';
     protected $guarded = ['id'];
 
-    public function transaksi()
+    public function user()
     {
-        return $this->belongsTo(transaksi::class);
+        return $this->belongsTo(User::class);
     }
-
+    public function keranjang()
+    {
+        return $this->belongsTo(Keranjang::class);
+    }
+    public function transaksi_detail()
+    {
+        return $this->hasMany(Transaksi_detail::class);
+    }
 }

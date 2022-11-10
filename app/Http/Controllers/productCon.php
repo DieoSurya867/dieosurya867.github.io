@@ -91,20 +91,12 @@ class productCon extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $kategori)
     {
-        $deskripsi = produk::find($id);
-        // $kategori = Kategori::all();
-
-        // return view("Pages.admin.produk", [
-        //     'deskripsi' => $deskripsi,
-        // ]);
-        $item = Kategori::findOrFail($id);
-        $data = produk::all();
-
-        // dd($item);
-
-        return view("pages.user.kategori.index", compact('item', 'data'));
+        $kategori = Produk::where('kategori_id', $kategori->id)->get();
+        $data = Produk::all();
+        // dd($data);
+        return view('Pages.user.kategori.index', compact('kategori', 'data'));
     }
 
     /**
