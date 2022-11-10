@@ -60,7 +60,7 @@
                                             </div>
                                         </th>
                                         <td class="p-3 align-middle border-light">
-                                            <p class="mb-0 small">
+                                            <p class="mb-0 small" id="harga_produk">
                                                 {{ 'Rp.' . ' ' . number_format($item->produk->hargaProduk, 2, ',', '.') }}
                                             </p>
                                         </td>
@@ -78,7 +78,7 @@
                                             </div>
                                         </td>
                                         <td class="p-3 align-middle border-light">
-                                            <p class="mb-0 small" id="subtotal">$250</p>
+                                            <p class="mb-0 small" id="subtotal"></p>
                                         </td>
                                         <td class="p-3 align-middle border-light">
                                             <form action="{{ route('keranjang.destroy', $item->id) }}" method="POST">

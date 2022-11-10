@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+
     <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -504,6 +505,7 @@
             </div>
         </div>
         <!-- / Content -->
+
 
 
 

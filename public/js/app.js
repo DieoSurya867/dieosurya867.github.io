@@ -77,3 +77,22 @@
         });
     });
 
+
+    $("#tambah").click(function (e) {
+        e.preventDefault();
+
+        let jumlah = $("#jumlah").val();
+        let harga = $("#harga_produk").val();
+        
+        let tambah = jumlah*10
+        alert(jumlah);
+        alert(harga);
+        alert(tambah);
+        
+        let subtotal = $("#subtotal").val(tambah);
+        // $( "#subtotal" ).html("{{ 'Rp.' . ' ' . number_format($item->produk->hargaProduk, 2, ',', '.') }}");
+
+    });
+
+
+

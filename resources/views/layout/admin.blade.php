@@ -22,6 +22,7 @@
   </head>
 
   <body>
+    @if(Auth::user()->role == 'admin') 
       <div class="layout-wrapper layout-content-navbar">
           <div class="layout-container">
               {{-- sidebar --}}
@@ -164,6 +165,11 @@
           <!-- Overlay -->
           <div class="layout-overlay layout-menu-toggle"></div>
       </div>
+      @else
+      <h1 class="d-flex justify-content-center align-items-center" style="height: 100vh">ANDA BUKAN ADMIN</h1>
+  
+  @endif
+  
   </body>
 
   @stack('prepend-script')
