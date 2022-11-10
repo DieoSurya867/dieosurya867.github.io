@@ -28,6 +28,9 @@ class HomeController extends Controller
             return view('Pages.admin.home');
         } elseif (Auth::user()->role == 'user') {
             return redirect('/');
+        } else {
+            return redirect('/login');
+
         }
     }
 }

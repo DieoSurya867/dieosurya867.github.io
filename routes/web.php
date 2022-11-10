@@ -8,6 +8,7 @@ use App\Http\Controllers\productCon;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Middleware\Admin;
 
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DetailController;
@@ -26,20 +27,19 @@ use App\Http\Controllers\KeranjangController;
 
 Route::get('/', [productCon::class, 'tampil']);
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', function () {
         return view('Pages.admin.home');
     });
     Route::resource('admin/produk', productCon::class);
     Route::resource('admin/galeri', GaleriController::class);
-    Route::resource('admin/kategori', KategoriController::class);
     Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
     Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
     Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
-});
+// });
 
-
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
+    Route::resource('admin/kategori', KategoriController::class);
     Route::resource('keranjang', KeranjangController::class);
     Route::resource('kategori', KategoriController::class);
     Route::resource('check', CheckoutController::class);
