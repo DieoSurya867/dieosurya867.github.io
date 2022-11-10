@@ -23,5 +23,4 @@ class transaksi extends Model
     {
         return $this->hasMany(Transaksi_detail::class);
     }
-
 }

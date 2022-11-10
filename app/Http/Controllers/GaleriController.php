@@ -42,15 +42,23 @@ class GaleriController extends Controller
         $validator = $request->validate([
             'produk_id' => 'required',
             'fotoProdukPertama' => 'required|image|max:10000|mimes:png,jpg',
-
+            'fotoProdukKedua' => 'required|image|max:10000|mimes:png,jpg',
+            'fotoProdukKetiga' => 'required|image|max:10000|mimes:png,jpg',
+            'fotoProdukKeempat' => 'required|image|max:10000|mimes:png,jpg',
         ]);
 
         $file = $request->file('fotoProdukPertama')->store('img');
+        $file2 = $request->file('fotoProdukKedua')->store('img');
+        $file3 = $request->file('fotoProdukKetiga')->store('img');
+        $file4 = $request->file('fotoProdukKeempat')->store('img');
 
         // Upload::create([
         //     'image' => $file
         // ]);
         $validator['fotoProdukPertama'] = $file;
+        $validator['fotoProdukKedua'] = $file2;
+        $validator['fotoProdukKetiga'] = $file3;
+        $validator['fotoProdukKeempat'] = $file4;
         Galeri::create($validator);
         return redirect('admin/galeri')->with('success', 'Data Berhasil Terupload');
     }
@@ -108,9 +116,32 @@ class GaleriController extends Controller
 
                 'fotoProdukPertama' => $file,
             ]);
-        } else {
-            return redirect('admin/galeri')->with('error', 'Tidak Ada Yng Berubah');
         }
+        if ($request->file('fotoProdukKedua')) {
+            $file = $request->file('fotoProdukKedua')->store('img');
+
+            $galeri->update([
+
+                'fotoProdukKedua' => $file,
+            ]);
+        }
+        if ($request->file('fotoProdukKetiga')) {
+            $file = $request->file('fotoProdukKetiga')->store('img');
+
+            $galeri->update([
+
+                'fotoProdukKetiga' => $file,
+            ]);
+        }
+        if ($request->file('fotoProdukKeempat')) {
+            $file = $request->file('fotoProdukKeempat')->store('img');
+
+            $galeri->update([
+
+                'fotoProdukKeempat' => $file,
+            ]);
+        }
+
         return redirect('admin/galeri')->with('success', 'Data Berhasil Diubah');
     }
 
@@ -124,7 +155,10 @@ class GaleriController extends Controller
     {
         // delete image
         $galeri = galeri::find($id);
-        Storage::delete('storage/img/' . $galeri->fotoProdukPertama);
+        Storage::delete('storage/' . $galeri->fotoProdukPertama);
+        Storage::delete('storage/' . $galeri->fotoProdukKedua);
+        Storage::delete('storage/' . $galeri->fotoProdukKetiga);
+        Storage::delete('storage/' . $galeri->fotoProdukKeempat);
 
         //delete post
         $galeri->delete();

@@ -9,6 +9,7 @@ use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KeranjangController;
 
@@ -33,27 +34,25 @@ Route::get('admin/dasboard', function () {
 });
 
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('login', HomeController::class);
-});
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::resource('login', HomeController::class);
+// });
 
 Route::get('/', [productCon::class, 'tampil']);
 Route::get('/user/kategori/{id}', [productCon::class, 'show']);
 
-Route::get('admin/dashboard', function () {
-    return view('Pages.admin.home');
-});
-Route::get('user/cart', function () {
-    return view('Pages.user.cart');
-});
+// Route::get('admin/dashboard', function () {
+//     return view('Pages.admin.home');
+// });
+
 Route::get('user/check', function () {
     return view('Pages.user.checkout');
 });
 
 Route::get('user/detail/{id}', [productCon::class, 'detail']);
-
-
 Route::get('midtrans', [TransaksiController::class, 'midtrans']);
+Route::post('/checkout', 'CheckoutController@process')->name('checkout');
+Route::post('/checkout/callback', [CheckoutController::class, 'callback']);
 
 Route::resource('admin/produk', productCon::class);
 Route::resource('admin/galeri', GaleriController::class);
