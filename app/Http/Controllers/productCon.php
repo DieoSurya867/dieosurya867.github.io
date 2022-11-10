@@ -43,14 +43,6 @@ class productCon extends Controller
         return view('Pages.user.index', compact('kategori', 'data'));
     }
 
-    public function detail(Request $rq)
-    {
-        $d = Produk::where('id', $rq->id)->get();
-        $data = Produk::all();
-
-        return view('Pages.user.detail', compact('d', 'data'));
-    }
-
 
 
     public function create()

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Kategori | Ecommerce bootstrap template
+    Kategori
 @endsection
 @section('content')
     <div class="container">
@@ -35,15 +35,17 @@
 
                 @foreach ($kategori as $d)
                     <div class="col-xl-3 col-lg-4 col-sm-5">
-                        <div class="product text-center">
+                        <div class="product produk-data text-center">
                             <div class="position-relative mb-3">
+                                <input type="hidden" class="prod-id" value="{{ $d->id }}">
+                                <input type="hidden" class="prod-qty" value="1">
                                 <div class="d-flex text-white">
                                     <p class="badge bg-dark">adad</p>
                                     <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
                                         <i class="fas fa-expand"></i>
                                     </a>
                                 </div>
-                                <a class="d-block" href="{{ url('user/detail/' . $d->id) }}"><img class="img-fluid w-100"
+                                <a class="d-block" href="{{ url('detail/' . $d->id) }}"><img class="img-fluid w-100"
                                         src="{{ asset('storage/' . $d->galeri->first()->fotoProdukPertama) }}"
                                         alt="..." /></a>
                                 <div class="product-overlay">
@@ -53,15 +55,16 @@
 
                                         </li>
                                         <li class="list-inline-item m-0 p-0">
-                                            <a class="btn btn-sm btn-dark" href="{{ url('user/cart') }}">Add to cart</a>
-                                        </li>
+                                            <button type="button" class="btn btn-sm btn-dark addToCart">Add to
+                                                cart</button>
+                                    </li>
                                     </ul>
                                 </div>
                             </div>
                             <h6>
-                                <a class="reset-anchor" href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
+                                <a class="reset-anchor" href="{{ url('detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
                             </h6>
-                            <p class="small text-muted">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
+                            <p class="small text-muted">{{ 'Rp.' . ' ' . number_format($d->hargaProduk, 2, ',', '.') }}</p>
                         </div>
                     </div>
                 @endforeach

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Keranjang - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Keranjang
 @endsection
 @section('content')
     <div class="container">
@@ -49,12 +49,12 @@
                                     <tr>
                                         <th class="ps-0 py-3 border-light" scope="row">
                                             <div class="d-flex align-items-center"><a
-                                                    class="reset-anchor d-block animsition-link" href="detail.html"><img
+                                                    class="reset-anchor d-block animsition-link" href="{{ url('detail/' . $item->produk->id) }}"><img
                                                         src="{{ asset('storage/' . $item->produk->galeri->first()->fotoProdukPertama) }}"
                                                         alt="..." width="70" /></a>
                                                 <div class="ms-3"><strong class="h6"><a
                                                             class="reset-anchor animsition-link"
-                                                            href="detail.html">{{ $item->produk->namaProduk }}</a></strong>
+                                                            href="{{ url('detail/' . $item->produk->id) }}">{{ $item->produk->namaProduk }}</a></strong>
                                                 </div>
                                             </div>
                                         </th>
@@ -79,8 +79,13 @@
                                         <td class="p-3 align-middle border-light">
                                             <p class="mb-0 small" id="subtotal">$250</p>
                                         </td>
-                                        <td class="p-3 align-middle border-light"><a class="reset-anchor" href="#!"><i
-                                                    class="fas fa-trash-alt small text-muted"></i></a></td>
+                                        <td class="p-3 align-middle border-light">
+                                            <form action="{{ route('keranjang.destroy', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="border border-none" onclick="return confirm('Anda yakin?')"><i class="fas fa-trash-alt small text-muted"></i></button>
+                                            </form>
+                
                                     </tr>
                                     {{-- @endif --}}
                                 @endforeach

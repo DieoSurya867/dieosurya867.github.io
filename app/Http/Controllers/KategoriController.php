@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\POST;
+use App\Models\produk;
 use File;
 use Illuminate\Support\Facades\Storage;
 
@@ -64,7 +65,11 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        //
+        $kategori = produk::where('kategori_id', $id)->get();
+        $data = Produk::all();
+        // dd($data);
+        return view('Pages.user.kategori.index', compact('kategori', 'data'));
+
     }
 
     /**

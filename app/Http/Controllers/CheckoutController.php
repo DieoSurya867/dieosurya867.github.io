@@ -28,7 +28,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.user.checkout');
     }
 
     public function process(Request $request)
