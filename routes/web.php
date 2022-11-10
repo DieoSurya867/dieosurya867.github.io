@@ -40,12 +40,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::resource('detail', DetailController::class);
     Route::resource('keranjang', KeranjangController::class);
     Route::resource('kategori', KategoriController::class);
+    Route::resource('check', CheckoutController::class);
     Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
 });
 
+
+Route::resource('detail', DetailController::class);
 Auth::routes();
 Route::get('midtrans', [TransaksiController::class, 'midtrans']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('json', function() {
+    return view('json');
+});

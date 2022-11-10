@@ -81,11 +81,8 @@
                                         <li class="list-inline-item m-0 p-0">
                                             @auth
                                                 <button type="button" class="btn btn-sm btn-dark addToCart">Add to
-                                                    cart</button>
-                                            @else
-                                                <a href="{{ route('login') }}" class="btn btn-sm btn-dark">Login First</a>
+                                                    cart</button>                                            
                                             @endauth
-
                                         </li>
                                     </ul>
                                 </div>

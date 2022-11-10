@@ -16,8 +16,8 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        
-        $keranjang = Keranjang::all();
+        $user_id = Auth::id();
+        $keranjang = Keranjang::where('users_id',$user_id)->get();
         return view('Pages.user.cart', compact('keranjang'));
     }
 
@@ -26,6 +26,14 @@ class KeranjangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //  public function count()
+    //  {
+    //     //  $user_id = Auth::id();
+    //     //  $keranjang = Keranjang::where('users_id',$user_id)->count();
+    //     //  return view('', ['keranjang' => $keranjang]);
+    //  }
+
     public function create()
     {
         //
@@ -46,12 +54,12 @@ class KeranjangController extends Controller
         $produk_check = produk::where('id', $produk_id)->first();
 
         if ($produk_check) {
-            $cartItem = new Keranjang();
-            $cartItem->produk_id = $produk_id;
-            $cartItem->users_id = $user_id;
-            $cartItem->kuantitas = $produk_qty;
-            $cartItem->save();
-            return response()->json(['status' => $produk_check->namaProduk . " berhasil tambah ke keranjang"]);
+                $cartItem = new Keranjang();
+                $cartItem->produk_id = $produk_id;
+                $cartItem->users_id = $user_id;
+                $cartItem->kuantitas = $produk_qty;
+                $cartItem->save();
+                return response()->json(['status' => $produk_check->namaProduk . " berhasil tambah ke keranjang"]);
         }
     }
 

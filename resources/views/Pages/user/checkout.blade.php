@@ -35,12 +35,12 @@
                         <div class="col-lg-6">
                             <label class="form-label text-sm text-uppercase fw-bold" for="firstName">Nama Pembeli </label>
                             <input class="form-control-plaintext form-control-lg" type="text" id="firstName"
-                                value="Sutarman Efendi">
+                                value="{{ Auth::user()->name }}">
                         </div>
                         <div class="col-lg-6">
                             <label class="form-label text-sm text-uppercase fw-bold" for="email">Email</label>
                             <input class="form-control-plaintext form-control-lg" type="email" id="email"
-                                value="sutarman@example.com">
+                                value="{{ Auth::user()->email }}">
                         </div>
                         <div class="col-lg-12">
                             <label class="form-label text-sm text-uppercase fw-bold" for="phone">No. HP</label>
@@ -51,7 +51,7 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1" class="fw-bold">Provinsi</label>
                                 <select class="form-control" id="provinces" onchange="daerah(id,value)">
-                                    <option value="">Pilih Provinsi</option>
+                                    <option value="">cari provinsi</option>
                                 </select>
                             </div>
                         </div>
@@ -59,7 +59,6 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1" class="fw-bold">Kabupaten</label>
                                 <select class="form-control" id="regencies" onchange="daerah(id,value)">
-                                    <option value="">Pilih Kabupaten</option>
                                 </select>
                             </div>
                         </div>
@@ -68,7 +67,6 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1" class="fw-bold">Kecamatan</label>
                                 <select class="form-control" id="districts" onchange="daerah(id,value)">
-                                    <option value="">Pilih Kecamatan</option>
                                 </select>
                             </div>
                         </div>
@@ -77,7 +75,6 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1" class="fw-bold">Kelurahan</label>
                                 <select class="form-control" id="villages" onchange="daerah(id,value)">
-                                    <option value="">Pilih Kelurahan</option>
                                 </select>
                             </div>
                         </div>

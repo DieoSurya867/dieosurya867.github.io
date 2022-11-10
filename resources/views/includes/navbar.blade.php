@@ -31,11 +31,26 @@
                      </li>
                  </ul>
                  <ul class="navbar-nav ms-auto">
-                     <li class="nav-item">
-                         <a class="nav-link" href="{{ url('/keranjang') }}">
-                             <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small
-                                 class="text-gray fw-normal">(2)</small></a>
-                     </li>
+                    @if(!Auth::user())
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart
+                            </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/keranjang') }}">
+                                <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart
+                                @php
+                                 $keranjang = App\Models\Keranjang::where('users_id', Auth::user()->id)->count();
+                                 @endphp
+                             @if ($keranjang > 0)
+                             <small class="text-gray fw-normal">({{ $keranjang }})</small></a>
+                             @else
+                             <small class="text-gray fw-normal">(0)</small></a>
+                             @endif
+                            </li>
+                    @endif
                      @guest
                          <li class="nav-item">
                              <a class="nav-link" href="{{ route('login') }}">
@@ -50,7 +65,8 @@
                      @else
                          <li class="nav-item dropdown">
                              <a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown"
-                                 aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                                 aria-haspopup="true" aria-expanded="false"><i
+                                     class="fas fa-user me-1 text-gray fw-normal"></i>{{ Auth::user()->name }}</a>
                              <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
                                  <a class="dropdown-item border-0 transition-link" href="{{ route('logout') }}"
                                      onclick="event.preventDefault();document.getElementById('logout-form').submit();">

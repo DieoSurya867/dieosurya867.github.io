@@ -133,8 +133,12 @@
                             </div>
                         </div>
                         <div class="col-sm-3 pl-sm-0">
+                            @auth
                             <button type="button" class="btn btn-sm btn-dark addToCart">Add to
                                 cart</button>
+                            @else
+                                <a href="{{ url('login') }}" class="btn btn-sm btn-dark">Login First</a>                                            
+                            @endauth
                             <ul class="list-unstyled small d-inline-block mt-5">
                                 <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Stok:</strong><span
                                         class="ms-2 text-muted">{{ $d->stock }}</span></li>
