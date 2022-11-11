@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\keranjang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class CheckoutController extends Controller
@@ -14,7 +16,9 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('pages.user.checkout');
+        $user_id = Auth::id();
+        $keranjang = Keranjang::where('users_id',$user_id)->get();
+        return view('pages.user.checkout', compact('keranjang'));
     }
 
     /**

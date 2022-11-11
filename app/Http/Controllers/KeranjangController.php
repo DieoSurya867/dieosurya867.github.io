@@ -27,13 +27,6 @@ class KeranjangController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //  public function count()
-    //  {
-    //     //  $user_id = Auth::id();
-    //     //  $keranjang = Keranjang::where('users_id',$user_id)->count();
-    //     //  return view('', ['keranjang' => $keranjang]);
-    //  }
-
     public function create()
     {
         //
@@ -52,8 +45,11 @@ class KeranjangController extends Controller
         $produk_qty = $request->input('kuantitas');
         $user_id = Auth::id();
         $produk_check = produk::where('id', $produk_id)->first();
+        $produk_valid = keranjang::where('produk_id', $produk_id)->first();
 
-        if ($produk_check) {
+        if ($produk_valid) {
+            return response()->json(['status' => $produk_check->namaProduk . " sudah ada di keranjang"]);
+        }else if ($produk_check){
                 $cartItem = new Keranjang();
                 $cartItem->produk_id = $produk_id;
                 $cartItem->users_id = $user_id;
@@ -69,6 +65,27 @@ class KeranjangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function updatecart(Request $request)
+     {
+        $produk_id = $request->input('produk_id');
+        $produk_qty = $request->input('kuantitas');
+        $user_id = Auth::id();
+
+        if (Auth::check()) {
+            if (keranjang::where('produk_id', $produk_id)->where('users_id', $user_id)->exists()) {
+                $keranjang = keranjang::where('produk_id', $produk_id)->where('users_id', $user_id)->first();
+                $keranjang->produk_id = $keranjang->produk_id;
+                $keranjang->users_id = $keranjang->users_id;
+                $keranjang->kuantitas = $produk_qty;
+                $keranjang->update();
+                return response()->json(['status'=>'jumlah di Update']);
+            }
+        }
+        
+     }
+
+
     public function show($id)
     {
         //
@@ -82,7 +99,8 @@ class KeranjangController extends Controller
      */
     public function edit($id)
     {
-        //
+        $keranjang = keranjang::find($id);
+        return view('Pages.user.cart', ['keranjang'=>$keranjang]);
     }
 
     /**
@@ -94,7 +112,24 @@ class KeranjangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $keranjang = Keranjang::find($id);
+        if (!$request->qty) {
+            $keranjang->update([
+                'produk_id' => $keranjang->produk_id,
+                'users_id' => $keranjang->users_id,
+                'kuantitas' => $keranjang->kuantitas,
+            ]);
+            return redirect('check');
+        } else {
+            $keranjang->update([
+                'produk_id' => $keranjang->produk_id,
+                'users_id' => $keranjang->users_id,
+                'kuantitas' => $request->qty,
+            ]);
+    
+            return redirect('check');
+
+        }
     }
 
     /**

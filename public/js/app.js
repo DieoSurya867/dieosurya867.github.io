@@ -1,9 +1,9 @@
 // $(document).ready(function () {
-//     $.ajaxSetup({
-//         headers: {
-//             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-//         },
-//     });
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
     // API WILAYAH FUNCTION
     $.ajax({
         type: "get",
@@ -73,26 +73,38 @@
             },
             success: function (response) {
                 alert(response.status);
+                window.location.reload();
             },
+            error: function (response){
+                alert(response.status);
+            }
         });
     });
 
-
-    $("#tambah").click(function (e) {
+    // EDIT QTY CART FUNCTION
+    $(".ubahQuantity").click(function (e) { 
         e.preventDefault();
+        
+        let produk_id = $(this).closest(".produk-data").find(".prod-id").val();
+        let produk_qty = $(this).closest(".produk-data").find(".qty-input").val();;
+        data = {
+            'produk_id': produk_id,
+            'kuantitas': produk_qty,
+        }
+        // alert(produk_id);
+        // alert(produk_qty);
 
-        let jumlah = $("#jumlah").val();
-        let harga = $("#harga_produk").val();
-        
-        let tambah = jumlah*10
-        alert(jumlah);
-        alert(harga);
-        alert(tambah);
-        
-        let subtotal = $("#subtotal").val(tambah);
-        // $( "#subtotal" ).html("{{ 'Rp.' . ' ' . number_format($item->produk->hargaProduk, 2, ',', '.') }}");
+        $.ajax({
+            method: "POST",
+            url: "woy",
+            data: data,
+            success: function (response) {
+                alert(response);
+            }
+        });
 
     });
+
 
 
 

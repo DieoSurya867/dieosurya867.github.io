@@ -1,6 +1,8 @@
       <!-- JavaScript files-->
       <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
           crossorigin="anonymous"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="sweetalert2.min.js"></script>
       <script src={{ asset('store/vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
       <script src={{ asset('store/vendor/glightbox/js/glightbox.min.js') }}></script>
       <script src={{ asset('store/vendor/nouislider/nouislider.min.js') }}></script>

@@ -44,11 +44,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::resource('check', CheckoutController::class);
     Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
+    Route::get('semua-kategori', [KategoriController::class, 'tampilSemua'])->name('home');
 });
 
 
 Route::resource('detail', DetailController::class);
 Auth::routes();
+Route::post('woy', [KeranjangController::class, 'updatecart']);
 Route::get('midtrans', [TransaksiController::class, 'midtrans']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('json', function() {
