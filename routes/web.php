@@ -57,7 +57,3 @@ Route::middleware('auth')->group(function () {
 Route::resource('detail', DetailController::class);
 Auth::routes();
 Route::post('woy', [KeranjangController::class, 'updatecart']);
-Route::get('midtrans', [TransaksiController::class, 'midtrans']);
-Route::get('json', function () {
-    return view('json');
-});
