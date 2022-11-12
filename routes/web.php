@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
     Route::get('deletekategori/{id}', [KategoriController::class, 'destroy'])->name('deletekategori');
     Route::get('deletegaleri/{id}', [GaleriController::class, 'destroy'])->name('deletegaleri');
+
     // });
 
     // Route::middleware('auth')->group(function () {
