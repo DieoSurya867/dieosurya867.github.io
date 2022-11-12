@@ -5,6 +5,7 @@
     Dashboard - Galleri | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
 @section('content')
+
     <div class="content-wrapper">
         <!-- Content -->
 
@@ -74,4 +75,5 @@
         <!-- / Content -->
         <div class="content-backdrop fade"></div>
     </div>
+
 @endsection

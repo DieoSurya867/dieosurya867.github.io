@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Detail Produk - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
+    Detail Produk
 @endsection
 @section('content')
     <!--  Modal -->
@@ -108,7 +108,7 @@
                     </div>
                 </div>
                 <!-- PRODUCT DETAILS-->
-                <div class="col-lg-6">
+                <div class="col-lg-6 produk-data">
                     <ul class="list-inline mb-2 text-sm">
                         <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
                         <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
@@ -116,8 +116,9 @@
                         <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
                         <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
                     </ul>
+                    <input type="hidden" class="prod-id" value="{{ $d->id }}">
                     <h1>{{ $d->namaProduk }}</h1>
-                    <p class="text-muted lead">{{ 'Rp.' . ' ' . $d->hargaProduk }}</p>
+                    <p class="text-muted lead">{{ 'Rp.' . ' ' . number_format($d->hargaProduk, 2, ',', '.') }}</p>
 
                     <div class="row align-items-stretch mb-4">
                         <div class="col-sm-5 pr-sm-0">
@@ -126,101 +127,115 @@
                                 <span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
                                 <div class="quantity">
                                     <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                    <input class="form-control border-0 shadow-0 p-0" type="text" value="1">
+                                    <input class="form-control border-0 shadow-0 p-0 prod-qty" type="text" value="1">
                                     <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 pl-sm-0"><a
-                                class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0"
-                                href="{{ url('user/cart') }}">Add to cart</a></div>
-                        <ul class="list-unstyled small d-inline-block mt-5">
-                            <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Stok:</strong><span
-                                    class="ms-2 text-muted">{{ $d->stock }}</span></li>
-                            <li class="px-3 py-2 mb-1 bg-white text-muted"><strong
-                                    class="text-uppercase text-dark">Kategori:</strong><a class="reset-anchor ms-2"
-                                    href="{{ url('/user/kategori/' . $d->kategori_id) }}">{{ $d->kategori->namaKategori }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- DETAILS TABS-->
-                <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
-                    <li class="nav-item"><a class="nav-link text-uppercase active" id="description-tab"
-                            data-bs-toggle="tab" href="#description" role="tab" aria-controls="description"
-                            aria-selected="true">Description</a></li>
-                    <li class="nav-item"><a class="nav-link text-uppercase" id="reviews-tab" data-bs-toggle="tab"
-                            href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
-                    </li>
-                </ul>
-                <div class="tab-content mb-5" id="myTabContent">
-                    <div class="tab-pane fade show active" id="description" role="tabpanel"
-                        aria-labelledby="description-tab">
-                        <div class="p-4 p-lg-5 mx-auto bg-white card border-0">
-                            <h5>Deskripsi Produk</h5>
-                            <p class="text-muted text-sm mb-0">{{ $d->deskripsi }}</p>
+                        <div class="col-sm-3 pl-sm-0">
+                            @auth
+                            <button type="button" class="btn btn-sm btn-dark addToCart">Add to
+                                cart</button>
+                            @else
+                                <a href="{{ url('login') }}" class="btn btn-sm btn-dark">Login First</a>                                            
+                            @endauth
+                            <ul class="list-unstyled small d-inline-block mt-5">
+                                <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Stok:</strong><span
+                                        class="ms-2 text-muted">{{ $d->stock }}</span></li>
+                                <li class="px-3 py-2 mb-1 bg-white text-muted"><strong
+                                        class="text-uppercase text-dark">Kategori:</strong><a class="reset-anchor ms-2"
+                                        href="{{ url('/user/kategori/' . $d->kategori_id) }}">{{ $d->kategori->namaKategori }}</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                        <div class="p-4 p-lg-5 bg-white">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="d-flex mb-3">
-                                        <div class="flex-shrink-0"><img class="rounded-circle"
-                                                src="{{ asset('store/img/customer-1.png') }}" alt=""
-                                                width="50" /></div>
-                                        <div class="ms-3 flex-shrink-1">
-                                            <h6 class="mb-0 text-uppercase">Jason Doe</h6>
-                                            <p class="small text-muted mb-0 text-uppercase">20 May 2020</p>
-                                            <ul class="list-inline mb-1 text-xs">
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i
-                                                        class="fas fa-star-half-alt text-warning"></i></li>
-                                            </ul>
-                                            <p class="text-sm mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur
-                                                adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua.</p>
+                    <!-- DETAILS TABS-->
+                    <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link text-uppercase active" id="description-tab"
+                                data-bs-toggle="tab" href="#description" role="tab" aria-controls="description"
+                                aria-selected="true">Description</a></li>
+                        <li class="nav-item"><a class="nav-link text-uppercase" id="reviews-tab" data-bs-toggle="tab"
+                                href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mb-5" id="myTabContent">
+                        <div class="tab-pane fade show active" id="description" role="tabpanel"
+                            aria-labelledby="description-tab">
+                            <div class="p-4 p-lg-5 mx-auto bg-white card border-0">
+                                <h5>Deskripsi Produk</h5>
+                                <p class="text-muted text-sm mb-0">{{ $d->deskripsi }}</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="p-4 p-lg-5 bg-white">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="d-flex mb-3">
+                                            <div class="flex-shrink-0"><img class="rounded-circle"
+                                                    src="{{ asset('store/img/customer-1.png') }}" alt=""
+                                                    width="50" /></div>
+                                            <div class="ms-3 flex-shrink-1">
+                                                <h6 class="mb-0 text-uppercase">Jason Doe</h6>
+                                                <p class="small text-muted mb-0 text-uppercase">20 May 2020</p>
+                                                <ul class="list-inline mb-1 text-xs">
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star-half-alt text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-sm mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur
+                                                    adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                                    magna
+                                                    aliqua.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0"><img class="rounded-circle"
-                                                src="{{ asset('store/img/customer-2.png') }}" alt=""
-                                                width="50" /></div>
-                                        <div class="ms-3 flex-shrink-1">
-                                            <h6 class="mb-0 text-uppercase">Jane Doe</h6>
-                                            <p class="small text-muted mb-0 text-uppercase">20 May 2020</p>
-                                            <ul class="list-inline mb-1 text-xs">
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i>
-                                                </li>
-                                                <li class="list-inline-item m-0"><i
-                                                        class="fas fa-star-half-alt text-warning"></i></li>
-                                            </ul>
-                                            <p class="text-sm mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur
-                                                adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua.</p>
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0"><img class="rounded-circle"
+                                                    src="{{ asset('store/img/customer-2.png') }}" alt=""
+                                                    width="50" /></div>
+                                            <div class="ms-3 flex-shrink-1">
+                                                <h6 class="mb-0 text-uppercase">Jane Doe</h6>
+                                                <p class="small text-muted mb-0 text-uppercase">20 May 2020</p>
+                                                <ul class="list-inline mb-1 text-xs">
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star text-warning"></i>
+                                                    </li>
+                                                    <li class="list-inline-item m-0"><i
+                                                            class="fas fa-star-half-alt text-warning"></i></li>
+                                                </ul>
+                                                <p class="text-sm mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur
+                                                    adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                                    magna
+                                                    aliqua.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
-                <!-- RELATED PRODUCTS-->
-                {{-- <h2 class="h5 text-uppercase mb-4">Related products</h2>
+                    @endforeach
+                    <!-- RELATED PRODUCTS-->
+                    {{-- <h2 class="h5 text-uppercase mb-4">Related products</h2>
                 <div class="row">
                     <!-- PRODUCT-->
                     @foreach ($data as $d)
@@ -246,7 +261,7 @@
                             </div>
                         </div>
                     @endforeach --}}
-                {{-- </div> --}}
-            </div>
+                    {{-- </div> --}}
+                </div>
     </section>
 @endsection

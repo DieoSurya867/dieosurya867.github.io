@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Checkout - O-Mal | Belanja Online - Oleh Malang
+    Checkout
 @endsection
 @section('content')
     <div class="container">
@@ -39,12 +39,12 @@
                                 <label class="form-label text-sm text-uppercase fw-bold" for="firstName">Nama Pembeli
                                 </label>
                                 <input class="form-control-plaintext form-control-lg" type="text" id="firstName"
-                                    value="Sutarman Efendi">
+                                    value="{{ Auth::user()->name }}">
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-label text-sm text-uppercase fw-bold" for="email">Email</label>
                                 <input class="form-control-plaintext form-control-lg" type="email" id="email"
-                                    value="sutarman@example.com">
+                                    value="{{ Auth::user()->email }}">
                             </div>
                             <div class="col-lg-12">
                                 <label class="form-label text-sm text-uppercase fw-bold" for="phone">No. HP</label>
@@ -59,11 +59,11 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group col-lg-6">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1" class="fw-bold">Kabupaten</label>
                                     <select class="form-control" id="regencies" onchange="daerah(id,value)">
-                                        <option value="">Pilih Kabupaten</option>
                                     </select>
                                 </div>
                             </div>
@@ -72,7 +72,6 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1" class="fw-bold">Kecamatan</label>
                                     <select class="form-control" id="districts" onchange="daerah(id,value)">
-                                        <option value="">Pilih Kecamatan</option>
                                     </select>
                                 </div>
                             </div>
@@ -81,16 +80,18 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1" class="fw-bold">Kelurahan</label>
                                     <select class="form-control" id="villages" onchange="daerah(id,value)">
-                                        <option value="">Pilih Kelurahan</option>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-lg-12 mb-4">
-                                <label for="exampleFormControlTextarea1" class="form-label fw-bold">Alamat Lengkap</label>
+                                <label for="exampleFormControlTextarea1" class="form-label fw-bold">Alamat
+                                    Lengkap</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                         </div>
                     </div>
+
                     <!-- ORDER SUMMARY-->
                     <div class="col-lg-4">
                         <div class="card border-0 rounded-0 p-lg-4 bg-light">
@@ -106,10 +107,12 @@
                                             class="text-muted small">$351</span></li>
                                     <li class="border-bottom my-2"></li>
                                     <li class="d-flex align-items-center justify-content-between"><strong
-                                            class="text-uppercase small fw-bold">Total</strong><span>$601</span></li>
+                                            class="text-uppercase small fw-bold">Total</strong><span>$601</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
+
                         <div class="col-12 d-flex justify-content-center mt-3">
                             <button class="btn btn-dark fw-bold" type="submit">Bayar</button>
                         </div>

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    O_MAL | Ecommerce bootstrap template
+    O_MAL
 @endsection
 @section('content')
     <div class="container">
@@ -32,10 +32,9 @@
                 @forelse($kategori as $item)
                     <div class="col-lg-3 mb-5">
                         <a scope="row">{{ $loop->iteration }}</a>
-                        <a class="category-item" href="{{ url('/user/kategori/' . $item->id) }}"><img class="img-fluid"
-                                src="{{ asset('storage/' . $item->foto) }}" alt=""
-                                style="width: 800px; height: 150px;" /><strong
-                                class="category-item-title">{{ $item->namaKategori }}</strong></a>
+                        <a class="category-item" href="{{ url('kategori/' . $item->id) }}">
+                            <img class="img-fluid" src="{{ asset('storage/' . $item->foto) }}" alt="" style="width: 800px; height: 150px;" />
+                            <strong class="category-item-title">{{ $item->namaKategori }}</strong></a>
                     </div>
                 @empty
                     <div class="col-3 mb-5">
@@ -61,13 +60,14 @@
                         <div class="product produk-data text-center">
                             <div class="position-relative mb-3">
                                 <input type="hidden" class="prod-id" value="{{ $d->id }}">
+                                <input type="hidden" class="prod-qty" value="1">
                                 <div class="d-flex text-white">
                                     <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
                                         <i class="fas fa-expand"></i>
                                     </a>
                                     <p class="badge">adad</p>
                                 </div>
-                                <a class="d-block" href="{{ url('user/detail/' . $d->id) }}">
+                                <a class="d-block" href="{{ url('detail/' . $d->id) }}">
                                     <img class="img-fluid w-100"
                                         src="{{ asset('storage/' . $d->galeri->first()->fotoProdukPertama) }}"
                                         alt="..." />
@@ -75,19 +75,20 @@
                                 </a>
                                 <div class="product-overlay">
                                     <ul class="mb-0 list-inline d-flex flex-column">
-                                        </li>
                                         <li class="list-inline-item me-0">
 
                                         </li>
                                         <li class="list-inline-item m-0 p-0">
-                                            <button type="button" class="btn btn-sm btn-dark addToCart">Add to
-                                                cart</button>
+                                            @auth
+                                                <button type="button" class="btn btn-sm btn-dark addToCart">Add to
+                                                    cart</button>                                            
+                                            @endauth
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <h6>
-                                <a class="reset-anchor" href="{{ url('user/detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
+                                <a class="reset-anchor" href="{{ url('detail/' . $d->id) }}">{{ $d->namaProduk }}</a>
                             </h6>
                             <p class="small text-muted">{{ 'Rp.' . ' ' . number_format($d->hargaProduk, 2, ',', '.') }}</p>
                         </div>

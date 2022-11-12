@@ -31,7 +31,6 @@ class productCon extends Controller
     {
         $kategori = kategori::all();
 
-
         $data = produk::all()->sortByDesc('jumlahTerjual')->skip(0)->take(8);
         // $data = produk::all();
         // if ($kategori) {
@@ -41,14 +40,6 @@ class productCon extends Controller
         //     return redirect()->back();
         // }
         return view('Pages.user.index', compact('kategori', 'data'));
-    }
-
-    public function detail(Request $rq)
-    {
-        $d = Produk::where('id', $rq->id)->get();
-        $data = Produk::all();
-
-        return view('Pages.user.detail', compact('d', 'data'));
     }
 
 
