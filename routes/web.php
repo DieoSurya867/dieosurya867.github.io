@@ -5,7 +5,10 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\productCon;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\produkCon;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Middleware\Admin;
@@ -28,7 +31,9 @@ use App\Http\Controllers\KeranjangController;
 Route::get('/', [productCon::class, 'tampil']);
 
 Route::middleware('auth')->group(function () {
-
+    Route::resource('admin/users', UsersController::class);
+    Route::resource('admin/transaksi', TransaksiController::class);
+    Route::resource('admin/dashboard', AdminController::class);
     Route::resource('admin/produk', productCon::class);
     Route::resource('admin/galeri', GaleriController::class);
     Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');

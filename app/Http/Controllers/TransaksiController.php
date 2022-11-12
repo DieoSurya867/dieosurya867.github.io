@@ -11,36 +11,53 @@ use Midtrans\Snap;
 
 class TransaksiController extends Controller
 {
-	public function index()
-	{
-		// mengambil data dari table pegawai
-		$transaksi = DB::table('transaksi')->get();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $transaksi = transaksi::all();
+        return view('Pages.admin.transaksi', compact('transaksi'));
+    }
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data = transaksi::findOrFail($id);
 
-		// mengirim data pegawai ke view index
-		return view('transaksi', ['transaksi' => $transaksi]);
-	}
+        return view("pages.admin.edit", [
+            'data' => $data,
+        ]);
+    }
 
-	public function midtrans(Request $request)
-	{
-		// $harga = $request->harga;
-		// $orderid = $request->id;
-		// $metode = $request->metode;
-		Config::$serverKey = 'SB-Mid-server-TW97hDH4YPWSqIc05NMRcGVG';
-		Config::$isProduction = false;
-		Config::$isSanitized = true;
-		Config::$is3ds = true;
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $data2 = $request->all();
+        $item = transaksi::findOrFail($id);
 
-		$params = array(
-			'transaction_details' => array(
-				'order_id' => rand(),
-				'gross_amount' => 10000,
+        $validator = $request->validate([
+            'namaProduk' => 'required|string',
+            'hargaProduk' => 'required|integer',
+            'deskripsi' => 'required|string',
+            'stock' => 'required|integer',
+            'jumlahTerjual' => 'required|integer',
+            'kategori_id' => 'required',
+        ]);
 
-			),
-			"enabled_payments" => [
-				'bank_transfer'
-			],
-		);
-		$snapToken = Snap::getSnapToken($params);
-		return json_encode($snapToken);
-	}
-}
+        $item->update($validator);
+        return redirect()->route('produk.index');
+    }
+}    

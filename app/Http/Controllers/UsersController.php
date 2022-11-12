@@ -2,20 +2,24 @@
  
 namespace App\Http\Controllers;
  
-use App\Models\user;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
  
  
 class UsersController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-    	// mengambil data dari table pegawai
-    	$user = DB::table('users')->get();
- 
-    	// mengirim data pegawai ke view index
-    	return view('users',['users' => $user]);
- 
+        $users = User::latest()->paginate(5);
+
+
+        return view('Pages.admin.Users', compact ('users'));
     }
+
 }

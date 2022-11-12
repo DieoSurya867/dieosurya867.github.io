@@ -21,6 +21,12 @@ class KeranjangController extends Controller
         return view('Pages.user.cart', compact('keranjang'));
     }
 
+    public function tampil()
+    {
+        $keranjang = keranjang::all();
+        return view('Pages.admin.keranjang', compact('keranjang'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -2,34 +2,38 @@
 
 
 @section('title')
-    Omal (Oleh-Oleh Khas Malang)
+    Dashboard - Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro
 @endsection
-@section('user')
+@section('Users')
     <div class="content-wrapper">
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
 
-            <!-- Basic Bootstrap Table -->
+            <!-- Customer -->
             <div class="card">
+                <h5 class="card-header">Customer</h5>
+                <div class="table-responsive text-nowrap">
                     <table class="table table-bordered table-hover">
 
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Password</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach ($user as $user)
+                            @foreach ($users as $u)
                                 <tr>
                                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>{{ $user['name'] }}</strong>
+                                        <strong>{{ $u['id'] }}</strong>
                                     </td>
-                                    <td>{{ $user['email'] }}</td>
-                                    <td>{{ $user['password'] }}</td>
+                                    <td>{{ $u['name'] }}</td>
+                                    <td>{{ $u['email'] }}</td>
+                                    <td>{{ $u['password'] }}</td>
                                 </tr>
                             @endforeach
 
