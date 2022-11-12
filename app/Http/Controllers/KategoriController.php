@@ -67,9 +67,9 @@ class KategoriController extends Controller
     {
         $kategori = produk::where('kategori_id', $id)->get();
         $data = Produk::all();
+        $semua = Kategori::all();
         // dd($data);
-        return view('Pages.user.kategori.index', compact('kategori', 'data'));
-
+        return view('Pages.user.kategori.index', compact('kategori', 'data','semua'));
     }
 
     /**
@@ -78,6 +78,14 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function tampilSemua()
+    {
+        $kategori = kategori::all();
+        $data = Produk::all();
+        return view('Pages.user.kategori.all', compact('kategori','data'));
+    }
+
+
     public function edit($id)
     {
 

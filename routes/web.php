@@ -50,11 +50,13 @@ Route::middleware('auth')->group(function () {
     Route::get('midtrans', [CheckoutController::class, 'midtrans']);
     Route::post('bayar', [CheckoutController::class, 'process'])->name('bayar');
     Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
+    Route::get('semua-kategori', [KategoriController::class, 'tampilSemua'])->name('home');
 });
 
 
 Route::resource('detail', DetailController::class);
 Auth::routes();
+Route::post('woy', [KeranjangController::class, 'updatecart']);
 Route::get('midtrans', [TransaksiController::class, 'midtrans']);
 Route::get('json', function () {
     return view('json');

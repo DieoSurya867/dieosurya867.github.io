@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\keranjang;
-use App\Models\transaksi;
-use App\Models\transaksi_detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 use Illuminate\Support\Facades\Auth;
@@ -26,43 +25,9 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('pages.user.checkout');
-    }
-
-    public function process(Request $request)
-    {
-        $user = Auth::user();
-        $user->update($request->except('total_harga'));
-
-        $code = 'STORE-' . mt_rand(0000, 9999);
-        $keranjang = keranjang::with(['user', 'produk'])
-            ->where('users_id', Auth::user()->id)
-            ->get();
-
-        $transaksi = transaksi::create([
-            'users_id' => Auth::user()->id,
-            'harga_ongkir' => 0,
-            'total_harga' => $request->total_harga,
-            'transaksi_status' => 'PENDING',
-            'kode_transaksi' => $code
-        ]);
-        foreach ($keranjang as $keranjang) {
-            $trx = 'TRX-' . mt_rand(0000, 9999);
-
-            transaksi_detail::create([
-                'transaksi_id' => $transaksi->id,
-                'produk_id' => $keranjang->produk->id,
-                'hargaTransaksi' => $keranjang->produk->hargaTransaksi,
-                'pengiriman_status' => 'PENDING',
-                'resi' => '',
-                'kode_transaksi' => $trx
-            ]);
-        }
-        return dd($transaksi);
-    }
-
-    public function callback(Request $request)
-    {
+        $user_id = Auth::id();
+        $keranjang = Keranjang::where('users_id', $user_id)->get();
+        return view('pages.user.checkout', compact('keranjang'));
     }
 
     /**

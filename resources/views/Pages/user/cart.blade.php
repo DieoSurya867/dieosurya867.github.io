@@ -40,14 +40,17 @@
                                     <th class="border-0 p-3" scope="col"> <strong
                                             class="text-sm text-uppercase">Subtotal</strong></th>
                                     <th class="border-0 p-3" scope="col"> <strong
-                                            class="text-sm text-uppercase"></strong></th>
+                                            class="text-sm text-uppercase"></strong>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="border-0">
+                                @php $total = 0; @endphp
                                 @foreach ($keranjang as $item)
-                                    {{-- @if ($item->user_id == $item->user_id) --}}
-                                    <tr>
-                                        <th class="ps-0 py-3 border-light" scope="row">
+                                    <tr class="produk-data">
+                                        <input type="hidden" class="prod-id" id="iniid"
+                                            value="{{ $item->produk->id }}">
+                                        <th class="ps-0 py-3 border-light text-center" scope="row">
                                             <div class="d-flex align-items-center"><a
                                                     class="reset-anchor d-block animsition-link"
                                                     href="{{ url('detail/' . $item->produk->id) }}"><img
@@ -60,25 +63,27 @@
                                             </div>
                                         </th>
                                         <td class="p-3 align-middle border-light">
-                                            <p class="mb-0 small" id="harga_produk">
-                                                {{ 'Rp.' . ' ' . number_format($item->produk->hargaProduk, 2, ',', '.') }}
+                                            <p class="mb-0 small harga_produk" id="harga_produk{{ $item->produk->id }}">
+                                                {{ 'Rp.' . ' ' . number_format($item->produk->hargaProduk, 0, ',', '.') }}
                                             </p>
                                         </td>
                                         <td class="p-3 align-middle border-light">
-                                            <div class="border d-flex align-items-center justify-content-between px-3"><span
-                                                    class="small text-uppercase text-gray headings-font-family">Jumlah</span>
+                                            <div class="border d-flex align-items-center justify-content-between px-3">
                                                 <div class="quantity">
-                                                    <button class="dec-btn p-0"><i class="fas fa-caret-left"
-                                                            id="kurang"></i></button>
-                                                    <input class="form-control form-control-sm border-0 shadow-0 p-0"
-                                                        type="text" id="jumlah" value="{{ $item->kuantitas }}" />
-                                                    <button class="inc-btn p-0"><i class="fas fa-caret-right"
-                                                            id="tambah"></i></button>
+                                                    <button class="dec-btn p-0 ubahQuantity"><i
+                                                            class="fas fa-caret-left"></i></button>
+                                                    <input
+                                                        class="form-control form-control-sm border-0 shadow-0 p-0 qty-input"
+                                                        name="qty" type="text" value="{{ $item->kuantitas }}" />
+                                                    <button class="inc-btn p-0 ubahQuantity"><i
+                                                            class="fas fa-caret-right"></i></button>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="p-3 align-middle border-light">
-                                            <p class="mb-0 small" id="subtotal"></p>
+                                            <p class="mb-0 small" class="subtotal">
+                                                {{ 'Rp.' . ' ' . number_format($item->produk->hargaProduk * $item->kuantitas, 0, ',', '.') }}
+                                            </p>
                                         </td>
                                         <td class="p-3 align-middle border-light">
                                             <form action="{{ route('keranjang.destroy', $item->id) }}" method="POST">
@@ -88,9 +93,8 @@
                                                     onclick="return confirm('Anda yakin?')"><i
                                                         class="fas fa-trash-alt small text-muted"></i></button>
                                             </form>
-
                                     </tr>
-                                    {{-- @endif --}}
+                                    @php $total += $item->produk->hargaProduk*$item->kuantitas ; @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -103,7 +107,6 @@
                                     Belanja</a></div>
                         </div>
                     </div>
-
                 </div>
                 <!-- ORDER TOTAL-->
                 <div class="col-lg-4">
@@ -113,11 +116,13 @@
                             <ul class="list-unstyled mb-0">
                                 <li class="d-flex align-items-center justify-content-between mb-4"><strong
                                         class="text-uppercase small font-weight-bold">Total</strong><span
-                                        id="total">total harga</span></li>
+                                        id="total">{{ 'Rp.' . ' ' . number_format($total, 0, ',', '.') }}</span></li>
                                 <li>
-                                    <form action="{{ url('checkout') }}">
+                                    <form action="{{ route('keranjang.update', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('put')
                                         <div class="input-group mb-0">
-                                            <button class="btn btn-dark btn-sm w-100" type="submit">CHECKOUT<i
+                                            <button class="btn btn-dark btn-sm w-100">CHECKOUT<i
                                                     class="fas fa-long-arrow-alt-right ms-2"></i></button>
                                         </div>
                                     </form>

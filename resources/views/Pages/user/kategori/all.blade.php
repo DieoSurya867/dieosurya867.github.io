@@ -34,7 +34,7 @@
                     <a class="category-item" href="{{ url('semua-kategori') }}"><strong
                             class="category-item-title">all</strong></a>
                 </div>
-                @forelse($semua as $item)
+                @forelse($kategori as $item)
                     <div class="col-lg-2 mb-5 border-2">
                         <a class="category-item" href="{{ url('kategori/' . $item->id) }}"><strong
                                 class="category-item-title">{{ $item->namaKategori }}</strong></a>
@@ -49,7 +49,7 @@
             <div class="row">
                 <!-- PRODUCT-->
 
-                @foreach ($kategori as $d)
+                @foreach ($data as $d)
                     <div class="col-xl-3 col-lg-4 col-sm-5">
                         <div class="product produk-data text-center">
                             <div class="position-relative mb-3">
@@ -86,8 +86,5 @@
                 @endforeach
             </div>
         </section>
-
-
-
     </div>
 @endsection

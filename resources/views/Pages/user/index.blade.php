@@ -15,7 +15,7 @@
                             New Inspiration 2020
                         </p>
                         <h1 class="h2 text-uppercase mb-3">20% off on new season</h1>
-                        <a class="btn btn-dark" href="shop.html">Browse collections</a>
+                        <a class="btn btn-dark" href="{{ url('semua-kategori') }}">Cari Produk</a>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
             <div class="row">
                 <!-- PRODUCT-->
                 @forelse($data as $d)
-                    <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-offset="3" data-aos-delay="30"
+                    <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-offset="3" data-aos-delay="20"
                         data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="false"
                         data-aos-anchor-placement="top-center">
                         <div class="product produk-data text-center">
@@ -65,13 +65,12 @@
                                     <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
                                         <i class="fas fa-expand"></i>
                                     </a>
-                                    <p class="badge">adad</p>
+                                    <p class="badge"></p>
                                 </div>
                                 <a class="d-block" href="{{ url('detail/' . $d->id) }}">
                                     <img class="img-fluid w-100"
                                         src="{{ asset('storage/' . $d->galeri->first()->fotoProdukPertama) }}"
                                         alt="..." />
-                                    {{-- {{ $d->galeri_id }} --}}
                                 </a>
                                 <div class="product-overlay">
                                     <ul class="mb-0 list-inline d-flex flex-column">
@@ -93,11 +92,14 @@
                             <p class="small text-muted">{{ 'Rp.' . ' ' . number_format($d->hargaProduk, 2, ',', '.') }}</p>
                         </div>
                     </div>
-                @empty
+                    @empty
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <h3>Data GAGAL</h3>
                     </div>
-                @endforelse
+                    @endforelse
+                    <div class="d-flex justify-content-center my-5">
+                        <a class="btn btn-dark" href="{{ url('semua-kategori') }}">Tampilkan Semua Produk</a>
+                    </div>
             </div>
     </div>
     </section>

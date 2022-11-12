@@ -97,15 +97,12 @@
                             <h5 class="text-uppercase mb-4">Pesanan Anda</h5>
                             <ul class="list-unstyled mb-0">
                                 <li class="d-flex align-items-center justify-content-between"><strong
-                                        class="small fw-bold">Red digital smartwatch</strong><span
-                                        class="text-muted small">$250</span></li>
+                                        class="small fw-bold">{{ $item->produk->namaProduk }}</strong><span
+                                        class="text-muted small">{{ $item->kuantitas }}</span></li>
                                 <li class="border-bottom my-2"></li>
+                                @endforeach
                                 <li class="d-flex align-items-center justify-content-between"><strong
-                                        class="small fw-bold">Gray Nike running shoes</strong><span
-                                        class="text-muted small">$351</span></li>
-                                <li class="border-bottom my-2"></li>
-                                <li class="d-flex align-items-center justify-content-between"><strong
-                                        class="text-uppercase small fw-bold">Total</strong><span>$601</span>
+                                        class="text-uppercase small fw-bold">Total</strong><span>{{ 'Rp.' . ' ' . number_format($total, 0, ',', '.') }}</span>
                                 </li>
                             </ul>
                         </div>
