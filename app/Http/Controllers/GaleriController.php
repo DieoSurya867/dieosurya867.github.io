@@ -6,6 +6,7 @@ use App\Models\Galeri;
 use App\Models\produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class GaleriController extends Controller
 {
@@ -108,8 +109,16 @@ class GaleriController extends Controller
         ]);
 
         $galeri->update($validator);
+        // Ambil Data
+        $dataLama = Galeri::where('id', $id)->first();
 
         if ($request->file('fotoProdukPertama')) {
+            // Path Video Lama
+            $foto1 = public_path('storage/' . $dataLama->fotoProdukPertama);
+            if (File::exists($foto1)) {
+                File::delete($foto1);
+            }
+
             $file = $request->file('fotoProdukPertama')->store('img');
 
             $galeri->update([
@@ -118,6 +127,11 @@ class GaleriController extends Controller
             ]);
         }
         if ($request->file('fotoProdukKedua')) {
+            $foto2 = public_path('storage/' . $dataLama->fotoProdukKedua);
+            if (File::exists($foto2)) {
+                File::delete($foto2);
+            }
+
             $file = $request->file('fotoProdukKedua')->store('img');
 
             $galeri->update([
@@ -126,6 +140,11 @@ class GaleriController extends Controller
             ]);
         }
         if ($request->file('fotoProdukKetiga')) {
+            $foto3 = public_path('storage/' . $dataLama->fotoProdukKetiga);
+            if (File::exists($foto3)) {
+                File::delete($foto3);
+            }
+
             $file = $request->file('fotoProdukKetiga')->store('img');
 
             $galeri->update([
@@ -134,6 +153,11 @@ class GaleriController extends Controller
             ]);
         }
         if ($request->file('fotoProdukKeempat')) {
+            $foto4 = public_path('storage/' . $dataLama->fotoProdukKeempat);
+            if (File::exists($foto4)) {
+                File::delete($foto4);
+            }
+
             $file = $request->file('fotoProdukKeempat')->store('img');
 
             $galeri->update([
@@ -153,15 +177,34 @@ class GaleriController extends Controller
      */
     public function destroy($id)
     {
-        // delete image
-        $galeri = galeri::find($id);
-        Storage::delete('storage/' . $galeri->fotoProdukPertama);
-        Storage::delete('storage/' . $galeri->fotoProdukKedua);
-        Storage::delete('storage/' . $galeri->fotoProdukKetiga);
-        Storage::delete('storage/' . $galeri->fotoProdukKeempat);
+        // Ambil Data
+        $dataLama = Galeri::where('id', $id)->first();
 
-        //delete post
-        $galeri->delete();
+        // Path Video Lama
+        $foto1 = public_path('storage/' . $dataLama->fotoProdukPertama);
+        $foto2 = public_path('storage/' . $dataLama->fotoProdukKedua);
+        $foto3 = public_path('storage/' . $dataLama->fotoProdukKetiga);
+        $foto4 = public_path('storage/' . $dataLama->fotoProdukKeempat);
+
+        // Cek Apakah ada file videonya
+        if (File::exists($foto1)) {
+            File::delete($foto1);
+        }
+        if (File::exists($foto2)) {
+            File::delete($foto2);
+        }
+        if (File::exists($foto3)) {
+            File::delete($foto3);
+        }
+        if (File::exists($foto4)) {
+            File::delete($foto4);
+        }
+        // Jika File tersebut ada
+        // Hapus File tersebut
+        Galeri::where('id', $id)->delete();
+
+
+        return redirect('admin/galeri');
 
         // hapus file
         // Storage::delete('public/storage/img/' . $gambar->file);
