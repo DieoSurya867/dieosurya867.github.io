@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Exception;
 use Midtrans\Snap;
 use Midtrans\Config;
-
-
 use Midtrans\Notification;
 
 
@@ -37,7 +35,7 @@ class CheckoutController extends Controller
         $user->update($request->except('total_harga'));
 
         $code = 'STORE-' . mt_rand(0000, 9999);
-        $keranjang = keranjang::with(['produk', 'user'])
+        $keranjang = keranjang::with(['user', 'produk'])
             ->where('users_id', Auth::user()->id)
             ->get();
 
@@ -140,5 +138,28 @@ class CheckoutController extends Controller
         //  foreach ($data as $key) {
         //     echo $key->name;
         //  } 
+    }
+    public function midtrans()
+    {
+        // Set your Merchant Server Key
+        Config::$serverKey = 'SB-Mid-server-TW97hDH4YPWSqIc05NMRcGVG';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        Config::$isProduction = false;
+        // Set sanitization on (default)
+        Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        Config::$is3ds = true;
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => 10000,
+            ),
+            'enabled_payment' => [
+                'bank_transfer'
+            ]
+        );
+
+        $snapToken = Snap::getSnapToken($params);
+        return json_encode($snapToken);
     }
 }

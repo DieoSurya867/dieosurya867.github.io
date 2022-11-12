@@ -28,9 +28,7 @@ use App\Http\Controllers\KeranjangController;
 Route::get('/', [productCon::class, 'tampil']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('admin/dashboard', function () {
-        return view('Pages.admin.home');
-    });
+
     Route::resource('admin/produk', productCon::class);
     Route::resource('admin/galeri', GaleriController::class);
     Route::get('deleteproduk/{id}', [productCon::class, 'destroy'])->name('deleteproduk');
@@ -43,7 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('keranjang', KeranjangController::class);
     Route::resource('kategori', KategoriController::class);
     Route::resource('checkout', CheckoutController::class);
-    // Route::post('checkout', CheckoutController::class, 'process')->name('checkout');
+    Route::get('midtrans', [CheckoutController::class, 'midtrans']);
+    Route::post('bayar', [CheckoutController::class, 'process'])->name('bayar');
     Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
 });
 
