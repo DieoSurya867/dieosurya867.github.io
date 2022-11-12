@@ -13,7 +13,6 @@
       <script src={{ asset('js/midtrans.js') }}></script>
       <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-pKzTgmW6Da6vNrgw"></script>
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
       <script>
           AOS.init();
       </script>

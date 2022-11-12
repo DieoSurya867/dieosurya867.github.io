@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::resource('checkout', CheckoutController::class);
     Route::get('midtrans', [CheckoutController::class, 'midtrans']);
-    Route::post('bayar', [CheckoutController::class, 'process'])->name('bayar');
+    // Route::post('bayar', [CheckoutController::class, 'process']);
     Route::get('wilayah', [CheckoutController::class, 'wilayah'])->name('home');
     Route::get('semua-kategori', [KategoriController::class, 'tampilSemua'])->name('home');
 });
