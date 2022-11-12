@@ -17,7 +17,7 @@ class KeranjangController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $keranjang = Keranjang::where('users_id',$user_id)->get();
+        $keranjang = Keranjang::where('users_id', $user_id)->get();
         return view('Pages.user.cart', compact('keranjang'));
     }
 
@@ -55,13 +55,13 @@ class KeranjangController extends Controller
 
         if ($produk_valid) {
             return response()->json(['status' => $produk_check->namaProduk . " sudah ada di keranjang"]);
-        }else if ($produk_check){
-                $cartItem = new Keranjang();
-                $cartItem->produk_id = $produk_id;
-                $cartItem->users_id = $user_id;
-                $cartItem->kuantitas = $produk_qty;
-                $cartItem->save();
-                return response()->json(['status' => $produk_check->namaProduk . " berhasil tambah ke keranjang"]);
+        } else if ($produk_check) {
+            $cartItem = new Keranjang();
+            $cartItem->produk_id = $produk_id;
+            $cartItem->users_id = $user_id;
+            $cartItem->kuantitas = $produk_qty;
+            $cartItem->save();
+            return response()->json(['status' => $produk_check->namaProduk . " berhasil tambah ke keranjang"]);
         }
     }
 
@@ -72,8 +72,8 @@ class KeranjangController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function updatecart(Request $request)
-     {
+    public function updatecart(Request $request)
+    {
         $produk_id = $request->input('produk_id');
         $produk_qty = $request->input('kuantitas');
         $user_id = Auth::id();
@@ -85,11 +85,10 @@ class KeranjangController extends Controller
                 $keranjang->users_id = $keranjang->users_id;
                 $keranjang->kuantitas = $produk_qty;
                 $keranjang->update();
-                return response()->json(['status'=>'jumlah di Update']);
+                return response()->json(['status' => 'jumlah di Update']);
             }
         }
-        
-     }
+    }
 
 
     public function show($id)
@@ -106,7 +105,7 @@ class KeranjangController extends Controller
     public function edit($id)
     {
         $keranjang = keranjang::find($id);
-        return view('Pages.user.cart', ['keranjang'=>$keranjang]);
+        return view('Pages.user.cart', ['keranjang' => $keranjang]);
     }
 
     /**
@@ -125,16 +124,15 @@ class KeranjangController extends Controller
                 'users_id' => $keranjang->users_id,
                 'kuantitas' => $keranjang->kuantitas,
             ]);
-            return redirect('check');
+            return redirect('checkout');
         } else {
             $keranjang->update([
                 'produk_id' => $keranjang->produk_id,
                 'users_id' => $keranjang->users_id,
                 'kuantitas' => $request->qty,
             ]);
-    
-            return redirect('check');
 
+            return redirect('checkout');
         }
     }
 
@@ -149,6 +147,5 @@ class KeranjangController extends Controller
         $keranjang = keranjang::find($id);
         $keranjang->delete();
         return redirect('keranjang')->with('success', 'Sukses menghapus buku');
-
     }
 }

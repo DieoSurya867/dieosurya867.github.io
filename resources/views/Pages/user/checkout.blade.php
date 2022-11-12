@@ -96,10 +96,15 @@
                         <div class="card-body">
                             <h5 class="text-uppercase mb-4">Pesanan Anda</h5>
                             <ul class="list-unstyled mb-0">
-                                <li class="d-flex align-items-center justify-content-between"><strong
-                                        class="small fw-bold">{{ $item->produk->namaProduk }}</strong><span
-                                        class="text-muted small">{{ $item->kuantitas }}</span></li>
-                                <li class="border-bottom my-2"></li>
+                                @php $total = 0; @endphp
+
+                                @foreach ($keranjang as $item)
+                                    @php $total += $item->produk->hargaProduk*$item->kuantitas ; @endphp
+
+                                    <li class="d-flex align-items-center justify-content-between"><strong
+                                            class="small fw-bold">{{ $item->produk->namaProduk }}</strong><span
+                                            class="text-muted small">{{ $item->kuantitas }}</span></li>
+                                    <li class="border-bottom my-2"></li>
                                 @endforeach
                                 <li class="d-flex align-items-center justify-content-between"><strong
                                         class="text-uppercase small fw-bold">Total</strong><span>{{ 'Rp.' . ' ' . number_format($total, 0, ',', '.') }}</span>
